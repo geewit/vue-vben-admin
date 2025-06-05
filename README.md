@@ -48,10 +48,6 @@ Open the project in Gitpod (free online dev environment for GitHub) and start co
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vbenjs/vue-vben-admin)
 
-## Documentation
-
-[Document](https://doc.vben.pro/)
-
 ## Install and Use
 
 1. Get the project code

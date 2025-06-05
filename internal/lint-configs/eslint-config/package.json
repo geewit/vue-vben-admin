@@ -47,7 +47,6 @@
     "eslint-plugin-regexp": "catalog:",
     "eslint-plugin-unicorn": "catalog:",
     "eslint-plugin-unused-imports": "catalog:",
-    "eslint-plugin-vitest": "catalog:",
     "eslint-plugin-vue": "catalog:",
     "globals": "catalog:",
     "jsonc-eslint-parser": "catalog:",
