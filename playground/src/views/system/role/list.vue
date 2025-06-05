@@ -78,14 +78,14 @@ function onActionClick(e: OnActionClickParams<SystemRoleApi.SystemRole>) {
  * @param title 提示标题
  */
 function confirm(content: string, title: string) {
-  return new Promise((reslove, reject) => {
+  return new Promise((resolve, reject) => {
     Modal.confirm({
       content,
       onCancel() {
         reject(new Error('已取消'));
       },
       onOk() {
-        reslove(true);
+        resolve(true);
       },
       title,
     });

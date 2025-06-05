@@ -39,6 +39,15 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import('#/views/system/dept/list.vue'),
       },
+      {
+        path: '/system/law',
+        name: 'SystemLaw',
+        meta: {
+          icon: 'mdi:scale-balance',
+          title: $t('legal.title'),
+        },
+        component: () => import('#/views/legal/law/index.vue'),
+      },
     ],
   },
 ];

@@ -63,5 +63,18 @@
     "permissions": "权限",
     "setPermissions": "授权"
   },
+  "legal": {
+    "title": "法律法规",
+    "list": "法律列表",
+    "name": "法律",
+    "publishDate": "公布日期",
+    "status": "失效性",
+    "upload": "上传法律原文",
+    "article": {
+      "list": "法条列表",
+      "index": "条目序号",
+      "content": "内容"
+    }
+  },
   "title": "系统管理"
 }

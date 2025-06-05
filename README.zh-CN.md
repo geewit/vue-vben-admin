@@ -48,10 +48,6 @@ Vue Vben Admin 是 Vue Vben Admin 的升级版本。作为一个免费开源的�
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vbenjs/vue-vben-admin)
 
-## 文档
-
-[文档地址](https://doc.vben.pro/)
-
 ## 安装使用
 
 1. 获取项目代码

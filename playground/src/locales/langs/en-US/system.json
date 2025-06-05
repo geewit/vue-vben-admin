@@ -61,5 +61,18 @@
     "operation": "Operation",
     "permissions": "Permissions",
     "setPermissions": "Permissions"
+  },
+  "legal": {
+    "title": "Laws",
+    "list": "Law List",
+    "name": "Law",
+    "publishDate": "Publish Date",
+    "status": "Status",
+    "upload": "Upload Law Document",
+    "article": {
+      "list": "Article List",
+      "index": "Index",
+      "content": "Content"
+    }
   }
 }

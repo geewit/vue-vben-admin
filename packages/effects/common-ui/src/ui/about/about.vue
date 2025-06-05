@@ -79,10 +79,14 @@ const vbenDescriptionItems: DescriptionItem[] = [
     content: renderLink(homepage, '点击查看'),
     title: '主页',
   },
-  {
-    content: renderLink(VBEN_DOC_URL, '点击查看'),
-    title: '文档地址',
-  },
+  ...(VBEN_DOC_URL
+    ? [
+        {
+          content: renderLink(VBEN_DOC_URL, '点击查看'),
+          title: '文档地址',
+        },
+      ]
+    : []),
   {
     content: renderLink(VBEN_PREVIEW_URL, '点击查看'),
     title: '预览地址',

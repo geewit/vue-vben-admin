@@ -48,10 +48,6 @@ Gitpod（GitHub用の無料オンライン開発環境）でプロジェクト�
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vbenjs/vue-vben-admin)
 
-## ドキュメント
-
-[ドキュメント](https://doc.vben.pro/)
-
 ## インストールと使用
 
 1. プロジェクトコードを取得
