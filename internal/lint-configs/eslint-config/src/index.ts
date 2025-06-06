@@ -13,7 +13,6 @@ import {
   perfectionist,
   prettier,
   regexp,
-  turbo,
   typescript,
   unicorn,
   vue,
@@ -45,7 +44,6 @@ async function defineConfig(config: FlatConfig[] = []) {
     unicorn(),
     regexp(),
     command(),
-    turbo(),
     ...customConfig,
     ...config,
   ];
