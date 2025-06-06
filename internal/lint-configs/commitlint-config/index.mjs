@@ -11,7 +11,6 @@ const allowedScopes = [
   'lint',
   'ci',
   'dev',
-  'deploy',
   'other',
 ];
 
@@ -137,7 +136,6 @@ const userConfig = {
         'perf',
         'style',
         'docs',
-        'test',
         'refactor',
         'build',
         'ci',

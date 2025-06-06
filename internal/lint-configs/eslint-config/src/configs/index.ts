@@ -10,7 +10,6 @@ export * from './node';
 export * from './perfectionist';
 export * from './prettier';
 export * from './regexp';
-export * from './test';
 export * from './turbo';
 export * from './typescript';
 export * from './unicorn';
