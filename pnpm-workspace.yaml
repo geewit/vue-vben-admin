@@ -84,7 +84,6 @@ catalog:
   echarts: ^5.6.0
   element-plus: ^2.9.9
   eslint: ^9.26.0
-  eslint-config-turbo: ^2.5.2
   eslint-plugin-command: ^3.2.0
   eslint-plugin-eslint-comments: ^3.2.0
   eslint-plugin-import-x: ^4.11.0
@@ -154,7 +153,6 @@ catalog:
   tailwindcss-animate: ^1.0.7
   theme-colors: ^0.1.0
   tippy.js: ^6.3.7
-  turbo: ^2.5.4
   typescript: ^5.8.3
   unbuild: ^3.5.0
   unplugin-element-plus: ^0.10.0

@@ -140,9 +140,5 @@
       "name": "@vben/playground",
       "path": "playground",
     },
-    {
-      "name": "@vben/turbo-run",
-      "path": "scripts/turbo-run",
-    }
   ]
 }
