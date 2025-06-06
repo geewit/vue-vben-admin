@@ -1,6 +1,6 @@
 import { openWindow } from './window';
 
-interface DownloadOptions<T = string> {
+interface DownloadOptions<T = unknown> {
   fileName?: string;
   source: T;
   target?: string;
@@ -12,15 +12,11 @@ const DEFAULT_FILENAME = 'downloaded_file';
  * 通过 URL 下载文件，支持跨域
  * @throws {Error} - 当下载失败时抛出错误
  */
-export async function downloadFileFromUrl({
+export async function downloadFileFromUrl<T extends string>({
   fileName,
   source,
   target = '_blank',
-}: DownloadOptions): Promise<void> {
-  if (!source || typeof source !== 'string') {
-    throw new Error('Invalid URL.');
-  }
-
+}: DownloadOptions<T>): Promise<void> {
   const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome');
   const isSafari = window.navigator.userAgent.toLowerCase().includes('safari');
 
@@ -33,21 +29,21 @@ export async function downloadFileFromUrl({
     triggerDownload(source, resolveFileName(source, fileName));
     return;
   }
+  let finalSource = source;
   if (!source.includes('?')) {
-    source += '?download';
+    finalSource = `${source}?download` as T;
   }
 
-  openWindow(source, { target });
+  openWindow(finalSource, { target });
 }
 
 /**
  * 通过 Base64 下载文件
  */
-export function downloadFileFromBase64({ fileName, source }: DownloadOptions) {
-  if (!source || typeof source !== 'string') {
-    throw new Error('Invalid Base64 data.');
-  }
-
+export function downloadFileFromBase64<T extends string = string>({
+  fileName,
+  source,
+}: DownloadOptions<T>): void {
   const resolvedFileName = fileName || DEFAULT_FILENAME;
   triggerDownload(source, resolvedFileName);
 }
@@ -58,7 +54,10 @@ export function downloadFileFromBase64({ fileName, source }: DownloadOptions) {
 export async function downloadFileFromImageUrl({
   fileName,
   source,
-}: DownloadOptions) {
+}: DownloadOptions<string>): Promise<void> {
+  if (!source) {
+    throw new Error('Image URL is empty.');
+  }
   const base64 = await urlToBase64(source);
   downloadFileFromBase64({ fileName, source: base64 });
 }

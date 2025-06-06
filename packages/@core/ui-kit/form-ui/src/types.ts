@@ -28,13 +28,6 @@ export type WrapperClassType =
   | `${Breakpoints}grid-cols-${GridCols}`
   | (Record<never, never> & string);
 
-export type FormItemClassType =
-  | `${Breakpoints}cols-end-${'auto' | GridCols}`
-  | `${Breakpoints}cols-span-${'auto' | 'full' | GridCols}`
-  | `${Breakpoints}cols-start-${'auto' | GridCols}`
-  | (Record<never, never> & string)
-  | WrapperClassType;
-
 export type FormFieldOptions = Partial<
   FieldOptions & {
     validateOnBlur?: boolean;
@@ -63,7 +56,7 @@ export type MaybeComponentPropKey =
 
 export type MaybeComponentProps = { [K in MaybeComponentPropKey]?: any };
 
-export type FormActions = FormContext<GenericObject>;
+export type FormActions = FormContext;
 
 export type CustomRenderType = (() => Component | string) | string;
 
@@ -264,11 +257,6 @@ export interface FormSchema<
   /** 后缀 */
   suffix?: CustomRenderType;
 }
-
-export interface FormFieldProps extends FormSchema {
-  required?: boolean;
-}
-
 export interface FormRenderProps<
   T extends BaseFormComponentType = BaseFormComponentType,
 > {

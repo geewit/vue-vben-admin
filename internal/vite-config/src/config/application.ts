@@ -38,7 +38,6 @@ function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
       injectAppLoading: true,
       injectMetadata: true,
       isBuild,
-      license: true,
       mode,
       nitroMock: !isBuild,
       nitroMockOptions: {},

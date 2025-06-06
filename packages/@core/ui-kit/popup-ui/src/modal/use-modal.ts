@@ -5,6 +5,7 @@ import {
   h,
   inject,
   nextTick,
+  onBeforeMount,
   onDeactivated,
   provide,
   reactive,
@@ -27,19 +28,15 @@ export function setDefaultModalProps(props: Partial<ModalProps>) {
 export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
   options: ModalApiOptions = {},
 ) {
-  // Modal一般会抽离出来，所以如果有传入 connectedComponent，则表示为外部调用，与内部组件进行连接
-  // 外部的Modal通过provide/inject传递api
-
   const { connectedComponent } = options;
   if (connectedComponent) {
     const extendedApi = reactive({});
     const isModalReady = ref(true);
+
     const Modal = defineComponent(
       (props: TParentModalProps, { attrs, slots }) => {
         provide(USER_MODAL_INJECT_KEY, {
           extendApi(api: ExtendedModalApi) {
-            // 不能直接给 reactive 赋值，会丢失响应
-            // 不能用 Object.assign,会丢失 api 的原型函数
             Object.setPrototypeOf(extendedApi, api);
           },
           options,
@@ -49,11 +46,16 @@ export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
             isModalReady.value = true;
           },
         });
-        checkProps(extendedApi as ExtendedModalApi, {
-          ...props,
-          ...attrs,
-          ...slots,
+
+        // ✅ 使用 onBeforeMount 生命周期来执行异步检查
+        onBeforeMount(async () => {
+          await checkProps(extendedApi as ExtendedModalApi, {
+            ...props,
+            ...attrs,
+            ...slots,
+          });
         });
+
         return () =>
           h(
             isModalReady.value ? connectedComponent : 'div',
@@ -129,10 +131,14 @@ export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
       inheritAttrs: false,
     },
   );
+
   injectData.extendApi?.(extendedApi);
   return [Modal, extendedApi] as const;
 }
 
+/**
+ * 检查传入的属性是否与状态冲突
+ */
 async function checkProps(api: ExtendedModalApi, attrs: Record<string, any>) {
   if (!attrs || Object.keys(attrs).length === 0) {
     return;

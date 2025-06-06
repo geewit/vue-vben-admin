@@ -1,6 +1,7 @@
 /**
  * 更新 CSS 变量的函数
  * @param variables 要更新的 CSS 变量与其新值的映射
+ * @param id
  */
 function updateCSSVariables(
   variables: { [key: string]: string },

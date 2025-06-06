@@ -22,7 +22,7 @@ export function usePriorityValue<
   const slots = useSlots();
   const attrs = useAttrs() as T;
 
-  const value = computed((): T[K] => {
+  return computed((): ReturnType<() => T[K]> => {
     // props不管有没有传，都会有默认值，会影响这里的顺序，
     // 通过判断原始props是否有值来判断是否传入
     const rawProps = (instance?.vnode?.props || {}) as T;
@@ -42,9 +42,7 @@ export function usePriorityValue<
       propsKey,
       state?.value?.[key as keyof S],
     ) as T[K];
-  });
-
-  return value;
+  }) as unknown as ComputedRef<T[K]>;
 }
 
 /**

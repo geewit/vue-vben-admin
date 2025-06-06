@@ -41,7 +41,12 @@ async function resolveMonorepoDependencies() {
 
   for (const { packageJson } of packages) {
     const { dependencies = {}, devDependencies = {} } = packageJson;
-    for (const [key, value] of Object.entries(dependencies)) {
+
+    // 显式类型断言为 string
+    for (const [key, value] of Object.entries(dependencies) as [
+      string,
+      string,
+    ][]) {
       resultDependencies[key] = resolvePackageVersion(
         pkgsMeta,
         key,
@@ -49,7 +54,11 @@ async function resolveMonorepoDependencies() {
         catalog,
       );
     }
-    for (const [key, value] of Object.entries(devDependencies)) {
+
+    for (const [key, value] of Object.entries(devDependencies) as [
+      string,
+      string,
+    ][]) {
       resultDevDependencies[key] = resolvePackageVersion(
         pkgsMeta,
         key,
@@ -58,6 +67,7 @@ async function resolveMonorepoDependencies() {
       );
     }
   }
+
   return {
     dependencies: resultDependencies,
     devDependencies: resultDevDependencies,
@@ -70,7 +80,7 @@ async function resolveMonorepoDependencies() {
 async function viteMetadataPlugin(
   root = process.cwd(),
 ): Promise<PluginOption | undefined> {
-  const { author, description, homepage, license, version } =
+  const { author, description, homepage, version } =
     await readPackageJSON(root);
 
   const buildTime = dateUtil().format('YYYY-MM-DD HH:mm:ss');
@@ -96,7 +106,6 @@ async function viteMetadataPlugin(
             description,
             devDependencies,
             homepage,
-            license,
             version,
           }),
           'import.meta.env.VITE_APP_VERSION': JSON.stringify(version),

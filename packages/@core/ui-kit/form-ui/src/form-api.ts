@@ -186,13 +186,11 @@ export class FormApi {
                   if (!validateResult.valid) {
                     return;
                   }
-                  const rawValues = toRaw((await api.getValues()) || {});
-                  return rawValues;
+                  return toRaw((await api.getValues()) || {});
                 }),
               );
               if (needMerge) {
-                const mergedResults = Object.assign({}, ...results);
-                return mergedResults;
+                return Object.assign({}, ...results);
               }
               return results;
             } catch (error) {

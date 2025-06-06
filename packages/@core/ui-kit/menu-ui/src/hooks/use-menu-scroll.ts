@@ -16,7 +16,7 @@ export function useMenuScroll(
   const { enable = true, delay = 320 } = options;
 
   function scrollToActiveItem() {
-    const isEnabled = typeof enable === 'boolean' ? enable : enable.value;
+    const isEnabled = (enable as Ref<boolean>).value ?? (enable as boolean);
     if (!isEnabled) return;
 
     const activeElement = document.querySelector(
@@ -33,11 +33,15 @@ export function useMenuScroll(
 
   const debouncedScroll = useDebounceFn(scrollToActiveItem, delay);
 
-  watch(activePath, () => {
-    const isEnabled = typeof enable === 'boolean' ? enable : enable.value;
+  watch(activePath, async () => {
+    const isEnabled = (enable as Ref<boolean>).value ?? (enable as boolean);
     if (!isEnabled) return;
 
-    debouncedScroll();
+    try {
+      await debouncedScroll();
+    } catch (error) {
+      console.error('Scroll to active item failed:', error);
+    }
   });
 
   return {

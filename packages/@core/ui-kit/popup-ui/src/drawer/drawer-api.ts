@@ -122,7 +122,9 @@ export class DrawerApi {
     if (this.api.onCancel) {
       this.api.onCancel?.();
     } else {
-      this.close();
+      void this.close().catch((error) => {
+        console.error('关闭抽屉失败:', error);
+      });
     }
   }
 

@@ -44,7 +44,7 @@ provideComponentRefMap(componentRefMap);
 props.formApi?.mount?.(form, componentRefMap);
 
 const handleUpdateCollapsed = (value: boolean) => {
-  props.formApi?.setState({ collapsed: !!value });
+  props.formApi?.setState({ collapsed: value });
 };
 
 function handleKeyDownEnter(event: KeyboardEvent) {

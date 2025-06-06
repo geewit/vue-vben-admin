@@ -28,7 +28,7 @@ export function setDefaultDrawerProps(props: Partial<DrawerProps>) {
   Object.assign(DEFAULT_DRAWER_PROPS, props);
 }
 
-export function useVbenDrawer<
+export async function useVbenDrawer<
   TParentDrawerProps extends DrawerProps = DrawerProps,
 >(options: DrawerApiOptions = {}) {
   // Drawer一般会抽离出来，所以如果有传入 connectedComponent，则表示为外部调用，与内部组件进行连接
@@ -53,11 +53,14 @@ export function useVbenDrawer<
             isDrawerReady.value = true;
           },
         });
-        checkProps(extendedApi as ExtendedDrawerApi, {
+
+        // ✅ 使用 await 等待 checkProps 完成
+        void checkProps(extendedApi as ExtendedDrawerApi, {
           ...props,
           ...attrs,
           ...slots,
         });
+
         return () =>
           h(
             isDrawerReady.value ? connectedComponent : 'div',

@@ -30,8 +30,7 @@ function useMenuContext() {
   if (!instance) {
     throw new Error('instance is required');
   }
-  const rootMenu = inject(menuContextKey) as MenuProvider;
-  return rootMenu;
+  return inject(menuContextKey) as MenuProvider;
 }
 
 /**
@@ -43,8 +42,7 @@ function useSubMenuContext() {
     throw new Error('instance is required');
   }
   const parentMenu = findComponentUpward(instance, ['Menu', 'SubMenu']);
-  const subMenu = inject(`subMenu:${parentMenu?.uid}`) as SubMenuProvider;
-  return subMenu;
+  return inject(`subMenu:${parentMenu?.uid}`) as SubMenuProvider;
 }
 
 export {

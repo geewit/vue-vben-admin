@@ -238,11 +238,6 @@ interface ApplicationPluginOptions extends CommonPluginOptions {
    */
   injectGlobalScss?: boolean;
   /**
-   * 是否注入版权信息
-   * @default true
-   */
-  license?: boolean;
-  /**
    * 是否开启 Nitro Mock
    * @default false
    */

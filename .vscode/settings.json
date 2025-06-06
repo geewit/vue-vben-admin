@@ -99,8 +99,7 @@
     "**/CVS": true,
     "**/.stylelintcache": true,
     "**/.DS_Store": true,
-    "**/vite.config.mts.*": true,
-    "**/tea.yaml": true
+    "**/vite.config.mts.*": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
