@@ -5,7 +5,7 @@ import { computed, nextTick, onMounted, ref, useTemplateRef, watch } from 'vue';
 import {
   breakpointsTailwind,
   useBreakpoints,
-  useElementVisibility,
+  useElementVisibility
 } from '@vueuse/core';
 
 /**
@@ -36,7 +36,7 @@ export function useExpandable(props: FormRenderProps) {
       () => props.showCollapseButton,
       () => breakpoints.active().value,
       () => props.schema?.length,
-      () => isVisible.value,
+      () => isVisible.value
     ],
     async ([val]) => {
       if (val) {
@@ -45,7 +45,7 @@ export function useExpandable(props: FormRenderProps) {
         isCalculated.value = false;
         await calculateRowMapping();
       }
-    },
+    }
   );
 
   async function calculateRowMapping() {

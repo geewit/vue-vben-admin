@@ -13,7 +13,7 @@ import {
   FormItem,
   FormMessage,
   VbenRenderContent,
-  VbenTooltip,
+  VbenTooltip
 } from '@vben-core/shadcn-ui';
 import { cn, isFunction, isObject, isString } from '@vben-core/shared/utils';
 
@@ -46,7 +46,7 @@ const {
   labelWidth,
   modelPropName,
   renderComponentContent,
-  rules,
+  rules
 } = defineProps<
   Props & {
     commonComponentProps: MaybeComponentProps;
@@ -79,14 +79,14 @@ const {
   isDisabled,
   isIf,
   isRequired,
-  isShow,
+  isShow
 } = useDependencies(() => dependencies);
 
 const labelStyle = computed(() => {
   return labelClass?.includes('w-') || isVertical.value
     ? {}
     : {
-        width: `${labelWidth}px`,
+        width: `${labelWidth}px`
       };
 });
 
@@ -161,7 +161,7 @@ const computedProps = computed(() => {
   return {
     ...commonComponentProps,
     ...finalComponentProps,
-    ...dynamicComponentProps.value,
+    ...dynamicComponentProps.value
   };
 });
 
@@ -174,7 +174,7 @@ watch(
       });
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 const shouldDisabled = computed(() => {
@@ -198,7 +198,7 @@ const fieldProps = computed(() => {
     keepValue: true,
     label: isString(label) ? label : '',
     ...(rules ? { rules } : {}),
-    ...(formFieldProps as Record<string, any>),
+    ...(formFieldProps as Record<string, any>)
   };
 });
 
@@ -233,12 +233,12 @@ function fieldBindEvent(slotProps: Record<string, any>) {
 
             return onChange?.(e?.target?.[bindEventField] ?? e);
           },
-      ...(disabledOnInputListener ? { onInput: undefined } : {}),
+      ...(disabledOnInputListener ? { onInput: undefined } : {})
     };
   }
   return {
     ...(disabledOnInputListener ? { onInput: undefined } : {}),
-    ...(disabledOnChangeListener ? { onChange: undefined } : {}),
+    ...(disabledOnChangeListener ? { onChange: undefined } : {})
   };
 }
 
@@ -254,7 +254,7 @@ function createComponentProps(slotProps: Record<string, any>) {
       : {}),
     ...(Reflect.has(computedProps.value, 'onInput')
       ? { onInput: computedProps.value.onInput }
-      : {}),
+      : {})
   };
 }
 
@@ -306,9 +306,9 @@ onUnmounted(() => {
             'flex leading-6',
             {
               'mr-2 flex-shrink-0 justify-end': !isVertical,
-              'mb-1 flex-row': isVertical,
+              'mb-1 flex-row': isVertical
             },
-            labelClass,
+            labelClass
           )
         "
         :help="help"
@@ -329,7 +329,7 @@ onUnmounted(() => {
                 ...slotProps,
                 ...createComponentProps(slotProps),
                 disabled: shouldDisabled,
-                isInValid,
+                isInValid
               }"
             >
               <component
@@ -337,7 +337,7 @@ onUnmounted(() => {
                 ref="fieldComponentRef"
                 :class="{
                   'border-destructive focus:border-destructive hover:border-destructive/80 focus:shadow-[0_0_0_2px_rgba(255,38,5,0.06)]':
-                    isInValid,
+                    isInValid
                 }"
                 v-bind="createComponentProps(slotProps)"
                 :disabled="shouldDisabled"
@@ -364,7 +364,7 @@ onUnmounted(() => {
                     <CircleAlert
                       :class="
                         cn(
-                          'text-foreground/80 hover:text-foreground inline-flex size-5 cursor-pointer',
+                          'text-foreground/80 hover:text-foreground inline-flex size-5 cursor-pointer'
                         )
                       "
                     />

@@ -4,7 +4,7 @@ import type { CustomRenderType } from '../types';
 import {
   FormLabel,
   VbenHelpTooltip,
-  VbenRenderContent,
+  VbenRenderContent
 } from '@vben-core/shadcn-ui';
 import { cn } from '@vben-core/shared/utils';
 

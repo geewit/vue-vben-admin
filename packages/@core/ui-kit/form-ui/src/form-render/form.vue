@@ -6,7 +6,7 @@ import type {
   FormCommonConfig,
   FormRenderProps,
   FormSchema,
-  FormShape,
+  FormShape
 } from '../types';
 
 import { computed } from 'vue';
@@ -28,8 +28,8 @@ const props = withDefaults(
     commonConfig: () => ({}),
     globalCommonConfig: () => ({}),
     showCollapseButton: false,
-    wrapperClass: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3',
-  },
+    wrapperClass: 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
+  }
 );
 
 const emits = defineEmits<{
@@ -57,7 +57,7 @@ const shapes = computed(() => {
       default: getDefaultValueInZodStack(rules),
       fieldName,
       required: !['ZodNullable', 'ZodOptional'].includes(typeName),
-      rules: baseRules,
+      rules: baseRules
     });
   });
   return resultShapes;
@@ -68,10 +68,10 @@ const formComponent = computed(() => (props.form ? 'form' : Form));
 const formComponentProps = computed(() => {
   return props.form
     ? {
-        onSubmit: props.form.handleSubmit((val) => emits('submit', val)),
+        onSubmit: props.form.handleSubmit((val) => emits('submit', val))
       }
     : {
-        onSubmit: (val: GenericObject) => emits('submit', val),
+        onSubmit: (val: GenericObject) => emits('submit', val)
       };
 });
 
@@ -99,7 +99,7 @@ const computedSchema = computed(
       labelClass = '',
       labelWidth = 100,
       modelPropName = '',
-      wrapperClass = '',
+      wrapperClass = ''
     } = mergeWithArrayOverride(props.commonConfig, props.globalCommonConfig);
     return (props.schema || []).map((schema, index) => {
       const keepIndex = keepFormItemIndex.value;
@@ -127,18 +127,18 @@ const computedSchema = computed(
         controlClass: cn(controlClass, schema.controlClass),
         formFieldProps: {
           ...formFieldProps,
-          ...schema.formFieldProps,
+          ...schema.formFieldProps
         },
         formItemClass: cn(
           'flex-shrink-0',
           { hidden },
           formItemClass,
-          schema.formItemClass,
+          schema.formItemClass
         ),
-        labelClass: cn(labelClass, schema.labelClass),
+        labelClass: cn(labelClass, schema.labelClass)
       };
     });
-  },
+  }
 );
 </script>
 

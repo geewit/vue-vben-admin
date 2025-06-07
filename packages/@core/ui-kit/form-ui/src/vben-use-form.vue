@@ -15,13 +15,13 @@ import FormActions from './components/form-actions.vue';
 import {
   COMPONENT_BIND_EVENT_MAP,
   COMPONENT_MAP,
-  DEFAULT_FORM_COMMON_CONFIG,
+  DEFAULT_FORM_COMMON_CONFIG
 } from './config';
 import { Form } from './form-render';
 import {
   provideComponentRefMap,
   provideFormProps,
-  useFormInitial,
+  useFormInitial
 } from './use-form-context';
 // 通过 extends 会导致热更新卡死，所以重复写了一遍
 interface Props extends VbenFormProps {
@@ -93,14 +93,14 @@ onMounted(async () => {
             // 调用handleValuesChange回调，传入所有表单值的深拷贝和变更的字段列表
             forward.value.handleValuesChange(
               cloneDeep(await forward.value.formApi.getValues()),
-              changedFields,
+              changedFields
             );
           }
         }
       }
       handleValuesChangeDebounced();
     },
-    { deep: true },
+    { deep: true }
   );
 });
 </script>

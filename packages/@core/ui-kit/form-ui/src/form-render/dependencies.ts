@@ -1,7 +1,7 @@
 import type {
   FormItemDependencies,
   FormSchemaRuleType,
-  MaybeComponentProps,
+  MaybeComponentProps
 } from '../types';
 
 import { computed, ref, watch } from 'vue';
@@ -13,7 +13,7 @@ import { useFormValues } from 'vee-validate';
 import { injectRenderFormProps } from './context';
 
 export default function useDependencies(
-  getDependencies: () => FormItemDependencies | undefined,
+  getDependencies: () => FormItemDependencies | undefined
 ) {
   const values = useFormValues();
 
@@ -64,7 +64,7 @@ export default function useDependencies(
         required,
         rules,
         show,
-        trigger,
+        trigger
       } = dependencies;
 
       // 1. 优先判断if，如果if为false，则不渲染dom，后续判断也不再执行
@@ -110,7 +110,7 @@ export default function useDependencies(
         await trigger(formValues, formApi);
       }
     },
-    { deep: true, immediate: true },
+    { deep: true, immediate: true }
   );
 
   return {
@@ -119,6 +119,6 @@ export default function useDependencies(
     isDisabled,
     isIf,
     isRequired,
-    isShow,
+    isShow
   };
 }

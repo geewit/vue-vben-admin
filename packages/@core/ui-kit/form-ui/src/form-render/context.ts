@@ -14,11 +14,11 @@ export const useFormContext = () => {
 
   const componentMap = computed(() => formRenderProps.componentMap);
   const componentBindEventMap = computed(
-    () => formRenderProps.componentBindEventMap,
+    () => formRenderProps.componentBindEventMap
   );
   return {
     componentBindEventMap,
     componentMap,
-    isVertical,
+    isVertical
   };
 };

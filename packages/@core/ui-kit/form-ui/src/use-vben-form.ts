@@ -1,7 +1,7 @@
 import type {
   BaseFormComponentType,
   ExtendedFormApi,
-  VbenFormProps,
+  VbenFormProps
 } from './types';
 
 import { defineComponent, h, isReactive, onBeforeUnmount, watch } from 'vue';
@@ -12,7 +12,7 @@ import { FormApi } from './form-api';
 import VbenUseForm from './vben-use-form.vue';
 
 export function useVbenForm<
-  T extends BaseFormComponentType = BaseFormComponentType,
+  T extends BaseFormComponentType = BaseFormComponentType
 >(options: VbenFormProps<T>) {
   const IS_REACTIVE = isReactive(options);
   const api = new FormApi(options);
@@ -32,8 +32,8 @@ export function useVbenForm<
     },
     {
       name: 'VbenUseForm',
-      inheritAttrs: false,
-    },
+      inheritAttrs: false
+    }
   );
   // Add reactivity support
   if (IS_REACTIVE) {
@@ -42,7 +42,7 @@ export function useVbenForm<
       () => {
         api.setState({ schema: options.schema });
       },
-      { immediate: true },
+      { immediate: true }
     );
   }
 

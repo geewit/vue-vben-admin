@@ -9,14 +9,14 @@ import { VbenIcon } from '@vben-core/shadcn-ui';
 interface Props extends NormalMenuProps {}
 
 defineOptions({
-  name: 'NormalMenu',
+  name: 'NormalMenu'
 });
 
 const props = withDefaults(defineProps<Props>(), {
   activePath: '',
   collapse: false,
   menus: () => [],
-  theme: 'dark',
+  theme: 'dark'
 });
 
 const emit = defineEmits<{
@@ -40,7 +40,7 @@ function menuIcon(menu: MenuRecordRaw) {
       b(),
       is('collapse', collapse),
       is(theme, true),
-      is('rounded', rounded),
+      is('rounded', rounded)
     ]"
     class="relative"
   >

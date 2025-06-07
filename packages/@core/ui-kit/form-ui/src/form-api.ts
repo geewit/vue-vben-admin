@@ -2,7 +2,7 @@ import type {
   FormState,
   GenericObject,
   ResetFormOpts,
-  ValidationOptions,
+  ValidationOptions
 } from 'vee-validate';
 
 import type { ComponentPublicInstance } from 'vue';
@@ -23,7 +23,7 @@ import {
   isFunction,
   isObject,
   mergeWithArrayOverride,
-  StateHandler,
+  StateHandler
 } from '@vben-core/shared/utils';
 
 function getDefaultState(): VbenFormProps {
@@ -44,7 +44,7 @@ function getDefaultState(): VbenFormProps {
     submitButtonOptions: {},
     submitOnChange: false,
     submitOnEnter: false,
-    wrapperClass: 'grid-cols-1',
+    wrapperClass: 'grid-cols-1'
   };
 }
 
@@ -76,15 +76,15 @@ export class FormApi {
     this.store = new Store<VbenFormProps>(
       {
         ...defaultState,
-        ...storeState,
+        ...storeState
       },
       {
         onUpdate: () => {
           this.prevState = this.state;
           this.state = this.store.state;
           this.updateState();
-        },
-      },
+        }
+      }
     );
 
     this.state = this.store.state;
@@ -98,7 +98,7 @@ export class FormApi {
    * @returns 组件实例
    */
   getFieldComponentRef<T = ComponentPublicInstance>(
-    fieldName: string,
+    fieldName: string
   ): T | undefined {
     let target = this.componentRefMap.has(fieldName)
       ? (this.componentRefMap.get(fieldName) as ComponentPublicInstance)
@@ -187,7 +187,7 @@ export class FormApi {
                     return;
                   }
                   return toRaw((await api.getValues()) || {});
-                }),
+                })
               );
               if (needMerge) {
                 return Object.assign({}, ...results);
@@ -199,7 +199,7 @@ export class FormApi {
           };
         }
         return target[prop];
-      },
+      }
     });
 
     return proxy;
@@ -210,7 +210,7 @@ export class FormApi {
       Object.assign(this.form, formActions);
       this.stateHandler.setConditionTrue();
       this.setLatestSubmissionValues({
-        ...toRaw(this.handleRangeTimeValue(this.form.values)),
+        ...toRaw(this.handleRangeTimeValue(this.form.values))
       });
       this.componentRefMap = componentRefMap;
       this.isMounted = true;
@@ -228,7 +228,7 @@ export class FormApi {
     const filterSchema = schema.filter((item) => !fieldSet.has(item.fieldName));
 
     this.setState({
-      schema: filterSchema,
+      schema: filterSchema
     });
   }
 
@@ -237,7 +237,7 @@ export class FormApi {
    */
   async resetForm(
     state?: Partial<FormState<GenericObject>> | undefined,
-    opts?: Partial<ResetFormOpts>,
+    opts?: Partial<ResetFormOpts>
   ) {
     const form = await this.getForm();
     return form.resetForm(state, opts);
@@ -263,7 +263,7 @@ export class FormApi {
   setState(
     stateOrFn:
       | ((prev: VbenFormProps) => Partial<VbenFormProps>)
-      | Partial<VbenFormProps>,
+      | Partial<VbenFormProps>
   ) {
     if (isFunction(stateOrFn)) {
       this.store.setState((prev) => {
@@ -283,7 +283,7 @@ export class FormApi {
   async setValues(
     fields: Record<string, any>,
     filterFields: boolean = true,
-    shouldValidate: boolean = false,
+    shouldValidate: boolean = false
   ) {
     const form = await this.getForm();
     if (!filterFields) {
@@ -337,12 +337,12 @@ export class FormApi {
   updateSchema(schema: Partial<FormSchema>[]) {
     const updated: Partial<FormSchema>[] = [...schema];
     const hasField = updated.every(
-      (item) => Reflect.has(item, 'fieldName') && item.fieldName,
+      (item) => Reflect.has(item, 'fieldName') && item.fieldName
     );
 
     if (!hasField) {
       console.error(
-        'All items in the schema array must have a valid `fieldName` property to be updated',
+        'All items in the schema array must have a valid `fieldName` property to be updated'
       );
       return;
     }
@@ -361,7 +361,7 @@ export class FormApi {
       if (updatedData) {
         currentSchema[index] = mergeWithArrayOverride(
           updatedData,
-          schema,
+          schema
         ) as FormSchema;
       }
     });
@@ -417,7 +417,7 @@ export class FormApi {
 
     const processFields = (fields: string[], separator: string = ',') => {
       this.processFields(fields, separator, originValues, (value, sep) =>
-        Array.isArray(value) ? value.join(sep) : value,
+        Array.isArray(value) ? value.join(sep) : value
       );
     };
 
@@ -441,7 +441,7 @@ export class FormApi {
         // 根据类型定义，fields 应该始终是字符串数组
         if (!Array.isArray(fields)) {
           console.warn(
-            `Invalid field configuration: fields should be an array of strings, got ${typeof fields}`,
+            `Invalid field configuration: fields should be an array of strings, got ${typeof fields}`
           );
           return;
         }
@@ -496,7 +496,7 @@ export class FormApi {
         }
         // delete values[field];
         Reflect.deleteProperty(values, field);
-      },
+      }
     );
     return values;
   };
@@ -519,7 +519,7 @@ export class FormApi {
         // 处理复杂分隔符的情况
         const escapedSeparator = sep.replaceAll(
           /[.*+?^${}()|[\]\\]/g,
-          String.raw`\$&`,
+          String.raw`\$&`
         );
         return value.split(new RegExp(escapedSeparator));
       });
@@ -551,7 +551,7 @@ export class FormApi {
           } else {
             const escapedSeparator = separator.replaceAll(
               /[.*+?^${}()|[\]\\]/g,
-              String.raw`\$&`,
+              String.raw`\$&`
             );
             originValues[fields] = value.split(new RegExp(escapedSeparator));
           }
@@ -564,7 +564,7 @@ export class FormApi {
     fields: string[],
     separator: string,
     originValues: Record<string, any>,
-    transformFn: (value: any, separator: string) => any,
+    transformFn: (value: any, separator: string) => any
   ) => {
     fields.forEach((field) => {
       const value = originValues[field];
@@ -581,10 +581,10 @@ export class FormApi {
     // 进行了删除schema操作
     if (currentSchema.length < prevSchema.length) {
       const currentFields = new Set(
-        currentSchema.map((item) => item.fieldName),
+        currentSchema.map((item) => item.fieldName)
       );
       const deletedSchema = prevSchema.filter(
-        (item) => !currentFields.has(item.fieldName),
+        (item) => !currentFields.has(item.fieldName)
       );
       for (const schema of deletedSchema) {
         this.form?.setFieldValue?.(schema.fieldName, undefined);

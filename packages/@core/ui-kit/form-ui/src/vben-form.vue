@@ -9,7 +9,7 @@ import FormActions from './components/form-actions.vue';
 import {
   COMPONENT_BIND_EVENT_MAP,
   COMPONENT_MAP,
-  DEFAULT_FORM_COMMON_CONFIG,
+  DEFAULT_FORM_COMMON_CONFIG
 } from './config';
 import { Form } from './form-render';
 import { provideFormProps, useFormInitial } from './use-form-context';
@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
   showCollapseButton: false,
   showDefaultActions: true,
   submitButtonOptions: () => ({}),
-  wrapperClass: 'grid-cols-1',
+  wrapperClass: 'grid-cols-1'
 });
 
 const forward = useForwardPropsEmits(props);

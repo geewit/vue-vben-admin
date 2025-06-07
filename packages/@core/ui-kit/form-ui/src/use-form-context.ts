@@ -17,20 +17,20 @@ type ExtendFormProps = VbenFormProps & { formApi: ExtendedFormApi };
 
 export const [injectFormProps, provideFormProps] =
   createContext<[ComputedRef<ExtendFormProps> | ExtendFormProps, FormActions]>(
-    'VbenFormProps',
+    'VbenFormProps'
   );
 
 export const [injectComponentRefMap, provideComponentRefMap] =
   createContext<Map<string, unknown>>('ComponentRefMap');
 
 export function useFormInitial(
-  props: ComputedRef<VbenFormProps> | VbenFormProps,
+  props: ComputedRef<VbenFormProps> | VbenFormProps
 ) {
   const slots = useSlots();
   const initialValues = generateInitialValues();
 
   const form = useForm({
-    ...(Object.keys(initialValues)?.length ? { initialValues } : {}),
+    ...(Object.keys(initialValues)?.length ? { initialValues } : {})
   });
 
   const delegatedSlots = computed(() => {
@@ -104,6 +104,6 @@ export function useFormInitial(
 
   return {
     delegatedSlots,
-    form,
+    form
   };
 }

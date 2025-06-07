@@ -18,7 +18,7 @@ const resetButtonOptions = computed(() => {
   return {
     content: `${$t.value('reset')}`,
     show: true,
-    ...unref(rootProps).resetButtonOptions,
+    ...unref(rootProps).resetButtonOptions
   };
 });
 
@@ -26,7 +26,7 @@ const submitButtonOptions = computed(() => {
   return {
     content: `${$t.value('submit')}`,
     show: true,
-    ...unref(rootProps).submitButtonOptions,
+    ...unref(rootProps).submitButtonOptions
   };
 });
 
@@ -38,7 +38,7 @@ const queryFormStyle = computed(() => {
   if (!unref(rootProps).actionWrapperClass) {
     return {
       'grid-column': `-2 / -1`,
-      marginLeft: 'auto',
+      marginLeft: 'auto'
     };
   }
 
@@ -78,12 +78,12 @@ watch(
     if (props.collapseTriggerResize) {
       triggerWindowResize();
     }
-  },
+  }
 );
 
 defineExpose({
   handleReset,
-  handleSubmit,
+  handleSubmit
 });
 </script>
 <template>
@@ -92,7 +92,7 @@ defineExpose({
       cn(
         'col-span-full w-full text-right',
         rootProps.compact ? 'pb-2' : 'pb-6',
-        rootProps.actionWrapperClass,
+        rootProps.actionWrapperClass
       )
     "
     :style="queryFormStyle"
