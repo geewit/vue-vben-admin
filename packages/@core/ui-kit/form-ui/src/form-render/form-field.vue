@@ -7,9 +7,9 @@ import { computed, nextTick, onUnmounted, useTemplateRef, watch } from 'vue';
 
 import { CircleAlert } from '@vben-core/icons';
 import {
+  FormField as BaseField,
   FormControl,
   FormDescription,
-  FormField as BaseField,
   FormItem,
   FormMessage,
   VbenRenderContent,
