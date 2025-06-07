@@ -25,8 +25,8 @@ async function viteInjectAppLoadingPlugin(
   // 保证黑暗主题下，刷新页面时，loading也是黑暗主题
   const injectScript = `
   <script data-app-loading="inject-js">
-  var theme = localStorage.getItem(${cacheName});
-  document.documentElement.classList.toggle('dark', /dark/.test(theme));
+  const theme = localStorage.getItem(${cacheName});
+  document.documentElement.classList[theme?.includes('dark') ?? false ? 'add' : 'remove']('dark');
 </script>
 `;
 
