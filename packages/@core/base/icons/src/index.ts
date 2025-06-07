@@ -7,5 +7,5 @@ export {
   addCollection,
   addIcon,
   Icon as IconifyIcon,
-  listIcons,
+  listIcons
 } from '@iconify/vue';

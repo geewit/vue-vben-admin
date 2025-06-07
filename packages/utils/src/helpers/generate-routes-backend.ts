@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router';
 import type {
   ComponentRecordType,
   GenerateMenuAndRoutesOptions,
-  RouteRecordStringComponent,
+  RouteRecordStringComponent
 } from '@vben-core/typings';
 
 import { mapTree } from '@vben-core/shared/utils';
@@ -12,7 +12,7 @@ import { mapTree } from '@vben-core/shared/utils';
  * 动态生成路由 - 后端方式
  */
 async function generateRoutesByBackend(
-  options: GenerateMenuAndRoutesOptions,
+  options: GenerateMenuAndRoutesOptions
 ): Promise<RouteRecordRaw[]> {
   const { fetchMenuListAsync, layoutMap = {}, pageMap = {} } = options;
 
@@ -38,7 +38,7 @@ async function generateRoutesByBackend(
 function convertRoutes(
   routes: RouteRecordStringComponent[],
   layoutMap: ComponentRecordType,
-  pageMap: ComponentRecordType,
+  pageMap: ComponentRecordType
 ): RouteRecordRaw[] {
   return mapTree(routes, (node) => {
     const route = node as unknown as RouteRecordRaw;

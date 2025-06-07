@@ -2,7 +2,7 @@ import type { MenuRecordRaw } from '@vben-core/typings';
 
 function findMenuByPath(
   list: MenuRecordRaw[],
-  path?: string,
+  path?: string
 ): MenuRecordRaw | null {
   for (const menu of list) {
     if (menu.path === path) {
@@ -31,7 +31,7 @@ function findRootMenuByPath(menus: MenuRecordRaw[], path?: string, level = 0) {
   return {
     findMenu,
     rootMenu,
-    rootMenuPath,
+    rootMenuPath
   };
 }
 

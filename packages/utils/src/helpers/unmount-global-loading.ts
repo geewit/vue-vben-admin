@@ -15,7 +15,7 @@ export function unmountGlobalLoading() {
 
     // 查找所有需要移除的注入 loading 元素
     const injectLoadingElements = document.querySelectorAll(
-      '[data-app-loading^="inject"]',
+      '[data-app-loading^="inject"]'
     );
 
     // 当过渡动画结束时，移除 loading 元素和所有注入的 loading 元素
@@ -25,7 +25,7 @@ export function unmountGlobalLoading() {
         loadingElement.remove(); // 移除 loading 元素
         injectLoadingElements.forEach((el) => el.remove()); // 移除所有注入的 loading 元素
       },
-      { once: true },
+      { once: true }
     ); // 确保事件只触发一次
   }
 }

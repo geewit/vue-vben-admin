@@ -9,6 +9,6 @@ export default defineBuildConfig({
     'src/utils/index',
     'src/color/index',
     'src/cache/index',
-    'src/global-state',
-  ],
+    'src/global-state'
+  ]
 });
