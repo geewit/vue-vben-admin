@@ -45,7 +45,6 @@
     "@changesets/changelog-github": "catalog:",
     "@changesets/cli": "catalog:",
     "@types/node": "catalog:",
-    "@vben/commitlint-config": "workspace:*",
     "@vben/eslint-config": "workspace:*",
     "@vben/prettier-config": "workspace:*",
     "@vben/stylelint-config": "workspace:*",
