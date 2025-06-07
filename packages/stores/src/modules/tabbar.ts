@@ -165,7 +165,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
         tab = mergedTab;
         this.tabs.splice(tabIndex, 1, mergedTab);
       }
-      this.updateCacheTabs();
+      void this.updateCacheTabs();
       return tab;
     },
     /**
@@ -175,7 +175,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
       const newTabs = this.tabs.filter((tab) => isAffixTab(tab));
       this.tabs = newTabs.length > 0 ? newTabs : [...this.tabs].splice(0, 1);
       await this._goToDefaultTab(router);
-      this.updateCacheTabs();
+      void this.updateCacheTabs();
     },
     /**
      * @zh_CN 关闭左侧标签页
@@ -252,7 +252,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
       // 关闭不是激活选项卡
       if (getTabKey(currentRoute.value) !== getTabKeyFromTab(tab)) {
         this._close(tab);
-        this.updateCacheTabs();
+        void this.updateCacheTabs();
         return;
       }
       const index = this.getTabs.findIndex(
@@ -349,13 +349,13 @@ export const useTabbarStore = defineStore('core-tabbar', {
 
       this.excludeCachedTabs.add(name as string);
       this.renderRouteView = false;
-      startProgress();
+      void startProgress();
 
       await new Promise((resolve) => setTimeout(resolve, 200));
 
       this.excludeCachedTabs.delete(name as string);
       this.renderRouteView = true;
-      stopProgress();
+      void stopProgress();
     },
 
     /**

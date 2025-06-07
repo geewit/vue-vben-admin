@@ -4,7 +4,7 @@ import { addIcon } from '@vben-core/icons';
 
 let loaded = false;
 if (!loaded) {
-  loadSvgIcons();
+  void loadSvgIcons();
   loaded = true;
 }
 
