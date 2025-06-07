@@ -98,7 +98,7 @@ onMounted(async () => {
           }
         }
       }
-      handleValuesChangeDebounced();
+      await handleValuesChangeDebounced();
     },
     { deep: true }
   );

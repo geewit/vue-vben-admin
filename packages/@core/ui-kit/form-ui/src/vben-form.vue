@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { VbenFormProps } from './types';
+import type { ExtendedFormApi, VbenFormProps } from './types';
 
-import { ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 
 import { useForwardPropsEmits } from '@vben-core/composables';
 
@@ -33,11 +33,16 @@ const props = withDefaults(defineProps<Props>(), {
 
 const forward = useForwardPropsEmits(props);
 
+const propsWithFormApi = computed(() => ({
+  ...props,
+  formApi: undefined as unknown as ExtendedFormApi
+}));
+
 const currentCollapsed = ref(false);
 
-const { delegatedSlots, form } = useFormInitial(props);
+const { delegatedSlots, form } = useFormInitial(propsWithFormApi);
 
-provideFormProps([props, form]);
+provideFormProps([propsWithFormApi, form]);
 
 const handleUpdateCollapsed = (value: boolean) => {
   currentCollapsed.value = value;
