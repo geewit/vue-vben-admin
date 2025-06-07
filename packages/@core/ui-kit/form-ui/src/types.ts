@@ -115,7 +115,7 @@ export interface FormItemDependencies {
   /**
    * 任意触发都会执行
    */
-  trigger?: FormItemDependenciesCondition<void>;
+  trigger?: FormItemDependenciesCondition<void | PromiseLike<void>>;
   /**
    * 触发字段
    */
@@ -301,7 +301,7 @@ export interface FormRenderProps<
   /**
    * 表单实例
    */
-  form?: FormContext<GenericObject>;
+  form?: FormContext;
   /**
    * 表单项布局
    */

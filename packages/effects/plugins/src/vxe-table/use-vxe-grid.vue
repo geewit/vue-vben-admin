@@ -101,20 +101,20 @@ const slots: SetupContext['slots'] = useSlots();
 
 const [Form, formApi] = useTableForm({
   compact: true,
-  handleSubmit: async () => {
-    const formValues = await formApi.getValues();
-    formApi.setLatestSubmissionValues(toRaw(formValues));
-    props.api.reload(formValues);
-  },
+    handleSubmit: async () => {
+      const formValues = await formApi.getValues();
+      formApi.setLatestSubmissionValues(toRaw(formValues));
+      await props.api.reload(formValues);
+    },
   handleReset: async () => {
     const prevValues = await formApi.getValues();
     await formApi.resetForm();
     const formValues = await formApi.getValues();
     formApi.setLatestSubmissionValues(formValues);
     // 如果值发生了变化，submitOnChange会触发刷新。所以只在submitOnChange为false或者值没有发生变化时，手动刷新
-    if (isEqual(prevValues, formValues) || !formOptions.value?.submitOnChange) {
-      props.api.reload(formValues);
-    }
+      if (isEqual(prevValues, formValues) || !formOptions.value?.submitOnChange) {
+        await props.api.reload(formValues);
+      }
   },
   commonConfig: {
     componentProps: {

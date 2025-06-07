@@ -443,7 +443,7 @@ const [Form, formApi] = useVbenForm({
   wrapperClass: 'grid-cols-2 gap-x-4',
 });
 
-const [Drawer, drawerApi] = useVbenDrawer({
+const [Drawer, drawerApi] = await useVbenDrawer({
   onConfirm: onSubmit,
   onOpenChange(isOpen) {
     if (isOpen) {
@@ -455,10 +455,8 @@ const [Drawer, drawerApi] = useVbenDrawer({
       }
       if (data) {
         formData.value = data;
-        formApi.setValues(formData.value);
-        titleSuffix.value = formData.value.meta?.title
-          ? $t(formData.value.meta.title)
-          : '';
+        formApi.setValues(data);
+        titleSuffix.value = data.meta?.title ? $t(data.meta.title) : '';
       } else {
         formApi.resetForm();
         titleSuffix.value = '';

@@ -123,6 +123,7 @@ function handleScroll(event: Event) {
 
 <style scoped>
 .vben-scrollbar {
+  --scroll-shadow: var(--background);
   &:not(.both-shadow).left-shadow {
     mask-image: linear-gradient(90deg, transparent, #000 16px);
   }

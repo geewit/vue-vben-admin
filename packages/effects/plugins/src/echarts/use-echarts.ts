@@ -68,7 +68,7 @@ function useEcharts(chartRef: Ref<EchartsUIType>) {
         }, 30);
         return;
       }
-      nextTick(() => {
+      void nextTick(() => {
         useTimeoutFn(() => {
           if (!chartInstance) {
             const instance = initCharts();
@@ -101,7 +101,7 @@ function useEcharts(chartRef: Ref<EchartsUIType>) {
     if (chartInstance) {
       chartInstance.dispose();
       initCharts();
-      renderEcharts(cacheOptions);
+        void renderEcharts(cacheOptions);
       resize();
     }
   });

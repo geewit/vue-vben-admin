@@ -9,7 +9,7 @@ import { CircleAlert } from '@vben-core/icons';
 import {
   FormControl,
   FormDescription,
-  FormField,
+  FormField as BaseField,
   FormItem,
   FormMessage,
   VbenRenderContent,
@@ -280,7 +280,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <FormField
+  <BaseField
     v-if="isIf"
     v-bind="fieldProps"
     v-slot="slotProps"
@@ -388,5 +388,5 @@ onUnmounted(() => {
         </Transition>
       </div>
     </FormItem>
-  </FormField>
+  </BaseField>
 </template>

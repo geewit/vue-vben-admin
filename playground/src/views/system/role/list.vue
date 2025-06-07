@@ -19,7 +19,7 @@ import { $t } from '#/locales';
 import { useColumns, useGridFormSchema } from './data';
 import Form from './modules/form.vue';
 
-const [FormDrawer, formDrawerApi] = useVbenDrawer({
+const [FormDrawer, formDrawerApi] = await useVbenDrawer({
   connectedComponent: Form,
   destroyOnClose: true,
 });

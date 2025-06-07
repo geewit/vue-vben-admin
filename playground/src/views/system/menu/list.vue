@@ -18,7 +18,7 @@ import { deleteMenu, getMenuList, SystemMenuApi } from '#/api/system/menu';
 import { useColumns } from './data';
 import Form from './modules/form.vue';
 
-const [FormDrawer, formDrawerApi] = useVbenDrawer({
+const [FormDrawer, formDrawerApi] = await useVbenDrawer({
   connectedComponent: Form,
   destroyOnClose: true,
 });

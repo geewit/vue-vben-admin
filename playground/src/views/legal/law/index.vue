@@ -93,7 +93,7 @@ async function onLawAction({ code, row }: any) {
   } else if (code === 'articles') {
     currentLawId.value = row.id;
     const list = await getLawArticles(row.id);
-    articleGridApi.reloadData({ items: list, total: list.length });
+    (articleGridApi as any).reloadData({ items: list, total: list.length });
   }
 }
 
@@ -102,7 +102,7 @@ async function onArticleAction({ code, row }: any) {
     await deleteArticle(row.id);
     if (currentLawId.value) {
       const list = await getLawArticles(currentLawId.value);
-      articleGridApi.reloadData({ items: list, total: list.length });
+      (articleGridApi as any).reloadData({ items: list, total: list.length });
     }
   }
 }
