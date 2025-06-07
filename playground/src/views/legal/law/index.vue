@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { Button, DatePicker, Upload, message } from 'ant-design-vue';
+
 import { Page } from '@vben/common-ui';
+
+import { Button, DatePicker, message, Upload } from 'ant-design-vue';
+
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-import { $t } from '#/locales';
 import {
   deleteArticle,
   deleteLaw,
@@ -11,6 +13,7 @@ import {
   getLawList,
   uploadLaw,
 } from '#/api';
+import { $t } from '#/locales';
 
 const uploadDate = ref<string>('');
 const currentLawId = ref<number>();
@@ -45,8 +48,15 @@ const [LawGrid, lawGridApi] = useVbenVxeGrid({
     pagerConfig: {},
     proxyConfig: {
       ajax: {
-        query: async ({ page }) =>
-          await getLawList({ pageNo: page.currentPage, pageSize: page.pageSize }),
+        query: async ({
+          page,
+        }: {
+          page: { currentPage: number; pageSize: number };
+        }) =>
+          await getLawList({
+            pageNo: page.currentPage,
+            pageSize: page.pageSize,
+          }),
       },
     },
     toolbarConfig: { refresh: { code: 'query' }, custom: true },
@@ -79,7 +89,7 @@ const [ArticleGrid, articleGridApi] = useVbenVxeGrid({
 async function onLawAction({ code, row }: any) {
   if (code === 'delete') {
     await deleteLaw(row.id);
-    lawGridApi.query();
+    await lawGridApi.query();
   } else if (code === 'articles') {
     currentLawId.value = row.id;
     const list = await getLawArticles(row.id);
@@ -107,7 +117,7 @@ async function handleUpload({ file }: any) {
   form.append('publishDate', uploadDate.value);
   await uploadLaw(form);
   message.success($t('common.uploadSuccess'));
-  lawGridApi.query();
+  await lawGridApi.query();
 }
 </script>
 

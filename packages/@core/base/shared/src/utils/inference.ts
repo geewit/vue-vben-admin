@@ -7,7 +7,7 @@ import { isFunction, isObject, isString } from '@vue/shared';
  * @param {unknown} value 要检查的值。
  * @returns {boolean} 如果值是undefined，返回true，否则返回false。
  */
-function isUndefined(value?: unknown): value is undefined {
+function isUndefined(value: unknown): value is undefined {
   return value === undefined;
 }
 
@@ -31,7 +31,7 @@ function isBoolean(value: unknown): value is boolean {
  * - 值为一个没有元素的Map或Set。
  * - 值为一个没有属性的对象。
  *
- * @param {T} value 要检查的值。
+ * @param {unknown} value 要检查的值。
  * @returns {boolean} 如果值为空，返回true，否则返回false。
  */
 function isEmpty<T = unknown>(value?: T): value is T {

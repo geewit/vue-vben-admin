@@ -41,7 +41,7 @@ function extendProxyOption(
     ...args: Recordable<any>[]
   ) => {
     const formValues = getFormValues();
-    const data = await configFn(
+    return await configFn(
       params,
       {
         /**
@@ -53,7 +53,6 @@ function extendProxyOption(
       },
       ...args,
     );
-    return data;
   };
   api.setState({
     gridOptions: {

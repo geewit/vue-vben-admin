@@ -98,6 +98,7 @@ export function downloadFileFromBlobPart({
 /**
  * img url to base64
  * @param url
+ * @param mineType
  */
 export function urlToBase64(url: string, mineType?: string): Promise<string> {
   return new Promise((resolve, reject) => {

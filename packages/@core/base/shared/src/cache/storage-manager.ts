@@ -11,7 +11,7 @@ interface StorageItem<T> {
 }
 
 class StorageManager {
-  private prefix: string;
+  private readonly prefix: string;
   private storage: Storage;
 
   constructor({
@@ -38,20 +38,6 @@ class StorageManager {
     }
     keysToRemove.forEach((key) => this.storage.removeItem(key));
   }
-
-  /**
-   * 清除所有过期的存储项
-   */
-  clearExpiredItems(): void {
-    for (let i = 0; i < this.storage.length; i++) {
-      const key = this.storage.key(i);
-      if (key && key.startsWith(this.prefix)) {
-        const shortKey = key.replace(this.prefix, '');
-        this.getItem(shortKey); // 调用 getItem 方法检查并移除过期项
-      }
-    }
-  }
-
   /**
    * 获取存储项
    * @param key 键

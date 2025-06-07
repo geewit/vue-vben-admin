@@ -53,11 +53,9 @@ const formSchema = computed((): VbenFormSchema[] => {
       componentProps: {
         codeLength: CODE_LENGTH,
         createText: (countdown: number) => {
-          const text =
-            countdown > 0
+          return countdown > 0
               ? $t('authentication.sendText', [countdown])
               : $t('authentication.sendCode');
-          return text;
         },
         handleSendCode: async () => {
           // 模拟发送验证码

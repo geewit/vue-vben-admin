@@ -20,6 +20,7 @@ function findMenuByPath(
  * 查找根菜单
  * @param menus
  * @param path
+ * @param level
  */
 function findRootMenuByPath(menus: MenuRecordRaw[], path?: string, level = 0) {
   const findMenu = findMenuByPath(menus, path);

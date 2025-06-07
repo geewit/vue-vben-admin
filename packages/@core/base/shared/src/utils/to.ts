@@ -9,8 +9,7 @@ export async function to<T, U = Error>(
 ): Promise<[null, T] | [U, undefined]> {
   try {
     const data = await promise;
-    const result: [null, T] = [null, data];
-    return result;
+    return [null, data];
   } catch (error) {
     if (errorExt) {
       const parsedError = Object.assign({}, error, errorExt);

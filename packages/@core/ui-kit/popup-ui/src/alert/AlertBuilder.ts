@@ -182,7 +182,7 @@ export async function vbenPrompt<T = any>(
     ...delegated,
     async beforeClose(scope: BeforeCloseScope) {
       if (delegated.beforeClose) {
-        return await delegated.beforeClose({
+        return delegated.beforeClose({
           ...scope,
           value: modelValue.value,
         });

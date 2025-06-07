@@ -80,8 +80,7 @@ const {
 const { isMobile } = usePreferences();
 const isSeparator = computed(() => {
   if (
-    !formOptions.value ||
-    showSearchForm.value === false ||
+    !formOptions.value || !showSearchForm.value ||
     separator.value === false
   ) {
     return false;
