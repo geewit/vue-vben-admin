@@ -3,7 +3,7 @@ import type { Router, RouteRecordRaw } from 'vue-router';
 import type {
   ExRouteRecordRaw,
   MenuRecordRaw,
-  RouteMeta,
+  RouteMeta
 } from '@vben-core/typings';
 
 import { filterTree, mapTree } from '@vben-core/shared/utils';
@@ -16,11 +16,11 @@ import { filterTree, mapTree } from '@vben-core/shared/utils';
  */
 function generateMenus(
   routes: RouteRecordRaw[],
-  router: Router,
+  router: Router
 ): MenuRecordRaw[] {
   // 将路由列表转换为一个以 name 为键的对象映射
   const finalRoutesMap: { [key: string]: string } = Object.fromEntries(
-    router.getRoutes().map(({ name, path }) => [name, path]),
+    router.getRoutes().map(({ name, path }) => [name, path])
   );
 
   let menus = mapTree<ExRouteRecordRaw, MenuRecordRaw>(routes, (route) => {
@@ -31,7 +31,7 @@ function generateMenus(
       meta = {} as RouteMeta,
       name: routeName,
       redirect,
-      children = [],
+      children = []
     } = route;
     const {
       activeIcon,
@@ -42,7 +42,7 @@ function generateMenus(
       icon,
       link,
       order,
-      title = '',
+      title = ''
     } = meta;
 
     // 确保菜单名称不为空
@@ -76,7 +76,7 @@ function generateMenus(
       parents: route.parents,
       path: resultPath,
       show: !meta.hideInMenu,
-      children: resultChildren,
+      children: resultChildren
     };
   });
 

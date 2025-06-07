@@ -11,7 +11,7 @@ interface RouteModuleType {
  * @returns 合并后的路由配置数组
  */
 function mergeRouteModules(
-  routeModules: Record<string, unknown>,
+  routeModules: Record<string, unknown>
 ): RouteRecordRaw[] {
   const mergedRoutes: RouteRecordRaw[] = [];
 
