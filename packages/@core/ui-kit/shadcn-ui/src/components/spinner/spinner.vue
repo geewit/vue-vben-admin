@@ -17,11 +17,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'VbenSpinner',
+  name: 'VbenSpinner'
 });
 
 const props = withDefaults(defineProps<Props>(), {
-  minLoadingTime: 50,
+  minLoadingTime: 50
 });
 // const startTime = ref(0);
 const showSpinner = ref(false);
@@ -48,8 +48,8 @@ watch(
     }, props.minLoadingTime);
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 function onTransitionEnd() {
@@ -65,9 +65,9 @@ function onTransitionEnd() {
       cn(
         'flex-center z-100 bg-overlay-content absolute left-0 top-0 size-full backdrop-blur-sm transition-all duration-500',
         {
-          'invisible opacity-0': !showSpinner,
+          'invisible opacity-0': !showSpinner
         },
-        props.class,
+        props.class
       )
     "
     @transitionend="onTransitionEnd"

@@ -13,7 +13,7 @@ export type BeforeCloseScope = {
 export type AlertProps = {
   /** 关闭前的回调，如果返回false，则终止关闭 */
   beforeClose?: (
-    scope: BeforeCloseScope,
+    scope: BeforeCloseScope
   ) => boolean | Promise<boolean | undefined> | undefined;
   /** 边框 */
   bordered?: boolean;

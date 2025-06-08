@@ -7,7 +7,7 @@ import SwitchItem from '../switch-item.vue';
 import ToggleItem from '../toggle-item.vue';
 
 defineOptions({
-  name: 'PreferenceNavigationConfig',
+  name: 'PreferenceNavigationConfig'
 });
 
 defineProps<{ disabled?: boolean; disabledNavigationSplit?: boolean }>();
@@ -18,7 +18,7 @@ const navigationAccordion = defineModel<boolean>('navigationAccordion');
 
 const stylesItems: SelectOption[] = [
   { label: $t('preferences.rounded'), value: 'rounded' },
-  { label: $t('preferences.plain'), value: 'plain' },
+  { label: $t('preferences.plain'), value: 'plain' }
 ];
 </script>
 

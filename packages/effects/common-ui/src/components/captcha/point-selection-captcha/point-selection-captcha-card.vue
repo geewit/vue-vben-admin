@@ -10,7 +10,7 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from '@vben-core/shadcn-ui';
 
 const props = withDefaults(defineProps<PointSelectionCaptchaCardProps>(), {
@@ -18,7 +18,7 @@ const props = withDefaults(defineProps<PointSelectionCaptchaCardProps>(), {
   paddingX: '12px',
   paddingY: '16px',
   title: '',
-  width: '300px',
+  width: '300px'
 });
 
 const emit = defineEmits<{
@@ -35,13 +35,13 @@ const parseValue = (value: number | string) => {
 
 const rootStyles = computed(() => ({
   padding: `${parseValue(props.paddingY)}px ${parseValue(props.paddingX)}px`,
-  width: `${parseValue(props.width) + parseValue(props.paddingX) * 2}px`,
+  width: `${parseValue(props.width) + parseValue(props.paddingX) * 2}px`
 }));
 
 const captchaStyles = computed(() => {
   return {
     height: `${parseValue(props.height)}px`,
-    width: `${parseValue(props.width)}px`,
+    width: `${parseValue(props.width)}px`
   };
 });
 

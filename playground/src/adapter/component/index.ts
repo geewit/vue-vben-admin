@@ -13,7 +13,7 @@ import {
   defineComponent,
   getCurrentInstance,
   h,
-  ref,
+  ref
 } from 'vue';
 
 import { ApiComponent, globalShareState, IconPicker } from '@vben/common-ui';
@@ -22,55 +22,55 @@ import { $t } from '@vben/locales';
 import { notification } from 'ant-design-vue';
 
 const AutoComplete = defineAsyncComponent(
-  () => import('ant-design-vue/es/auto-complete'),
+  () => import('ant-design-vue/es/auto-complete')
 );
 const Button = defineAsyncComponent(() => import('ant-design-vue/es/button'));
 const Checkbox = defineAsyncComponent(
-  () => import('ant-design-vue/es/checkbox'),
+  () => import('ant-design-vue/es/checkbox')
 );
 const CheckboxGroup = defineAsyncComponent(() =>
-  import('ant-design-vue/es/checkbox').then((res) => res.CheckboxGroup),
+  import('ant-design-vue/es/checkbox').then((res) => res.CheckboxGroup)
 );
 const DatePicker = defineAsyncComponent(
-  () => import('ant-design-vue/es/date-picker'),
+  () => import('ant-design-vue/es/date-picker')
 );
 const Divider = defineAsyncComponent(() => import('ant-design-vue/es/divider'));
 const Input = defineAsyncComponent(() => import('ant-design-vue/es/input'));
 const InputNumber = defineAsyncComponent(
-  () => import('ant-design-vue/es/input-number'),
+  () => import('ant-design-vue/es/input-number')
 );
 const InputPassword = defineAsyncComponent(() =>
-  import('ant-design-vue/es/input').then((res) => res.InputPassword),
+  import('ant-design-vue/es/input').then((res) => res.InputPassword)
 );
 const Mentions = defineAsyncComponent(
-  () => import('ant-design-vue/es/mentions'),
+  () => import('ant-design-vue/es/mentions')
 );
 const Radio = defineAsyncComponent(() => import('ant-design-vue/es/radio'));
 const RadioGroup = defineAsyncComponent(() =>
-  import('ant-design-vue/es/radio').then((res) => res.RadioGroup),
+  import('ant-design-vue/es/radio').then((res) => res.RadioGroup)
 );
 const RangePicker = defineAsyncComponent(() =>
-  import('ant-design-vue/es/date-picker').then((res) => res.RangePicker),
+  import('ant-design-vue/es/date-picker').then((res) => res.RangePicker)
 );
 const Rate = defineAsyncComponent(() => import('ant-design-vue/es/rate'));
 const Select = defineAsyncComponent(() => import('ant-design-vue/es/select'));
 const Space = defineAsyncComponent(() => import('ant-design-vue/es/space'));
 const Switch = defineAsyncComponent(() => import('ant-design-vue/es/switch'));
 const Textarea = defineAsyncComponent(() =>
-  import('ant-design-vue/es/input').then((res) => res.Textarea),
+  import('ant-design-vue/es/input').then((res) => res.Textarea)
 );
 const TimePicker = defineAsyncComponent(
-  () => import('ant-design-vue/es/time-picker'),
+  () => import('ant-design-vue/es/time-picker')
 );
 const TreeSelect = defineAsyncComponent(
-  () => import('ant-design-vue/es/tree-select'),
+  () => import('ant-design-vue/es/tree-select')
 );
 const Upload = defineAsyncComponent(() => import('ant-design-vue/es/upload'));
 
 const withDefaultPlaceholder = <T extends Component>(
   component: T,
   type: 'input' | 'select',
-  componentProps: Recordable<any> = {},
+  componentProps: Recordable<any> = {}
 ) => {
   return defineComponent({
     name: component.name,
@@ -96,9 +96,9 @@ const withDefaultPlaceholder = <T extends Component>(
         h(
           component,
           { ...componentProps, placeholder, ...props, ...attrs, ref: innerRef },
-          slots,
+          slots
         );
-    },
+    }
   });
 };
 
@@ -141,7 +141,7 @@ async function initComponentAdapter() {
       component: Select,
       loadingSlot: 'suffixIcon',
       modelPropName: 'value',
-      visibleEvent: 'onVisibleChange',
+      visibleEvent: 'onVisibleChange'
     }),
     ApiTreeSelect: withDefaultPlaceholder(ApiComponent, 'select', {
       component: TreeSelect,
@@ -149,7 +149,7 @@ async function initComponentAdapter() {
       loadingSlot: 'suffixIcon',
       modelPropName: 'value',
       optionsPropName: 'treeData',
-      visibleEvent: 'onVisibleChange',
+      visibleEvent: 'onVisibleChange'
     }),
     AutoComplete,
     Checkbox,
@@ -163,7 +163,7 @@ async function initComponentAdapter() {
     IconPicker: withDefaultPlaceholder(IconPicker, 'select', {
       iconSlot: 'addonAfter',
       inputComponent: Input,
-      modelValueProp: 'value',
+      modelValueProp: 'value'
     }),
     Input: withDefaultPlaceholder(Input, 'input'),
     InputNumber: withDefaultPlaceholder(InputNumber, 'input'),
@@ -183,7 +183,7 @@ async function initComponentAdapter() {
     Textarea: withDefaultPlaceholder(Textarea, 'input'),
     TimePicker,
     TreeSelect: withDefaultPlaceholder(TreeSelect, 'select'),
-    Upload,
+    Upload
   };
 
   // 将组件注册到全局共享状态中
@@ -196,9 +196,9 @@ async function initComponentAdapter() {
       notification.success({
         description: content,
         message: title,
-        placement: 'bottomRight',
+        placement: 'bottomRight'
       });
-    },
+    }
   });
 }
 

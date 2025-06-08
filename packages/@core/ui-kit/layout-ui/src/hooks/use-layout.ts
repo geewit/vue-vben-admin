@@ -6,7 +6,7 @@ import { computed } from 'vue';
 
 export function useLayout(props: VbenLayoutProps) {
   const currentLayout = computed(() =>
-    props.isMobile ? 'sidebar-nav' : (props.layout as LayoutType),
+    props.isMobile ? 'sidebar-nav' : (props.layout as LayoutType)
   );
 
   /**
@@ -18,7 +18,7 @@ export function useLayout(props: VbenLayoutProps) {
    * 是否侧边混合模式
    */
   const isSidebarMixedNav = computed(
-    () => currentLayout.value === 'sidebar-mixed-nav',
+    () => currentLayout.value === 'sidebar-mixed-nav'
   );
 
   /**
@@ -32,14 +32,14 @@ export function useLayout(props: VbenLayoutProps) {
   const isMixedNav = computed(
     () =>
       currentLayout.value === 'mixed-nav' ||
-      currentLayout.value === 'header-sidebar-nav',
+      currentLayout.value === 'header-sidebar-nav'
   );
 
   /**
    * 是否为头部混合模式
    */
   const isHeaderMixedNav = computed(
-    () => currentLayout.value === 'header-mixed-nav',
+    () => currentLayout.value === 'header-mixed-nav'
   );
 
   return {
@@ -48,6 +48,6 @@ export function useLayout(props: VbenLayoutProps) {
     isHeaderMixedNav,
     isHeaderNav,
     isMixedNav,
-    isSidebarMixedNav,
+    isSidebarMixedNav
   };
 }

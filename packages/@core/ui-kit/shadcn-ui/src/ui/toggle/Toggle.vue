@@ -22,8 +22,8 @@ const props = withDefaults(
   {
     disabled: false,
     size: 'default',
-    variant: 'default',
-  },
+    variant: 'default'
+  }
 );
 
 const emits = defineEmits<ToggleEmits>();

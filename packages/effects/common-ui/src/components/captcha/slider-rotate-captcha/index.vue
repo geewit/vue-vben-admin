@@ -3,7 +3,7 @@ import type {
   CaptchaVerifyPassingData,
   SliderCaptchaActionType,
   SliderRotateCaptchaProps,
-  SliderRotateVerifyPassingData,
+  SliderRotateVerifyPassingData
 } from '../types';
 
 import { computed, reactive, unref, useTemplateRef, watch } from 'vue';
@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<SliderRotateCaptchaProps>(), {
   imageSize: 260,
   maxDegree: 300,
   minDegree: 120,
-  src: '',
+  src: ''
 });
 
 const emit = defineEmits<{
@@ -38,7 +38,7 @@ const state = reactive({
   randomRotate: 0,
   showTip: false,
   startTime: 0,
-  toOrigin: false,
+  toOrigin: false
 });
 
 const modalValue = defineModel<boolean>({ default: false });
@@ -52,7 +52,7 @@ watch(
       emit('success', { isPassing, time: time.toFixed(1) });
     }
     modalValue.value = isPassing;
-  },
+  }
 );
 
 const getImgWrapStyleRef = computed(() => {
@@ -60,7 +60,7 @@ const getImgWrapStyleRef = computed(() => {
   return {
     height: `${imageSize}px`,
     width: `${imageSize}px`,
-    ...imageWrapperStyle,
+    ...imageWrapperStyle
   };
 });
 
@@ -89,7 +89,7 @@ function handleDragBarMove(data: SliderRotateVerifyPassingData) {
     return;
   }
   const currentRotate = Math.ceil(
-    (moveX / denominator) * 1.5 * maxDegree! * unref(getFactorRef),
+    (moveX / denominator) * 1.5 * maxDegree! * unref(getFactorRef)
   );
   state.currentRotate = currentRotate;
   setImgRotate(state.randomRotate - currentRotate);
@@ -98,7 +98,7 @@ function handleDragBarMove(data: SliderRotateVerifyPassingData) {
 function handleImgOnLoad() {
   const { maxDegree, minDegree } = props;
   const ranRotate = Math.floor(
-    minDegree! + Math.random() * (maxDegree! - minDegree!),
+    minDegree! + Math.random() * (maxDegree! - minDegree!)
   ); // 生成随机角度
   state.randomRotate = ranRotate;
   setImgRotate(ranRotate);
@@ -125,7 +125,7 @@ function handleDragEnd() {
 
 function setImgRotate(deg: number) {
   state.imgStyle = {
-    transform: `rotateZ(${deg}deg)`,
+    transform: `rotateZ(${deg}deg)`
   };
 }
 
@@ -153,13 +153,13 @@ const imgCls = computed(() => {
 const verifyTip = computed(() => {
   return state.isPassing
     ? $t('ui.captcha.sliderRotateSuccessTip', [
-        ((state.endTime - state.startTime) / 1000).toFixed(1),
+        ((state.endTime - state.startTime) / 1000).toFixed(1)
       ])
     : $t('ui.captcha.sliderRotateFailTip');
 });
 
 defineExpose({
-  resume,
+  resume
 });
 </script>
 
@@ -185,7 +185,7 @@ defineExpose({
           v-if="state.showTip"
           :class="{
             'bg-success/80': state.isPassing,
-            'bg-destructive/80': !state.isPassing,
+            'bg-destructive/80': !state.isPassing
           }"
         >
           {{ verifyTip }}

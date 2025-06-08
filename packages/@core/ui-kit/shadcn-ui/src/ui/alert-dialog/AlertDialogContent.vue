@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {
   AlertDialogContentEmits,
-  AlertDialogContentProps,
+  AlertDialogContentProps
 } from 'radix-vue';
 
 import type { ClassType } from '@vben-core/typings';
@@ -13,7 +13,7 @@ import { cn } from '@vben-core/shared/utils';
 import {
   AlertDialogContent,
   AlertDialogPortal,
-  useForwardPropsEmits,
+  useForwardPropsEmits
 } from 'radix-vue';
 
 import AlertDialogOverlay from './AlertDialogOverlay.vue';
@@ -29,7 +29,7 @@ const props = withDefaults(
       zIndex?: number;
     }
   >(),
-  { modal: true },
+  { modal: true }
 );
 const emits = defineEmits<
   AlertDialogContentEmits & { close: []; closed: []; opened: [] }
@@ -55,7 +55,7 @@ function onAnimationEnd(event: AnimationEvent) {
   }
 }
 defineExpose({
-  getContentRef: () => contentRef.value,
+  getContentRef: () => contentRef.value
 });
 </script>
 
@@ -68,7 +68,7 @@ defineExpose({
           ...(zIndex ? { zIndex } : {}),
           position: 'fixed',
           backdropFilter:
-            overlayBlur && overlayBlur > 0 ? `blur(${overlayBlur}px)` : 'none',
+            overlayBlur && overlayBlur > 0 ? `blur(${overlayBlur}px)` : 'none'
         }"
         @click="() => emits('close')"
       />
@@ -89,9 +89,9 @@ defineExpose({
             'data-[state=open]:slide-in-from-top-[98%] data-[state=closed]:slide-out-to-top-[148%]':
               centered,
             'top-[10vh]': !centered,
-            'top-1/2 -translate-y-1/2': centered,
+            'top-1/2 -translate-y-1/2': centered
           },
-          props.class,
+          props.class
         )
       "
     >

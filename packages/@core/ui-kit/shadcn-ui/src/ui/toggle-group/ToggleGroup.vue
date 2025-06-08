@@ -23,7 +23,7 @@ const emits = defineEmits<ToggleGroupRootEmits>();
 
 provide('toggleGroup', {
   size: props.size,
-  variant: props.variant,
+  variant: props.variant
 });
 
 const delegatedProps = computed(() => {

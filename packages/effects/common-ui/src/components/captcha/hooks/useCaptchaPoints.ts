@@ -14,6 +14,6 @@ export function useCaptchaPoints() {
   return {
     addPoint,
     clearPoints,
-    points,
+    points
   };
 }

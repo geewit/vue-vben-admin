@@ -54,7 +54,7 @@ function setupAccessGuard(router: Router) {
         return decodeURIComponent(
           (to.query?.redirect as string) ||
             userStore.userInfo?.homePath ||
-            preferences.app.defaultHomePath,
+            preferences.app.defaultHomePath
         );
       }
       return true;
@@ -77,7 +77,7 @@ function setupAccessGuard(router: Router) {
               ? {}
               : { redirect: encodeURIComponent(to.fullPath) },
           // 携带当前跳转的页面，登录后重新跳转该页面
-          replace: true,
+          replace: true
         };
       }
       return to;
@@ -98,7 +98,7 @@ function setupAccessGuard(router: Router) {
       roles: userRoles,
       router,
       // 则会在菜单中显示，但是访问会被重定向到403
-      routes: accessRoutes,
+      routes: accessRoutes
     });
 
     // 保存菜单信息和路由信息
@@ -117,7 +117,7 @@ function setupAccessGuard(router: Router) {
     }
     return {
       ...router.resolve(decodeURIComponent(redirectPath)),
-      replace: true,
+      replace: true
     };
   });
 }

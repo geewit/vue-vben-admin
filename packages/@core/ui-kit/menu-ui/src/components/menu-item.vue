@@ -14,7 +14,7 @@ interface Props extends MenuItemProps {}
 defineOptions({ name: 'MenuItem' });
 
 const props = withDefaults(defineProps<Props>(), {
-  disabled: false,
+  disabled: false
 });
 
 const emit = defineEmits<{ click: [MenuItemRegistered] }>();
@@ -28,18 +28,18 @@ const { parentMenu, parentPaths } = useMenu();
 
 const active = computed(() => props.path === rootMenu?.activePath);
 const menuIcon = computed(() =>
-  active.value ? props.activeIcon || props.icon : props.icon,
+  active.value ? props.activeIcon || props.icon : props.icon
 );
 
 const isTopLevelMenuItem = computed(
-  () => parentMenu.value?.type.name === 'Menu',
+  () => parentMenu.value?.type.name === 'Menu'
 );
 
 const collapseShowTitle = computed(
   () =>
     rootMenu.props?.collapseShowTitle &&
     isTopLevelMenuItem.value &&
-    rootMenu.props.collapse,
+    rootMenu.props.collapse
 );
 
 const showTooltip = computed(
@@ -47,13 +47,13 @@ const showTooltip = computed(
     rootMenu.props.mode === 'vertical' &&
     isTopLevelMenuItem.value &&
     rootMenu.props?.collapse &&
-    slots.title,
+    slots.title
 );
 
 const item: MenuItemRegistered = reactive({
   active,
   parentPaths: parentPaths.value,
-  path: props.path || '',
+  path: props.path || ''
 });
 
 /**
@@ -65,7 +65,7 @@ function handleClick() {
   }
   rootMenu?.handleMenuItemClick?.({
     parentPaths: parentPaths.value,
-    path: props.path,
+    path: props.path
   });
   emit('click', item);
 }
@@ -87,7 +87,7 @@ onBeforeUnmount(() => {
       b(),
       is('active', active),
       is('disabled', disabled),
-      is('collapse-show-title', collapseShowTitle),
+      is('collapse-show-title', collapseShowTitle)
     ]"
     role="menuitem"
     @click.stop="handleClick"

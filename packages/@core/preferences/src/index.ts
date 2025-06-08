@@ -27,7 +27,7 @@ export {
   preferences,
   preferencesManager,
   resetPreferences,
-  updatePreferences,
+  updatePreferences
 };
 
 export * from './constants';

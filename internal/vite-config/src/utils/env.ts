@@ -36,7 +36,7 @@ function getConfFiles() {
  */
 async function loadEnv<T = Record<string, string>>(
   match = 'VITE_GLOB_',
-  confFiles = getConfFiles(),
+  confFiles = getConfFiles()
 ) {
   let envConfig = {};
 
@@ -45,7 +45,7 @@ async function loadEnv<T = Record<string, string>>(
       const confFilePath = join(process.cwd(), confFile);
       if (existsSync(confFilePath)) {
         const envPath = await fs.readFile(confFilePath, {
-          encoding: 'utf8',
+          encoding: 'utf8'
         });
         const env = dotenv.parse(envPath);
         envConfig = { ...envConfig, ...env };
@@ -65,7 +65,7 @@ async function loadEnv<T = Record<string, string>>(
 
 async function loadAndConvertEnv(
   match = 'VITE_',
-  confFiles = getConfFiles(),
+  confFiles = getConfFiles()
 ): Promise<
   Partial<ApplicationPluginOptions> & {
     appTitle: string;
@@ -84,7 +84,7 @@ async function loadAndConvertEnv(
     VITE_INJECT_APP_LOADING,
     VITE_PORT,
     VITE_PWA,
-    VITE_VISUALIZER,
+    VITE_VISUALIZER
   } = envConfig;
 
   const compressTypes = (VITE_COMPRESS ?? '')
@@ -101,7 +101,7 @@ async function loadAndConvertEnv(
     injectAppLoading: getBoolean(VITE_INJECT_APP_LOADING),
     port: getNumber(VITE_PORT, 5173),
     pwa: getBoolean(VITE_PWA),
-    visualizer: getBoolean(VITE_VISUALIZER),
+    visualizer: getBoolean(VITE_VISUALIZER)
   };
 }
 

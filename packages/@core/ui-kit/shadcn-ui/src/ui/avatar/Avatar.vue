@@ -15,8 +15,8 @@ const props = withDefaults(
   }>(),
   {
     shape: 'circle',
-    size: 'sm',
-  },
+    size: 'sm'
+  }
 );
 </script>
 

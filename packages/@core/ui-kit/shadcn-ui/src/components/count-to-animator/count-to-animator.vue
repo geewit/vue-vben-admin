@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
   startVal: 0,
   suffix: '',
   transition: 'linear',
-  useEasing: true,
+  useEasing: true
 });
 
 const emit = defineEmits<{
@@ -94,7 +94,7 @@ function run() {
     },
     ...(props.useEasing
       ? { transition: TransitionPresets[props.transition] }
-      : {}),
+      : {})
   });
 }
 

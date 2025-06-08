@@ -5,7 +5,7 @@ import {
   useFieldError,
   useIsFieldDirty,
   useIsFieldTouched,
-  useIsFieldValid,
+  useIsFieldValid
 } from 'vee-validate';
 
 import { FORM_ITEM_INJECTION_KEY } from './injectionKeys';
@@ -24,7 +24,7 @@ export function useFormField() {
     error: useFieldError(name),
     isDirty: useIsFieldDirty(name),
     isTouched: useIsFieldTouched(name),
-    valid: useIsFieldValid(name),
+    valid: useIsFieldValid(name)
   };
 
   return {
@@ -33,6 +33,6 @@ export function useFormField() {
     formMessageId: `${id}-form-item-message`,
     id,
     name,
-    ...fieldState,
+    ...fieldState
   };
 }

@@ -27,13 +27,13 @@ export function useTabsViewScroll(props: TabsProps) {
 
     return {
       scrollbarWidth,
-      scrollViewWidth,
+      scrollViewWidth
     };
   }
 
   function scrollDirection(
     direction: 'left' | 'right',
-    distance: number = 150,
+    distance: number = 150
   ) {
     const { scrollbarWidth, scrollViewWidth } = getScrollClientWidth();
 
@@ -46,7 +46,7 @@ export function useTabsViewScroll(props: TabsProps) {
       left:
         direction === 'left'
           ? -(scrollbarWidth - distance)
-          : +(scrollbarWidth - distance),
+          : +(scrollbarWidth - distance)
     });
   }
 
@@ -59,7 +59,7 @@ export function useTabsViewScroll(props: TabsProps) {
     }
 
     const viewportEl = scrollbarEl?.querySelector(
-      'div[data-radix-scroll-area-viewport]',
+      'div[data-radix-scroll-area-viewport]'
     );
 
     scrollViewportEl.value = viewportEl;
@@ -74,7 +74,7 @@ export function useTabsViewScroll(props: TabsProps) {
       useDebounceFn((_entries: ResizeObserverEntry[]) => {
         calcShowScrollbarButton();
         scrollToActiveIntoView();
-      }, 100),
+      }, 100)
     );
     resizeObserver.observe(viewportEl);
 
@@ -83,7 +83,7 @@ export function useTabsViewScroll(props: TabsProps) {
     // 使用 MutationObserver 仅监听子节点数量变化
     mutationObserver = new MutationObserver(() => {
       const count = viewportEl.querySelectorAll(
-        `div[data-tab-item="true"]`,
+        `div[data-tab-item="true"]`
       ).length;
 
       if (count > tabItemCount) {
@@ -100,7 +100,7 @@ export function useTabsViewScroll(props: TabsProps) {
     mutationObserver.observe(viewportEl, {
       attributes: false,
       childList: true,
-      subtree: true,
+      subtree: true
     });
   }
 
@@ -145,7 +145,7 @@ export function useTabsViewScroll(props: TabsProps) {
   function handleWheel({ deltaY }: WheelEvent) {
     scrollViewportEl.value?.scrollBy({
       // behavior: 'smooth',
-      left: deltaY * 3,
+      left: deltaY * 3
     });
   }
 
@@ -158,8 +158,8 @@ export function useTabsViewScroll(props: TabsProps) {
       // }, 300);
     },
     {
-      flush: 'post',
-    },
+      flush: 'post'
+    }
   );
 
   // watch(
@@ -177,7 +177,7 @@ export function useTabsViewScroll(props: TabsProps) {
     () => props.styleType,
     () => {
       initScrollbar();
-    },
+    }
   );
 
   onMounted(initScrollbar);
@@ -197,6 +197,6 @@ export function useTabsViewScroll(props: TabsProps) {
     scrollDirection,
     scrollIsAtLeft,
     scrollIsAtRight,
-    showScrollButton,
+    showScrollButton
   };
 }

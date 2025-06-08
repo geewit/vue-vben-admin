@@ -27,7 +27,7 @@ export function usePagination<T = any>(list: Ref<T[]>, pageSize: number) {
   const pageSizeRef = ref(pageSize);
 
   const totalPages = computed(() =>
-    Math.ceil(unref(list).length / unref(pageSizeRef)),
+    Math.ceil(unref(list).length / unref(pageSizeRef))
   );
 
   const paginationList = computed(() => {

@@ -9,7 +9,7 @@ import { CSS_VARIABLE_LAYOUT_CONTENT_HEIGHT } from '@vben-core/shared/constants'
 import { cn } from '@vben-core/shared/utils';
 
 defineOptions({
-  name: 'Page',
+  name: 'Page'
 });
 
 const { autoContentHeight = false, heightOffset = 0 } =
@@ -26,7 +26,7 @@ const contentStyle = computed<StyleValue>(() => {
   if (autoContentHeight) {
     return {
       height: `calc(var(${CSS_VARIABLE_LAYOUT_CONTENT_HEIGHT}) - ${headerHeight.value}px - ${typeof heightOffset === 'number' ? `${heightOffset}px` : heightOffset})`,
-      overflowY: shouldAutoHeight.value ? 'auto' : 'unset',
+      overflowY: shouldAutoHeight.value ? 'auto' : 'unset'
     };
   }
   return {};
@@ -63,7 +63,7 @@ onMounted(() => {
       :class="
         cn(
           'bg-card border-border relative flex items-end border-b px-6 py-4',
-          headerClass,
+          headerClass
         )
       "
     >
@@ -96,7 +96,7 @@ onMounted(() => {
       :class="
         cn(
           'bg-card align-center absolute bottom-0 left-0 right-0 flex px-6 py-4',
-          footerClass,
+          footerClass
         )
       "
     >

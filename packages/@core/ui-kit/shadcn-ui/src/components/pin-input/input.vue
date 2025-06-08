@@ -7,7 +7,7 @@ import { PinInput, PinInputGroup, PinInputInput } from '../../ui';
 import { VbenButton } from '../button';
 
 defineOptions({
-  inheritAttrs: false,
+  inheritAttrs: false
 });
 
 const {
@@ -16,7 +16,7 @@ const {
   disabled = false,
   handleSendCode = async () => {},
   loading = false,
-  maxTime = 60,
+  maxTime = 60
 } = defineProps<PinInputProps>();
 
 const emit = defineEmits<{
@@ -44,7 +44,7 @@ watch(
   () => modelValue.value,
   () => {
     inputValue.value = modelValue.value?.split('') ?? [];
-  },
+  }
 );
 
 watch(inputValue, (val) => {

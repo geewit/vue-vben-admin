@@ -12,7 +12,7 @@ import { VbenButton } from '@vben-core/shadcn-ui';
 interface Props extends FallbackProps {}
 
 defineOptions({
-  name: 'Fallback',
+  name: 'Fallback'
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -21,17 +21,17 @@ const props = withDefaults(defineProps<Props>(), {
   image: '',
   showBack: true,
   status: 'coming-soon',
-  title: '',
+  title: ''
 });
 
 const Icon403 = defineAsyncComponent(() => import('./icons/icon-403.vue'));
 const Icon404 = defineAsyncComponent(() => import('./icons/icon-404.vue'));
 const Icon500 = defineAsyncComponent(() => import('./icons/icon-500.vue'));
 const IconHello = defineAsyncComponent(
-  () => import('./icons/icon-coming-soon.vue'),
+  () => import('./icons/icon-coming-soon.vue')
 );
 const IconOffline = defineAsyncComponent(
-  () => import('./icons/icon-offline.vue'),
+  () => import('./icons/icon-offline.vue')
 );
 
 const titleText = computed(() => {

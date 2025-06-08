@@ -15,12 +15,12 @@ interface Props {
 }
 
 defineOptions({
-  name: 'LockScreenModal',
+  name: 'LockScreenModal'
 });
 
 withDefaults(defineProps<Props>(), {
   avatar: '',
-  text: '',
+  text: ''
 });
 
 const emit = defineEmits<{
@@ -31,24 +31,24 @@ const [Form, { resetForm, validate, getValues }] = useVbenForm(
   reactive({
     commonConfig: {
       hideLabel: true,
-      hideRequiredMark: true,
+      hideRequiredMark: true
     },
     schema: computed(() => [
       {
         component: 'VbenInputPassword' as const,
         componentProps: {
-          placeholder: $t('ui.widgets.lockScreen.placeholder'),
+          placeholder: $t('ui.widgets.lockScreen.placeholder')
         },
         fieldName: 'lockScreenPassword',
         formFieldProps: { validateOnBlur: false },
         label: $t('authentication.password'),
         rules: z
           .string()
-          .min(1, { message: $t('ui.widgets.lockScreen.placeholder') }),
-      },
+          .min(1, { message: $t('ui.widgets.lockScreen.placeholder') })
+      }
     ]),
-    showDefaultActions: false,
-  }),
+    showDefaultActions: false
+  })
 );
 
 const [Modal] = useVbenModal({
@@ -59,7 +59,7 @@ const [Modal] = useVbenModal({
     if (isOpen) {
       resetForm();
     }
-  },
+  }
 });
 
 async function handleSubmit() {

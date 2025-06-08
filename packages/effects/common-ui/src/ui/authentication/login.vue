@@ -21,7 +21,7 @@ interface Props extends AuthenticationProps {
 }
 
 defineOptions({
-  name: 'AuthenticationLogin',
+  name: 'AuthenticationLogin'
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<Props>(), {
   showThirdPartyLogin: true,
   submitButtonText: '',
   subTitle: '',
-  title: '',
+  title: ''
 });
 
 const emit = defineEmits<{
@@ -50,11 +50,11 @@ const [Form, formApi] = useVbenForm(
   reactive({
     commonConfig: {
       hideLabel: true,
-      hideRequiredMark: true,
+      hideRequiredMark: true
     },
     schema: computed(() => props.formSchema),
-    showDefaultActions: false,
-  }),
+    showDefaultActions: false
+  })
 );
 const router = useRouter();
 
@@ -70,7 +70,7 @@ async function handleSubmit() {
   if (valid) {
     localStorage.setItem(
       REMEMBER_ME_KEY,
-      rememberMe.value ? values?.username : '',
+      rememberMe.value ? values?.username : ''
     );
     emit('submit', values);
   }
@@ -87,7 +87,7 @@ onMounted(() => {
 });
 
 defineExpose({
-  getFormApi: () => formApi,
+  getFormApi: () => formApi
 });
 </script>
 
@@ -134,7 +134,7 @@ defineExpose({
     </div>
     <VbenButton
       :class="{
-        'cursor-wait': loading,
+        'cursor-wait': loading
       }"
       :loading="loading"
       aria-label="login"

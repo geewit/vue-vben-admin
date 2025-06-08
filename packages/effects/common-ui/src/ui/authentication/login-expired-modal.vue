@@ -12,12 +12,12 @@ interface Props extends AuthenticationProps {
 }
 
 defineOptions({
-  name: 'LoginExpiredModal',
+  name: 'LoginExpiredModal'
 });
 
 const props = withDefaults(defineProps<Props>(), {
   avatar: '',
-  zIndex: 0,
+  zIndex: 0
 });
 
 const open = defineModel<boolean>('open');
@@ -28,7 +28,7 @@ watch(
   () => open.value,
   (val) => {
     modalApi.setState({ isOpen: val });
-  },
+  }
 );
 
 const getZIndex = computed(() => {
@@ -41,7 +41,7 @@ const getZIndex = computed(() => {
 const zIndexExcludeClass = ['ant-message', 'loading'];
 function isZIndexExcludeClass(element: Element) {
   return zIndexExcludeClass.some((className) =>
-    element.classList.contains(className),
+    element.classList.contains(className)
   );
 }
 

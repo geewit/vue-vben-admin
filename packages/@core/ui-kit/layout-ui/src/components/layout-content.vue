@@ -35,7 +35,7 @@ const style = computed((): CSSProperties => {
     paddingBottom,
     paddingLeft,
     paddingRight,
-    paddingTop,
+    paddingTop
   } = props;
 
   const compactStyle: CSSProperties =
@@ -49,7 +49,7 @@ const style = computed((): CSSProperties => {
     paddingBottom: `${paddingBottom}px`,
     paddingLeft: `${paddingLeft}px`,
     paddingRight: `${paddingRight}px`,
-    paddingTop: `${paddingTop}px`,
+    paddingTop: `${paddingTop}px`
   };
 });
 </script>

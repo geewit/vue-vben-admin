@@ -15,7 +15,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'SubMenuUi',
+  name: 'SubMenuUi'
 });
 
 const props = withDefaults(defineProps<Props>(), {});

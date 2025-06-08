@@ -16,7 +16,7 @@ defineOptions({ name: 'CheckUpdates' });
 
 const props = withDefaults(defineProps<Props>(), {
   checkUpdatesInterval: 1,
-  checkUpdateUrl: import.meta.env.BASE_URL || '/',
+  checkUpdateUrl: import.meta.env.BASE_URL || '/'
 });
 
 let isCheckingUpdates = false;
@@ -32,7 +32,7 @@ const [UpdateNoticeModal, modalApi] = useVbenModal({
     lastVersionTag.value = currentVersionTag.value;
     window.location.reload();
     // handleSubmitLogout();
-  },
+  }
 });
 
 async function getVersionTag() {
@@ -46,7 +46,7 @@ async function getVersionTag() {
     const response = await fetch(props.checkUpdateUrl, {
       cache: 'no-cache',
       method: 'HEAD',
-      redirect: 'manual',
+      redirect: 'manual'
     });
 
     return (
@@ -88,7 +88,7 @@ function start() {
   // 每 checkUpdatesInterval(默认值为1) 分钟检查一次
   timer.value = setInterval(
     checkForUpdates,
-    props.checkUpdatesInterval * 60 * 1000,
+    props.checkUpdatesInterval * 60 * 1000
   );
 }
 

@@ -102,7 +102,7 @@ type Merge<O extends object, T extends object> = {
  */
 type MergeAll<
   T extends object[],
-  R extends object = Record<string, any>,
+  R extends object = Record<string, any>
 > = T extends [infer F extends object, ...infer Rest extends object[]]
   ? MergeAll<Rest, Merge<R, F>>
   : R;
@@ -128,5 +128,5 @@ export type {
   Nullable,
   ReadonlyRecordable,
   Recordable,
-  TimeoutHandle,
+  TimeoutHandle
 };

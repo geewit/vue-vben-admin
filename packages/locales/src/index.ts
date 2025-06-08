@@ -3,7 +3,7 @@ import {
   loadLocaleMessages,
   loadLocalesMap,
   loadLocalesMapFromDir,
-  setupI18n,
+  setupI18n
 } from './i18n';
 
 const $t = i18n.global.t;
@@ -16,12 +16,12 @@ export {
   loadLocaleMessages,
   loadLocalesMap,
   loadLocalesMapFromDir,
-  setupI18n,
+  setupI18n
 };
 export {
   type ImportLocaleFn,
   type LocaleSetupOptions,
-  type SupportedLanguagesType,
+  type SupportedLanguagesType
 } from './typing';
 export type { CompileError } from '@intlify/core-base';
 

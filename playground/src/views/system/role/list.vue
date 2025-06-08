@@ -3,7 +3,7 @@ import type { Recordable } from '@vben/types';
 
 import type {
   OnActionClickParams,
-  VxeTableGridOptions,
+  VxeTableGridOptions
 } from '#/adapter/vxe-table';
 import type { SystemRoleApi } from '#/api';
 
@@ -21,14 +21,14 @@ import Form from './modules/form.vue';
 
 const [FormDrawer, formDrawerApi] = await useVbenDrawer({
   connectedComponent: Form,
-  destroyOnClose: true,
+  destroyOnClose: true
 });
 
 const [Grid, gridApi] = useVbenVxeGrid({
   formOptions: {
     fieldMappingTime: [['createTime', ['startTime', 'endTime']]],
     schema: useGridFormSchema(),
-    submitOnChange: true,
+    submitOnChange: true
   },
   gridOptions: {
     columns: useColumns(onActionClick, onStatusChange),
@@ -40,13 +40,13 @@ const [Grid, gridApi] = useVbenVxeGrid({
           return await getRoleList({
             page: page.currentPage,
             pageSize: page.pageSize,
-            ...formValues,
+            ...formValues
           });
-        },
-      },
+        }
+      }
     },
     rowConfig: {
-      keyField: 'id',
+      keyField: 'id'
     },
 
     toolbarConfig: {
@@ -54,9 +54,9 @@ const [Grid, gridApi] = useVbenVxeGrid({
       export: false,
       refresh: { code: 'query' },
       search: true,
-      zoom: true,
-    },
-  } as VxeTableGridOptions<SystemRoleApi.SystemRole>,
+      zoom: true
+    }
+  } as VxeTableGridOptions<SystemRoleApi.SystemRole>
 });
 
 function onActionClick(e: OnActionClickParams<SystemRoleApi.SystemRole>) {
@@ -87,7 +87,7 @@ function confirm(content: string, title: string) {
       onOk() {
         resolve(true);
       },
-      title,
+      title
     });
   });
 }
@@ -100,16 +100,16 @@ function confirm(content: string, title: string) {
  */
 async function onStatusChange(
   newStatus: number,
-  row: SystemRoleApi.SystemRole,
+  row: SystemRoleApi.SystemRole
 ) {
   const status: Recordable<string> = {
     0: '禁用',
-    1: '启用',
+    1: '启用'
   };
   try {
     await confirm(
       `你要将${row.name}的状态切换为 【${status[newStatus.toString()]}】 吗？`,
-      `切换状态`,
+      `切换状态`
     );
     await updateRole(row.id, { status: newStatus });
     return true;
@@ -126,13 +126,13 @@ function onDelete(row: SystemRoleApi.SystemRole) {
   const hideLoading = message.loading({
     content: $t('ui.actionMessage.deleting', [row.name]),
     duration: 0,
-    key: 'action_process_msg',
+    key: 'action_process_msg'
   });
   deleteRole(row.id)
     .then(() => {
       message.success({
         content: $t('ui.actionMessage.deleteSuccess', [row.name]),
-        key: 'action_process_msg',
+        key: 'action_process_msg'
       });
       onRefresh();
     })

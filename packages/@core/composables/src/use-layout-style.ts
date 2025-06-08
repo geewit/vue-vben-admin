@@ -8,7 +8,7 @@ import {
   CSS_VARIABLE_LAYOUT_CONTENT_HEIGHT,
   CSS_VARIABLE_LAYOUT_CONTENT_WIDTH,
   CSS_VARIABLE_LAYOUT_FOOTER_HEIGHT,
-  CSS_VARIABLE_LAYOUT_HEADER_HEIGHT,
+  CSS_VARIABLE_LAYOUT_HEADER_HEIGHT
 } from '@vben-core/shared/constants';
 import { getElementVisibleRect } from '@vben-core/shared/utils';
 
@@ -32,7 +32,7 @@ export function useLayoutContentStyle() {
       position: 'fixed',
       top: `${top}px`,
       width: `${width}px`,
-      zIndex: 150,
+      zIndex: 150
     };
   });
 
@@ -42,7 +42,7 @@ export function useLayoutContentStyle() {
       contentHeight.value = `${visibleDomRect.value.height}px`;
       contentWidth.value = `${visibleDomRect.value.width}px`;
     },
-    16,
+    16
   );
 
   onMounted(() => {
@@ -66,7 +66,7 @@ export function useLayoutHeaderStyle() {
   return {
     setLayoutHeaderHeight: (height: number) => {
       headerHeight.value = `${height}px`;
-    },
+    }
   };
 }
 
@@ -76,6 +76,6 @@ export function useLayoutFooterStyle() {
   return {
     setLayoutFooterHeight: (height: number) => {
       footerHeight.value = `${height}px`;
-    },
+    }
   };
 }

@@ -2,7 +2,7 @@ import type {
   AxiosRequestConfig,
   AxiosResponse,
   CreateAxiosDefaults,
-  InternalAxiosRequestConfig,
+  InternalAxiosRequestConfig
 } from 'axios';
 
 type ExtendOptions<T = any> = {
@@ -43,7 +43,7 @@ type RequestClientOptions = CreateAxiosDefaults & ExtendOptions;
 
 interface RequestInterceptorConfig {
   fulfilled?: (
-    config: ExtendOptions & InternalAxiosRequestConfig,
+    config: ExtendOptions & InternalAxiosRequestConfig
   ) =>
     | (ExtendOptions & InternalAxiosRequestConfig)
     | Promise<ExtendOptions & InternalAxiosRequestConfig>;
@@ -52,7 +52,7 @@ interface RequestInterceptorConfig {
 
 interface ResponseInterceptorConfig<T = any> {
   fulfilled?: (
-    response: RequestResponse<T>,
+    response: RequestResponse<T>
   ) => Promise<RequestResponse> | RequestResponse;
   rejected?: (error: any) => any;
 }
@@ -77,5 +77,5 @@ export type {
   RequestContentType,
   RequestInterceptorConfig,
   RequestResponse,
-  ResponseInterceptorConfig,
+  ResponseInterceptorConfig
 };

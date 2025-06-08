@@ -25,7 +25,7 @@ export {
   VbenLogo,
   VbenPinInput,
   VbenSpinner,
-  VbenTree,
+  VbenTree
 } from '@vben-core/shadcn-ui';
 
 export type { FlattenedItem } from '@vben-core/shadcn-ui';

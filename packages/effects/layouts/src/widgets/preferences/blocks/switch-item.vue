@@ -6,12 +6,12 @@ import { CircleHelp } from '@vben/icons';
 import { Switch, VbenTooltip } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'PreferenceSwitchItem',
+  name: 'PreferenceSwitchItem'
 });
 
 withDefaults(defineProps<{ disabled?: boolean; tip?: string }>(), {
   disabled: false,
-  tip: '',
+  tip: ''
 });
 
 const checked = defineModel<boolean>();
@@ -26,7 +26,7 @@ function handleClick() {
 <template>
   <div
     :class="{
-      'pointer-events-none opacity-50': disabled,
+      'pointer-events-none opacity-50': disabled
     }"
     class="hover:bg-accent my-1 flex w-full items-center justify-between rounded-md px-2 py-2.5"
     @click="handleClick"

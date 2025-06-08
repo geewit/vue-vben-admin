@@ -2,7 +2,7 @@
 declare module 'pinia' {
   export function acceptHMRUpdate(
     initialUseStore: any | StoreDefinition,
-    hot: any,
+    hot: any
   ): (newModule: any) => any;
 }
 

@@ -2,7 +2,7 @@ import type {
   ContentCompactType,
   LayoutHeaderModeType,
   LayoutType,
-  ThemeModeType,
+  ThemeModeType
 } from '@vben-core/typings';
 
 interface VbenLayoutProps {

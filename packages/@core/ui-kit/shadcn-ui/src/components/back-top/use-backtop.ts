@@ -40,6 +40,6 @@ export const useBackTop = (props: BacktopProps) => {
 
   return {
     handleClick,
-    visible,
+    visible
   };
 };

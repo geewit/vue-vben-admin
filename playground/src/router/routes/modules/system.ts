@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       icon: 'ion:settings-outline',
       order: 9997,
-      title: $t('system.title'),
+      title: $t('system.title')
     },
     name: 'System',
     path: '/system',
@@ -17,39 +17,39 @@ const routes: RouteRecordRaw[] = [
         name: 'SystemRole',
         meta: {
           icon: 'mdi:account-group',
-          title: $t('system.role.title'),
+          title: $t('system.role.title')
         },
-        component: () => import('#/views/system/role/list.vue'),
+        component: () => import('#/views/system/role/list.vue')
       },
       {
         path: '/system/menu',
         name: 'SystemMenu',
         meta: {
           icon: 'mdi:menu',
-          title: $t('system.menu.title'),
+          title: $t('system.menu.title')
         },
-        component: () => import('#/views/system/menu/list.vue'),
+        component: () => import('#/views/system/menu/list.vue')
       },
       {
         path: '/system/dept',
         name: 'SystemDept',
         meta: {
           icon: 'charm:organisation',
-          title: $t('system.dept.title'),
+          title: $t('system.dept.title')
         },
-        component: () => import('#/views/system/dept/list.vue'),
+        component: () => import('#/views/system/dept/list.vue')
       },
       {
         path: '/system/law',
         name: 'SystemLaw',
         meta: {
           icon: 'mdi:scale-balance',
-          title: $t('legal.title'),
+          title: $t('legal.title')
         },
-        component: () => import('#/views/legal/law/index.vue'),
-      },
-    ],
-  },
+        component: () => import('#/views/legal/law/index.vue')
+      }
+    ]
+  }
 ];
 
 export default routes;

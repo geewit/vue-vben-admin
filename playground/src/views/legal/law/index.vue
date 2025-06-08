@@ -11,7 +11,7 @@ import {
   deleteLaw,
   getLawArticles,
   getLawList,
-  uploadLaw,
+  uploadLaw
 } from '#/api';
 import { $t } from '#/locales';
 
@@ -37,11 +37,11 @@ const [LawGrid, lawGridApi] = useVbenVxeGrid({
             onClick: onLawAction,
             options: [
               { code: 'articles', text: $t('legal.article.list') },
-              'delete',
-            ],
-          },
-        },
-      },
+              'delete'
+            ]
+          }
+        }
+      }
     ],
     rowConfig: { keyField: 'id' },
     height: 'auto',
@@ -49,18 +49,18 @@ const [LawGrid, lawGridApi] = useVbenVxeGrid({
     proxyConfig: {
       ajax: {
         query: async ({
-          page,
+          page
         }: {
           page: { currentPage: number; pageSize: number };
         }) =>
           await getLawList({
             pageNo: page.currentPage,
-            pageSize: page.pageSize,
-          }),
-      },
+            pageSize: page.pageSize
+          })
+      }
     },
-    toolbarConfig: { refresh: { code: 'query' }, custom: true },
-  },
+    toolbarConfig: { refresh: { code: 'query' }, custom: true }
+  }
 });
 
 const [ArticleGrid, articleGridApi] = useVbenVxeGrid({
@@ -76,14 +76,14 @@ const [ArticleGrid, articleGridApi] = useVbenVxeGrid({
         align: 'center',
         cellRender: {
           name: 'CellOperation',
-          attrs: { nameField: 'index', onClick: onArticleAction },
-        },
-      },
+          attrs: { nameField: 'index', onClick: onArticleAction }
+        }
+      }
     ],
     rowConfig: { keyField: 'id' },
     height: 'auto',
-    pagerConfig: {},
-  },
+    pagerConfig: {}
+  }
 });
 
 async function onLawAction({ code, row }: any) {

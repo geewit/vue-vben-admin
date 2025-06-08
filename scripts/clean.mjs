@@ -26,7 +26,7 @@ async function cleanTargetsRecursively(currentDir, targets) {
       }
     } catch (error) {
       console.error(
-        `Error handling item ${item} in ${currentDir}: ${error.message}`,
+        `Error handling item ${item} in ${currentDir}: ${error.message}`
       );
     }
   }
@@ -43,7 +43,7 @@ async function cleanTargetsRecursively(currentDir, targets) {
   }
 
   console.log(
-    `Starting cleanup of targets: ${cleanupTargets.join(', ')} from root: ${rootDir}`,
+    `Starting cleanup of targets: ${cleanupTargets.join(', ')} from root: ${rootDir}`
   );
 
   try {

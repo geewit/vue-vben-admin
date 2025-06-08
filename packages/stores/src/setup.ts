@@ -26,7 +26,7 @@ export async function initStores(app: App, options: InitStoreOptions) {
     encryptionSecret: import.meta.env.VITE_APP_STORE_SECURE_KEY,
     isCompression: true,
     // @ts-ignore secure-ls does not have a type definition for this
-    metaKey: `${namespace}-secure-meta`,
+    metaKey: `${namespace}-secure-meta`
   });
   pinia.use(
     createPersistedState({
@@ -40,9 +40,9 @@ export async function initStores(app: App, options: InitStoreOptions) {
             },
             setItem(key, value) {
               ls.set(key, value);
-            },
-          },
-    }),
+            }
+          }
+    })
   );
   app.use(pinia);
   return pinia;

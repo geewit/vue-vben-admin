@@ -17,7 +17,7 @@ import {
   HeaderSidebarNav,
   MixedNav,
   SidebarMixedNav,
-  SidebarNav,
+  SidebarNav
 } from '../../icons';
 
 interface PresetItem {
@@ -27,7 +27,7 @@ interface PresetItem {
 }
 
 defineOptions({
-  name: 'PreferenceLayout',
+  name: 'PreferenceLayout'
 });
 
 const modelValue = defineModel<LayoutType>({ default: 'sidebar-nav' });
@@ -39,45 +39,45 @@ const components: Record<LayoutType, Component> = {
   'sidebar-mixed-nav': SidebarMixedNav,
   'sidebar-nav': SidebarNav,
   'header-mixed-nav': HeaderMixedNav,
-  'header-sidebar-nav': HeaderSidebarNav,
+  'header-sidebar-nav': HeaderSidebarNav
 };
 
 const PRESET = computed((): PresetItem[] => [
   {
     name: $t('preferences.vertical'),
     tip: $t('preferences.verticalTip'),
-    type: 'sidebar-nav',
+    type: 'sidebar-nav'
   },
   {
     name: $t('preferences.twoColumn'),
     tip: $t('preferences.twoColumnTip'),
-    type: 'sidebar-mixed-nav',
+    type: 'sidebar-mixed-nav'
   },
   {
     name: $t('preferences.horizontal'),
     tip: $t('preferences.horizontalTip'),
-    type: 'header-nav',
+    type: 'header-nav'
   },
   {
     name: $t('preferences.headerSidebarNav'),
     tip: $t('preferences.headerSidebarNavTip'),
-    type: 'header-sidebar-nav',
+    type: 'header-sidebar-nav'
   },
   {
     name: $t('preferences.mixedMenu'),
     tip: $t('preferences.mixedMenuTip'),
-    type: 'mixed-nav',
+    type: 'mixed-nav'
   },
   {
     name: $t('preferences.headerTwoColumn'),
     tip: $t('preferences.headerTwoColumnTip'),
-    type: 'header-mixed-nav',
+    type: 'header-mixed-nav'
   },
   {
     name: $t('preferences.fullContent'),
     tip: $t('preferences.fullContentTip'),
-    type: 'full-content',
-  },
+    type: 'full-content'
+  }
 ]);
 
 function activeClass(theme: string): string[] {

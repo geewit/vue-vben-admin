@@ -9,7 +9,7 @@ import { formatDate, formatDateTime, isFunction } from '@vben/utils';
 export function extendProxyOptions(
   api: VxeGridApi,
   options: VxeGridProps,
-  getFormValues: () => Recordable<any>,
+  getFormValues: () => Recordable<any>
 ) {
   [
     'query',
@@ -17,7 +17,7 @@ export function extendProxyOptions(
     'queryError',
     'queryAll',
     'queryAllSuccess',
-    'queryAllError',
+    'queryAllError'
   ].forEach((key) => {
     extendProxyOption(key, api, options, getFormValues);
   });
@@ -27,7 +27,7 @@ function extendProxyOption(
   key: string,
   api: VxeGridApi,
   options: VxeGridProps,
-  getFormValues: () => Recordable<any>,
+  getFormValues: () => Recordable<any>
 ) {
   const { proxyConfig } = options;
   const configFn = (proxyConfig?.ajax as Recordable<any>)?.[key];
@@ -49,19 +49,19 @@ function extendProxyOption(
          * 点击刷新按钮 这里的值为PointerEvent 会携带错误参数
          */
         ...(customValues instanceof PointerEvent ? {} : customValues),
-        ...formValues,
+        ...formValues
       },
-      ...args,
+      ...args
     );
   };
   api.setState({
     gridOptions: {
       proxyConfig: {
         ajax: {
-          [key]: wrapperFn,
-        },
-      },
-    },
+          [key]: wrapperFn
+        }
+      }
+    }
   });
 }
 
@@ -69,12 +69,12 @@ export function extendsDefaultFormatter(vxeUI: VxeUIExport) {
   vxeUI.formats.add('formatDate', {
     tableCellFormatMethod({ cellValue }) {
       return formatDate(cellValue);
-    },
+    }
   });
 
   vxeUI.formats.add('formatDateTime', {
     tableCellFormatMethod({ cellValue }) {
       return formatDateTime(cellValue);
-    },
+    }
   });
 }

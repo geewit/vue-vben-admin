@@ -89,7 +89,7 @@ const props = withDefaults(defineProps<Props>(), {
   modelPropName: 'modelValue',
   api: undefined,
   autoSelect: false,
-  options: () => [],
+  options: () => []
 });
 
 const emit = defineEmits<{
@@ -119,7 +119,7 @@ const getOptions = computed(() => {
         value: numberToString ? `${value}` : value,
         ...(childrenField && item[childrenField]
           ? { children: transformData(item[childrenField]) }
-          : {}),
+          : {})
       };
     });
   }
@@ -139,9 +139,9 @@ const bindProps = computed(() => {
     ...objectOmit(attrs, [`onUpdate:${props.modelPropName}`]),
     ...(props.visibleEvent
       ? {
-          [props.visibleEvent]: handleFetchForVisible,
+          [props.visibleEvent]: handleFetchForVisible
         }
-      : {}),
+      : {})
   };
 });
 
@@ -193,7 +193,7 @@ async function handleFetchForVisible(visible: boolean) {
 const params = computed(() => {
   return {
     ...props.params,
-    ...unref(innerParams),
+    ...unref(innerParams)
   };
 });
 
@@ -205,7 +205,7 @@ watch(
     }
     fetchApi();
   },
-  { deep: true, immediate: props.immediate },
+  { deep: true, immediate: props.immediate }
 );
 
 function emitChange() {
@@ -251,7 +251,7 @@ defineExpose({
   /** 更新Api参数 */
   updateParam(newParams: Record<string, any>) {
     innerParams.value = newParams;
-  },
+  }
 });
 </script>
 <template>

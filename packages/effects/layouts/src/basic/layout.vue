@@ -10,7 +10,7 @@ import { $t, i18n } from '@vben/locales';
 import {
   preferences,
   updatePreferences,
-  usePreferences,
+  usePreferences
 } from '@vben/preferences';
 import { useAccessStore } from '@vben/stores';
 import { cloneDeep, mapTree } from '@vben/utils';
@@ -28,7 +28,7 @@ import {
   LayoutMenu,
   LayoutMixedMenu,
   useExtraMenu,
-  useMixedMenu,
+  useMixedMenu
 } from './menu';
 import { LayoutTabbar } from './tabbar';
 
@@ -47,7 +47,7 @@ const {
   layout,
   preferencesButtonPosition,
   sidebarCollapsed,
-  theme,
+  theme
 } = usePreferences();
 const accessStore = useAccessStore();
 const { refresh } = useRefresh();
@@ -108,7 +108,7 @@ const {
   sidebarActive,
   sidebarMenus,
   mixHeaderMenus,
-  sidebarVisible,
+  sidebarVisible
 } = useMixedMenu();
 
 // 侧边多列菜单
@@ -119,7 +119,7 @@ const {
   handleMenuMouseEnter,
   handleMixedMenuSelect,
   handleSideMouseLeave,
-  sidebarExtraVisible,
+  sidebarExtraVisible
 } = useExtraMenu(mixHeaderMenus);
 
 /**
@@ -140,8 +140,8 @@ function wrapperMenus(menus: MenuRecordRaw[], deep: boolean = true) {
 function toggleSidebar() {
   updatePreferences({
     sidebar: {
-      hidden: !preferences.sidebar.hidden,
-    },
+      hidden: !preferences.sidebar.hidden
+    }
   });
 }
 
@@ -159,11 +159,11 @@ watch(
     if (val === 'sidebar-mixed-nav' && preferences.sidebar.hidden) {
       updatePreferences({
         sidebar: {
-          hidden: false,
-        },
+          hidden: false
+        }
       });
     }
-  },
+  }
 );
 
 // 语言更新后，刷新页面

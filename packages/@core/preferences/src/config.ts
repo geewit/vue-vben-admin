@@ -29,14 +29,14 @@ const defaultPreferences: Preferences = {
     name: 'Vben Admin',
     preferencesButtonPosition: 'auto',
     watermark: false,
-    zIndex: 200,
+    zIndex: 200
   },
   breadcrumb: {
     enable: true,
     hideOnlyOne: false,
     showHome: false,
     showIcon: true,
-    styleType: 'normal',
+    styleType: 'normal'
   },
   copyright: {
     companyName: 'Vben',
@@ -45,37 +45,37 @@ const defaultPreferences: Preferences = {
     enable: true,
     icp: '',
     icpLink: '',
-    settingShow: true,
+    settingShow: true
   },
   footer: {
     enable: false,
     fixed: false,
-    height: 32,
+    height: 32
   },
   header: {
     enable: true,
     height: 50,
     hidden: false,
     menuAlign: 'start',
-    mode: 'fixed',
+    mode: 'fixed'
   },
 
   logo: {
     enable: true,
     fit: 'contain',
-    source: 'https://unpkg.com/@vbenjs/static-source@0.1.7/source/logo-v1.webp',
+    source: 'https://unpkg.com/@vbenjs/static-source@0.1.7/source/logo-v1.webp'
   },
   navigation: {
     accordion: true,
     split: true,
-    styleType: 'rounded',
+    styleType: 'rounded'
   },
   shortcutKeys: {
     enable: true,
     globalLockScreen: true,
     globalLogout: true,
     globalPreferences: true,
-    globalSearch: true,
+    globalSearch: true
   },
   sidebar: {
     autoActivateChild: false,
@@ -90,7 +90,7 @@ const defaultPreferences: Preferences = {
     fixedButton: true,
     hidden: false,
     mixedWidth: 80,
-    width: 224,
+    width: 224
   },
   tabbar: {
     draggable: true,
@@ -104,7 +104,7 @@ const defaultPreferences: Preferences = {
     showMaximize: true,
     showMore: true,
     styleType: 'chrome',
-    wheelable: true,
+    wheelable: true
   },
   theme: {
     builtinType: 'default',
@@ -115,13 +115,13 @@ const defaultPreferences: Preferences = {
     mode: 'dark',
     radius: '0.5',
     semiDarkHeader: false,
-    semiDarkSidebar: false,
+    semiDarkSidebar: false
   },
   transition: {
     enable: true,
     loading: true,
     name: 'fade-slide',
-    progress: true,
+    progress: true
   },
   widget: {
     fullscreen: true,
@@ -131,8 +131,8 @@ const defaultPreferences: Preferences = {
     notification: true,
     refresh: true,
     sidebarToggle: true,
-    themeToggle: true,
-  },
+    themeToggle: true
+  }
 };
 
 export { defaultPreferences };

@@ -161,5 +161,5 @@ export {
   isString,
   isUndefined,
   isWindow,
-  isWindowsOs,
+  isWindowsOs
 };

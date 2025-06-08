@@ -1,7 +1,7 @@
 import type {
   DrawerApiOptions,
   DrawerProps,
-  ExtendedDrawerApi,
+  ExtendedDrawerApi
 } from './drawer';
 
 import {
@@ -12,7 +12,7 @@ import {
   onDeactivated,
   provide,
   reactive,
-  ref,
+  ref
 } from 'vue';
 
 import { useStore } from '@vben-core/shared/store';
@@ -29,7 +29,7 @@ export function setDefaultDrawerProps(props: Partial<DrawerProps>) {
 }
 
 export async function useVbenDrawer<
-  TParentDrawerProps extends DrawerProps = DrawerProps,
+  TParentDrawerProps extends DrawerProps = DrawerProps
 >(options: DrawerApiOptions = {}) {
   // Drawer一般会抽离出来，所以如果有传入 connectedComponent，则表示为外部调用，与内部组件进行连接
   // 外部的Drawer通过provide/inject传递api
@@ -51,28 +51,28 @@ export async function useVbenDrawer<
             isDrawerReady.value = false;
             await nextTick();
             isDrawerReady.value = true;
-          },
+          }
         });
 
         // ✅ 使用 await 等待 checkProps 完成
         void checkProps(extendedApi as ExtendedDrawerApi, {
           ...props,
           ...attrs,
-          ...slots,
+          ...slots
         });
 
         return () =>
           h(
             isDrawerReady.value ? connectedComponent : 'div',
             { ...props, ...attrs },
-            slots,
+            slots
           );
       },
       // eslint-disable-next-line vue/one-component-per-file
       {
         name: 'VbenParentDrawer',
-        inheritAttrs: false,
-      },
+        inheritAttrs: false
+      }
     );
 
     /**
@@ -90,7 +90,7 @@ export async function useVbenDrawer<
   const mergedOptions = {
     ...DEFAULT_DRAWER_PROPS,
     ...injectData.options,
-    ...options,
+    ...options
   } as DrawerApiOptions;
 
   mergedOptions.onOpenChange = (isOpen: boolean) => {
@@ -121,8 +121,8 @@ export async function useVbenDrawer<
     // eslint-disable-next-line vue/one-component-per-file
     {
       name: 'VbenDrawer',
-      inheritAttrs: false,
-    },
+      inheritAttrs: false
+    }
   );
   injectData.extendApi?.(extendedApi);
   return [Drawer, extendedApi] as const;
@@ -146,7 +146,7 @@ async function checkProps(api: ExtendedDrawerApi, attrs: Record<string, any>) {
     if (stateKeys.has(attr) && !['class'].includes(attr)) {
       // connectedComponent存在时，不要传入Drawer的props，会造成复杂度提升，如果你需要修改Drawer的props，请使用 useVbenDrawer 或者api
       console.warn(
-        `[Vben Drawer]: When 'connectedComponent' exists, do not set props or slots '${attr}', which will increase complexity. If you need to modify the props of Drawer, please use useVbenDrawer or api.`,
+        `[Vben Drawer]: When 'connectedComponent' exists, do not set props or slots '${attr}', which will increase complexity. If you need to modify the props of Drawer, please use useVbenDrawer or api.`
       );
     }
   }

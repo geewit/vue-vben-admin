@@ -16,7 +16,7 @@ interface Props {
 }
 
 defineOptions({
-  inheritAttrs: false,
+  inheritAttrs: false
 });
 
 const props = defineProps<Props>();
@@ -45,7 +45,7 @@ const show = ref(false);
     <div
       :class="{
         'top-3': !!passwordStrength,
-        'top-1/2 -translate-y-1/2 items-center': !passwordStrength,
+        'top-1/2 -translate-y-1/2 items-center': !passwordStrength
       }"
       class="hover:text-foreground text-foreground/60 absolute inset-y-0 right-0 flex cursor-pointer pr-3 text-lg leading-5"
       @click="show = !show"

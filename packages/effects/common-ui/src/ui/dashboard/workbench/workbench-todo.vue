@@ -6,7 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  VbenCheckbox,
+  VbenCheckbox
 } from '@vben-core/shadcn-ui';
 
 interface Props {
@@ -15,11 +15,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'WorkbenchTodo',
+  name: 'WorkbenchTodo'
 });
 
 withDefaults(defineProps<Props>(), {
-  items: () => [],
+  items: () => []
 });
 </script>
 
@@ -34,7 +34,7 @@ withDefaults(defineProps<Props>(), {
           v-for="item in items"
           :key="item.title"
           :class="{
-            'select-none line-through opacity-60': item.completed,
+            'select-none line-through opacity-60': item.completed
           }"
           class="flex cursor-pointer justify-between gap-x-6 py-5"
         >

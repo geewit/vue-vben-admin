@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<PointSelectionCaptchaProps>(), {
   paddingY: '16px',
   showConfirm: false,
   title: '',
-  width: '300px',
+  width: '300px'
 });
 const emit = defineEmits<{
   click: [CaptchaPoint];
@@ -36,7 +36,7 @@ function getElementPosition(element: HTMLElement) {
   const rect = element.getBoundingClientRect();
   return {
     x: rect.left + window.scrollX,
-    y: rect.top + window.scrollY,
+    y: rect.top + window.scrollY
   };
 }
 
@@ -72,7 +72,7 @@ function handleClick(e: MouseEvent) {
       i: points.length,
       t: Date.now(),
       x,
-      y,
+      y
     };
 
     addPoint(point);
@@ -150,7 +150,7 @@ function handleConfirm() {
       :aria-label="$t('ui.captcha.pointAriaLabel') + (index + 1)"
       :style="{
         top: `${point.y - POINT_OFFSET}px`,
-        left: `${point.x - POINT_OFFSET}px`,
+        left: `${point.x - POINT_OFFSET}px`
       }"
       class="bg-primary text-primary-50 border-primary-50 absolute z-20 flex h-5 w-5 cursor-default items-center justify-center rounded-full border-2"
       role="button"

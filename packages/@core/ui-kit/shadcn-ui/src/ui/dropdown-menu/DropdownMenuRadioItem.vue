@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type {
   DropdownMenuRadioItemEmits,
-  DropdownMenuRadioItemProps,
+  DropdownMenuRadioItemProps
 } from 'radix-vue';
 
 import { computed } from 'vue';
@@ -12,7 +12,7 @@ import { Circle } from 'lucide-vue-next';
 import {
   DropdownMenuItemIndicator,
   DropdownMenuRadioItem,
-  useForwardPropsEmits,
+  useForwardPropsEmits
 } from 'radix-vue';
 
 const props = defineProps<DropdownMenuRadioItemProps & { class?: any }>();
@@ -34,7 +34,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
     :class="
       cn(
         'focus:bg-accent focus:text-accent-foreground relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
-        props.class,
+        props.class
       )
     "
   >

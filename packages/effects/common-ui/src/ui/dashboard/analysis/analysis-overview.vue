@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
   VbenCountToAnimator,
-  VbenIcon,
+  VbenIcon
 } from '@vben-core/shadcn-ui';
 
 interface Props {
@@ -16,11 +16,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'AnalysisOverview',
+  name: 'AnalysisOverview'
 });
 
 withDefaults(defineProps<Props>(), {
-  items: () => [],
+  items: () => []
 });
 </script>
 

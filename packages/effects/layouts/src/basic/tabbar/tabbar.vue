@@ -11,7 +11,7 @@ import { TabsToolMore, TabsToolScreen, TabsView } from '@vben-core/tabs-ui';
 import { useTabbar } from './use-tabbar';
 
 defineOptions({
-  name: 'LayoutTabbar',
+  name: 'LayoutTabbar'
 });
 
 defineProps<{ showIcon?: boolean; theme?: string }>();
@@ -26,7 +26,7 @@ const {
   currentActive,
   currentTabs,
   handleClick,
-  handleClose,
+  handleClose
 } = useTabbar();
 
 const menus = computed(() => {
@@ -36,7 +36,7 @@ const menus = computed(() => {
     return {
       ...item,
       label: item.text,
-      value: item.key,
+      value: item.key
     };
   });
 });

@@ -1,6 +1,6 @@
 import type {
   VbenFormSchema as FormSchema,
-  VbenFormProps,
+  VbenFormProps
 } from '@vben/common-ui';
 
 import type { ComponentType } from './component';
@@ -18,8 +18,8 @@ async function initSetupVbenForm() {
         Checkbox: 'checked',
         Radio: 'checked',
         Switch: 'checked',
-        Upload: 'fileList',
-      },
+        Upload: 'fileList'
+      }
     },
     defineRules: {
       // 输入项目必填国际化适配
@@ -35,8 +35,8 @@ async function initSetupVbenForm() {
           return $t('ui.formRules.selectRequired', [ctx.label]);
         }
         return true;
-      },
-    },
+      }
+    }
   });
 }
 

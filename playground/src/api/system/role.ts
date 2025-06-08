@@ -19,7 +19,7 @@ export namespace SystemRoleApi {
 async function getRoleList(params: Recordable<any>) {
   return requestClient.get<Array<SystemRoleApi.SystemRole>>(
     '/system/role/list',
-    { params },
+    { params }
   );
 }
 
@@ -39,7 +39,7 @@ async function createRole(data: Omit<SystemRoleApi.SystemRole, 'id'>) {
  */
 async function updateRole(
   id: string,
-  data: Omit<SystemRoleApi.SystemRole, 'id'>,
+  data: Omit<SystemRoleApi.SystemRole, 'id'>
 ) {
   return requestClient.put(`/system/role/${id}`, data);
 }

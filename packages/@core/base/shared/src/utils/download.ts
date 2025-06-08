@@ -15,7 +15,7 @@ const DEFAULT_FILENAME = 'downloaded_file';
 export async function downloadFileFromUrl<T extends string>({
   fileName,
   source,
-  target = '_blank',
+  target = '_blank'
 }: DownloadOptions<T>): Promise<void> {
   const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome');
   const isSafari = window.navigator.userAgent.toLowerCase().includes('safari');
@@ -42,7 +42,7 @@ export async function downloadFileFromUrl<T extends string>({
  */
 export function downloadFileFromBase64<T extends string = string>({
   fileName,
-  source,
+  source
 }: DownloadOptions<T>): void {
   const resolvedFileName = fileName || DEFAULT_FILENAME;
   triggerDownload(source, resolvedFileName);
@@ -53,7 +53,7 @@ export function downloadFileFromBase64<T extends string = string>({
  */
 export async function downloadFileFromImageUrl({
   fileName,
-  source,
+  source
 }: DownloadOptions<string>): Promise<void> {
   if (!source) {
     throw new Error('Image URL is empty.');
@@ -67,7 +67,7 @@ export async function downloadFileFromImageUrl({
  */
 export function downloadFileFromBlob({
   fileName = DEFAULT_FILENAME,
-  source,
+  source
 }: DownloadOptions<Blob>): void {
   if (!(source instanceof Blob)) {
     throw new TypeError('Invalid Blob data.');
@@ -82,7 +82,7 @@ export function downloadFileFromBlob({
  */
 export function downloadFileFromBlobPart({
   fileName = DEFAULT_FILENAME,
-  source,
+  source
 }: DownloadOptions<BlobPart>): void {
   // 如果 data 不是 Blob，则转换为 Blob
   const blob =
@@ -130,7 +130,7 @@ export function urlToBase64(url: string, mineType?: string): Promise<string> {
 export function triggerDownload(
   href: string,
   fileName: string | undefined,
-  revokeDelay: number = 100,
+  revokeDelay: number = 100
 ): void {
   const defaultFileName = 'downloaded_file';
   const finalFileName = fileName || defaultFileName;

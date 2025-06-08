@@ -16,31 +16,31 @@ const formSchema = computed((): VbenFormSchema[] => {
     {
       component: 'VbenInput',
       componentProps: {
-        placeholder: $t('authentication.usernameTip'),
+        placeholder: $t('authentication.usernameTip')
       },
       fieldName: 'username',
       label: $t('authentication.username'),
-      rules: z.string().min(1, { message: $t('authentication.usernameTip') }),
+      rules: z.string().min(1, { message: $t('authentication.usernameTip') })
     },
     {
       component: 'VbenInputPassword',
       componentProps: {
         passwordStrength: true,
-        placeholder: $t('authentication.password'),
+        placeholder: $t('authentication.password')
       },
       fieldName: 'password',
       label: $t('authentication.password'),
       renderComponentContent() {
         return {
-          strengthText: () => $t('authentication.passwordStrength'),
+          strengthText: () => $t('authentication.passwordStrength')
         };
       },
-      rules: z.string().min(1, { message: $t('authentication.passwordTip') }),
+      rules: z.string().min(1, { message: $t('authentication.passwordTip') })
     },
     {
       component: 'VbenInputPassword',
       componentProps: {
-        placeholder: $t('authentication.confirmPassword'),
+        placeholder: $t('authentication.confirmPassword')
       },
       dependencies: {
         rules(values) {
@@ -49,13 +49,13 @@ const formSchema = computed((): VbenFormSchema[] => {
             .string({ required_error: $t('authentication.passwordTip') })
             .min(1, { message: $t('authentication.passwordTip') })
             .refine((value) => value === password, {
-              message: $t('authentication.confirmPasswordTip'),
+              message: $t('authentication.confirmPasswordTip')
             });
         },
-        triggerFields: ['password'],
+        triggerFields: ['password']
       },
       fieldName: 'confirmPassword',
-      label: $t('authentication.confirmPassword'),
+      label: $t('authentication.confirmPassword')
     },
     {
       component: 'VbenCheckbox',
@@ -68,16 +68,16 @@ const formSchema = computed((): VbenFormSchema[] => {
               'a',
               {
                 class: 'vben-link ml-1 ',
-                href: '',
+                href: ''
               },
-              `${$t('authentication.privacyPolicy')} & ${$t('authentication.terms')}`,
-            ),
-          ]),
+              `${$t('authentication.privacyPolicy')} & ${$t('authentication.terms')}`
+            )
+          ])
       }),
       rules: z.boolean().refine((value) => value, {
-        message: $t('authentication.agreeTip'),
-      }),
-    },
+        message: $t('authentication.agreeTip')
+      })
+    }
   ];
 });
 

@@ -6,7 +6,7 @@ export async function command() {
       /**
        * @ts-expect-error - 类型未定义，但运行时有效
        */
-      ...createCommand(),
-    },
+      ...createCommand()
+    }
   ];
 }

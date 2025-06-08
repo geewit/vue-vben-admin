@@ -28,7 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
    */
   async function authLogin(
     params: Recordable<any>,
-    onSuccess?: () => Promise<void> | void,
+    onSuccess?: () => Promise<void> | void
   ) {
     // 异步处理用户登录操作并获取 accessToken
     let userInfo: null | UserInfo = null;
@@ -43,7 +43,7 @@ export const useAuthStore = defineStore('auth', () => {
         // 获取用户信息并存储到 accessStore 中
         const [fetchUserInfoResult, accessCodes] = await Promise.all([
           fetchUserInfo(),
-          getAccessCodesApi(),
+          getAccessCodesApi()
         ]);
 
         userInfo = fetchUserInfoResult;
@@ -57,7 +57,7 @@ export const useAuthStore = defineStore('auth', () => {
           onSuccess
             ? await onSuccess?.()
             : await router.push(
-                userInfo.homePath || preferences.app.defaultHomePath,
+                userInfo.homePath || preferences.app.defaultHomePath
               );
         }
 
@@ -65,7 +65,7 @@ export const useAuthStore = defineStore('auth', () => {
           notification.success({
             description: `${$t('authentication.loginSuccessDesc')}:${userInfo?.realName}`,
             duration: 3,
-            message: $t('authentication.loginSuccess'),
+            message: $t('authentication.loginSuccess')
           });
         }
       }
@@ -74,7 +74,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
 
     return {
-      userInfo,
+      userInfo
     };
   }
 
@@ -93,9 +93,9 @@ export const useAuthStore = defineStore('auth', () => {
       path: LOGIN_PATH,
       query: redirect
         ? {
-            redirect: encodeURIComponent(router.currentRoute.value.fullPath),
+            redirect: encodeURIComponent(router.currentRoute.value.fullPath)
           }
-        : {},
+        : {}
     });
   }
 
@@ -114,6 +114,6 @@ export const useAuthStore = defineStore('auth', () => {
     authLogin,
     fetchUserInfo,
     loginLoading,
-    logout,
+    logout
   };
 });

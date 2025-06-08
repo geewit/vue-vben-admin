@@ -300,5 +300,5 @@ export type {
   IImportMap,
   ImportmapPluginOptions,
   LibraryPluginOptions,
-  PrintPluginOptions,
+  PrintPluginOptions
 };

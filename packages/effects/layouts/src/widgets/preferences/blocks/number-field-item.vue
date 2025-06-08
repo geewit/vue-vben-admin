@@ -11,11 +11,11 @@ import {
   NumberFieldDecrement,
   NumberFieldIncrement,
   NumberFieldInput,
-  VbenTooltip,
+  VbenTooltip
 } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'PreferenceSelectItem',
+  name: 'PreferenceSelectItem'
 });
 
 withDefaults(
@@ -29,8 +29,8 @@ withDefaults(
     disabled: false,
     placeholder: '',
     tip: '',
-    items: () => [],
-  },
+    items: () => []
+  }
 );
 
 const inputValue = defineModel<number>();
@@ -42,7 +42,7 @@ const slots = useSlots();
   <div
     :class="{
       'hover:bg-accent': !slots.tip,
-      'pointer-events-none opacity-50': disabled,
+      'pointer-events-none opacity-50': disabled
     }"
     class="my-1 flex w-full items-center justify-between rounded-md px-2 py-1"
   >

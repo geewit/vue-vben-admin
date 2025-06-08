@@ -42,8 +42,8 @@ export async function ignores(): Promise<Linter.Config[]> {
         '**/vite.config.mts.*',
         '**/*.sh',
         '**/*.ttf',
-        '**/*.woff',
-      ],
-    },
+        '**/*.woff'
+      ]
+    }
   ];
 }

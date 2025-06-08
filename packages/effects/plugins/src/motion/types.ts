@@ -20,7 +20,7 @@ export const MotionPresets = [
   'slideVisibleBottom',
   'slideVisibleLeft',
   'slideVisibleRight',
-  'slideVisibleTop',
+  'slideVisibleTop'
 ] as const;
 
 export type MotionPreset = (typeof MotionPresets)[number];

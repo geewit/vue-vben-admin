@@ -21,7 +21,10 @@ export function uploadLaw(data: FormData) {
 }
 
 export function getLawList(params: PageFetchParams) {
-  return requestClient.get<{ items: LegalApi.Law[]; total: number }>('/legal/laws', { params });
+  return requestClient.get<{ items: LegalApi.Law[]; total: number }>(
+    '/legal/laws',
+    { params }
+  );
 }
 
 export function updateLaw(lawId: number, data: Omit<LegalApi.Law, 'id'>) {
@@ -36,7 +39,10 @@ export function getLawArticles(lawId: number) {
   return requestClient.get<LegalApi.Article[]>(`/legal/laws/${lawId}/articles`);
 }
 
-export function updateArticle(articleId: number, data: Omit<LegalApi.Article, 'id'>) {
+export function updateArticle(
+  articleId: number,
+  data: Omit<LegalApi.Article, 'id'>
+) {
   return requestClient.put(`/legal/articles/${articleId}`, data);
 }
 

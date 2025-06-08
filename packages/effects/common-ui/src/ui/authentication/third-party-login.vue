@@ -5,7 +5,7 @@ import { $t } from '@vben/locales';
 import { VbenIconButton } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'ThirdPartyLogin',
+  name: 'ThirdPartyLogin'
 });
 </script>
 

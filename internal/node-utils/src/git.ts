@@ -17,7 +17,7 @@ async function getStagedFiles(): Promise<string[]> {
       '--diff-filter=ACMR',
       '--name-only',
       '--ignore-submodules',
-      '-z',
+      '-z'
     ]);
 
     let changedList = stdout ? stdout.replace(/\0$/, '').split('\0') : [];

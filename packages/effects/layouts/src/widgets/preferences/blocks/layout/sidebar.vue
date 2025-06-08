@@ -14,10 +14,10 @@ defineProps<{ currentLayout?: LayoutType; disabled: boolean }>();
 const sidebarEnable = defineModel<boolean>('sidebarEnable');
 const sidebarWidth = defineModel<number>('sidebarWidth');
 const sidebarCollapsedShowTitle = defineModel<boolean>(
-  'sidebarCollapsedShowTitle',
+  'sidebarCollapsedShowTitle'
 );
 const sidebarAutoActivateChild = defineModel<boolean>(
-  'sidebarAutoActivateChild',
+  'sidebarAutoActivateChild'
 );
 const sidebarCollapsed = defineModel<boolean>('sidebarCollapsed');
 const sidebarExpandOnHover = defineModel<boolean>('sidebarExpandOnHover');
@@ -69,7 +69,7 @@ const handleCheckboxChange = () => {
     :disabled="
       !sidebarEnable ||
       !['sidebar-mixed-nav', 'mixed-nav', 'header-mixed-nav'].includes(
-        currentLayout as string,
+        currentLayout as string
       ) ||
       disabled
     "
@@ -80,7 +80,7 @@ const handleCheckboxChange = () => {
   <CheckboxItem
     :items="[
       { label: $t('preferences.sidebar.buttonCollapsed'), value: 'collapsed' },
-      { label: $t('preferences.sidebar.buttonFixed'), value: 'fixed' },
+      { label: $t('preferences.sidebar.buttonFixed'), value: 'fixed' }
     ]"
     multiple
     v-model="sidebarButtons"

@@ -36,7 +36,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'ForgetPassword',
+  name: 'ForgetPassword'
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -44,7 +44,7 @@ const props = withDefaults(defineProps<Props>(), {
   loginPath: '/auth/login',
   submitButtonText: '',
   subTitle: '',
-  title: '',
+  title: ''
 });
 
 const emit = defineEmits<{
@@ -55,11 +55,11 @@ const [Form, formApi] = useVbenForm(
   reactive({
     commonConfig: {
       hideLabel: true,
-      hideRequiredMark: true,
+      hideRequiredMark: true
     },
     schema: computed(() => props.formSchema),
-    showDefaultActions: false,
-  }),
+    showDefaultActions: false
+  })
 );
 
 const router = useRouter();
@@ -77,7 +77,7 @@ function goToLogin() {
 }
 
 defineExpose({
-  getFormApi: () => formApi,
+  getFormApi: () => formApi
 });
 </script>
 
@@ -98,7 +98,7 @@ defineExpose({
     <div>
       <VbenButton
         :class="{
-          'cursor-wait': loading,
+          'cursor-wait': loading
         }"
         aria-label="submit"
         class="mt-2 w-full"

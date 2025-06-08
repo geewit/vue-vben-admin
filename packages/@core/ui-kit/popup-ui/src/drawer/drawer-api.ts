@@ -6,7 +6,7 @@ import { bindMethods, isFunction } from '@vben-core/shared/utils';
 export class DrawerApi {
   // 共享数据
   public sharedData: Record<'payload', any> = {
-    payload: {},
+    payload: {}
   };
   public store: Store<DrawerState>;
 
@@ -53,13 +53,13 @@ export class DrawerApi {
       showCancelButton: true,
       showConfirmButton: true,
       submitting: false,
-      title: '',
+      title: ''
     };
 
     this.store = new Store<DrawerState>(
       {
         ...defaultState,
-        ...storeState,
+        ...storeState
       },
       {
         onUpdate: () => {
@@ -70,8 +70,8 @@ export class DrawerApi {
             this.state = state;
             this.api.onOpenChange?.(!!state?.isOpen);
           }
-        },
-      },
+        }
+      }
     );
     this.state = this.store.state;
     this.api = {
@@ -80,7 +80,7 @@ export class DrawerApi {
       onClosed,
       onConfirm,
       onOpenChange,
-      onOpened,
+      onOpened
     };
     bindMethods(this);
   }
@@ -97,7 +97,7 @@ export class DrawerApi {
       this.store.setState((prev) => ({
         ...prev,
         isOpen: false,
-        submitting: false,
+        submitting: false
       }));
     }
   }
@@ -165,7 +165,7 @@ export class DrawerApi {
   setState(
     stateOrFn:
       | ((prev: DrawerState) => Partial<DrawerState>)
-      | Partial<DrawerState>,
+      | Partial<DrawerState>
   ) {
     if (isFunction(stateOrFn)) {
       this.store.setState(stateOrFn);

@@ -8,7 +8,7 @@ import { cn } from '@vben-core/shared/utils';
 import {
   ScrollAreaCorner,
   ScrollAreaRoot,
-  ScrollAreaViewport,
+  ScrollAreaViewport
 } from 'radix-vue';
 
 import ScrollBar from './ScrollBar.vue';
@@ -22,8 +22,8 @@ const props = withDefaults(
     }
   >(),
   {
-    onScroll: () => {},
-  },
+    onScroll: () => {}
+  }
 );
 
 const delegatedProps = computed(() => {

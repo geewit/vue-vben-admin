@@ -2,7 +2,7 @@
 import type {
   HoverCardContentProps,
   HoverCardRootEmits,
-  HoverCardRootProps,
+  HoverCardRootProps
 } from 'radix-vue';
 
 import type { ClassType } from '@vben-core/typings';

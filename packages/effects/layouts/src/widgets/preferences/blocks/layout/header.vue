@@ -2,7 +2,7 @@
 import type {
   LayoutHeaderMenuAlignType,
   LayoutHeaderModeType,
-  SelectOption,
+  SelectOption
 } from '@vben/types';
 
 import { $t } from '@vben/locales';
@@ -21,35 +21,35 @@ const headerMenuAlign =
 const localeItems: SelectOption[] = [
   {
     label: $t('preferences.header.modeStatic'),
-    value: 'static',
+    value: 'static'
   },
   {
     label: $t('preferences.header.modeFixed'),
-    value: 'fixed',
+    value: 'fixed'
   },
   {
     label: $t('preferences.header.modeAuto'),
-    value: 'auto',
+    value: 'auto'
   },
   {
     label: $t('preferences.header.modeAutoScroll'),
-    value: 'auto-scroll',
-  },
+    value: 'auto-scroll'
+  }
 ];
 
 const headerMenuAlignItems: SelectOption[] = [
   {
     label: $t('preferences.header.menuAlignStart'),
-    value: 'start',
+    value: 'start'
   },
   {
     label: $t('preferences.header.menuAlignCenter'),
-    value: 'center',
+    value: 'center'
   },
   {
     label: $t('preferences.header.menuAlignEnd'),
-    value: 'end',
-  },
+    value: 'end'
+  }
 ];
 </script>
 

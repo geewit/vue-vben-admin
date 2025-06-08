@@ -141,5 +141,5 @@ export type {
   MenuProps,
   MenuProvider,
   SubMenuProps,
-  SubMenuProvider,
+  SubMenuProvider
 };

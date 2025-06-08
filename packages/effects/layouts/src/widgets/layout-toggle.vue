@@ -10,31 +10,31 @@ import { $t } from '@vben/locales';
 import {
   preferences,
   updatePreferences,
-  usePreferences,
+  usePreferences
 } from '@vben/preferences';
 
 import { VbenDropdownRadioMenu, VbenIconButton } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'AuthenticationLayoutToggle',
+  name: 'AuthenticationLayoutToggle'
 });
 
 const menus = computed((): VbenDropdownMenuItem[] => [
   {
     icon: PanelLeft,
     label: $t('authentication.layout.alignLeft'),
-    value: 'panel-left',
+    value: 'panel-left'
   },
   {
     icon: InspectionPanel,
     label: $t('authentication.layout.center'),
-    value: 'panel-center',
+    value: 'panel-center'
   },
   {
     icon: PanelRight,
     label: $t('authentication.layout.alignRight'),
-    value: 'panel-right',
-  },
+    value: 'panel-right'
+  }
 ]);
 
 const { authPanelCenter, authPanelLeft, authPanelRight } = usePreferences();
@@ -43,8 +43,8 @@ function handleUpdate(value: string | undefined) {
   if (!value) return;
   updatePreferences({
     app: {
-      authPageLayout: value as AuthPageLayoutType,
-    },
+      authPageLayout: value as AuthPageLayoutType
+    }
   });
 }
 </script>

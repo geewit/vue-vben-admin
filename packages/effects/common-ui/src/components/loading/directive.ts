@@ -39,11 +39,11 @@ const loadingDirective: Directive = {
       } catch (error) {
         console.error(
           'Failed to update loading component in directive:',
-          error,
+          error
         );
       }
     }
-  },
+  }
 };
 
 function getOptions(binding: DirectiveBinding) {
@@ -85,11 +85,11 @@ const spinningDirective: Directive = {
       } catch (error) {
         console.error(
           'Failed to update spinner component in directive:',
-          error,
+          error
         );
       }
     }
-  },
+  }
 };
 
 type loadingDirectiveParams = {
@@ -106,7 +106,7 @@ type loadingDirectiveParams = {
  */
 export function registerLoadingDirective(
   app: App,
-  params?: loadingDirectiveParams,
+  params?: loadingDirectiveParams
 ) {
   // 注入一个样式供指令使用，确保容器是相对定位
   const style = document.createElement('style');
@@ -120,13 +120,13 @@ export function registerLoadingDirective(
   if (params?.loading !== false) {
     app.directive(
       isString(params?.loading) ? params.loading : 'loading',
-      loadingDirective,
+      loadingDirective
     );
   }
   if (params?.spinning !== false) {
     app.directive(
       isString(params?.spinning) ? params.spinning : 'spinning',
-      spinningDirective,
+      spinningDirective
     );
   }
 }

@@ -6,7 +6,7 @@ import { computed, nextTick, provide, ref, unref, useId, watch } from 'vue';
 import {
   useIsMobile,
   usePriorityValues,
-  useSimpleLocale,
+  useSimpleLocale
 } from '@vben-core/composables';
 import { Expand, Shrink } from '@vben-core/icons';
 import {
@@ -20,7 +20,7 @@ import {
   VbenHelpTooltip,
   VbenIconButton,
   VbenLoading,
-  VisuallyHidden,
+  VisuallyHidden
 } from '@vben-core/shadcn-ui';
 import { ELEMENT_ID_MAIN_CONTENT } from '@vben-core/shared/constants';
 import { globalShareState } from '@vben-core/shared/global-state';
@@ -35,7 +35,7 @@ interface Props extends ModalProps {
 const props = withDefaults(defineProps<Props>(), {
   appendToMain: false,
   destroyOnClose: false,
-  modalApi: undefined,
+  modalApi: undefined
 });
 
 const components = globalShareState.getComponents();
@@ -85,21 +85,21 @@ const {
   submitting,
   title,
   titleTooltip,
-  zIndex,
+  zIndex
 } = usePriorityValues(props, state);
 
 const shouldFullscreen = computed(
-  () => (fullscreen.value && header.value) || isMobile.value,
+  () => (fullscreen.value && header.value) || isMobile.value
 );
 
 const shouldDraggable = computed(
-  () => draggable.value && !shouldFullscreen.value && header.value,
+  () => draggable.value && !shouldFullscreen.value && header.value
 );
 
 const { dragging, transform } = useModalDraggable(
   dialogRef,
   headerRef,
-  shouldDraggable,
+  shouldDraggable
 );
 
 const firstOpened = ref(false);
@@ -120,7 +120,7 @@ watch(
       dialogRef.value.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 // watch(
@@ -214,8 +214,8 @@ function handleClosed() {
               shouldFullscreen,
             'top-1/2 !-translate-y-1/2': centered && !shouldFullscreen,
             'duration-300': !dragging,
-            hidden: isClosed,
-          },
+            hidden: isClosed
+          }
         )
       "
       :force-mount="getForceMount"
@@ -243,9 +243,9 @@ function handleClosed() {
             {
               'border-b': bordered,
               hidden: !header,
-              'cursor-move select-none': shouldDraggable,
+              'cursor-move select-none': shouldDraggable
             },
-            headerClass,
+            headerClass
           )
         "
       >
@@ -274,7 +274,7 @@ function handleClosed() {
         ref="wrapperRef"
         :class="
           cn('relative min-h-40 flex-1 overflow-y-auto p-3', contentClass, {
-            'pointer-events-none': showLoading || submitting,
+            'pointer-events-none': showLoading || submitting
           })
         "
       >
@@ -297,9 +297,9 @@ function handleClosed() {
           cn(
             'flex-row items-center justify-end p-2',
             {
-              'border-t': bordered,
+              'border-t': bordered
             },
-            footerClass,
+            footerClass
           )
         "
       >

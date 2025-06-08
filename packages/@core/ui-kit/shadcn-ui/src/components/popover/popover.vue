@@ -2,7 +2,7 @@
 import type {
   PopoverContentProps,
   PopoverRootEmits,
-  PopoverRootProps,
+  PopoverRootProps
 } from 'radix-vue';
 
 import type { ClassType } from '@vben-core/typings';
@@ -14,7 +14,7 @@ import { useForwardPropsEmits } from 'radix-vue';
 import {
   PopoverContent,
   Popover as PopoverRoot,
-  PopoverTrigger,
+  PopoverTrigger
 } from '../../ui';
 
 interface Props extends PopoverRootProps {

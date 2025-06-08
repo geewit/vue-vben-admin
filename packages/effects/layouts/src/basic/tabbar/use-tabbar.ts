@@ -19,7 +19,7 @@ import {
   Pin,
   PinOff,
   RotateCw,
-  X,
+  X
 } from '@vben/icons';
 import { $t, useI18n } from '@vben/locales';
 import { getTabKey, useAccessStore, useTabbarStore } from '@vben/stores';
@@ -41,7 +41,7 @@ export function useTabbar() {
     getTabDisableState,
     openTabInNewWindow,
     refreshTab,
-    toggleTabPin,
+    toggleTabPin
   } = useTabs();
 
   /**
@@ -57,11 +57,11 @@ export function useTabbar() {
     [
       () => tabbarStore.getTabs,
       () => tabbarStore.updateTime,
-      () => locale.value,
+      () => locale.value
     ],
     ([tabs]) => {
       currentTabs.value = tabs.map((item) => wrapperTabLocale(item));
-    },
+    }
   );
 
   /**
@@ -90,8 +90,8 @@ export function useTabbar() {
       ...tab,
       meta: {
         ...tab?.meta,
-        title: $t(tab?.meta?.title as string),
-      },
+        title: $t(tab?.meta?.title as string)
+      }
     };
   }
 
@@ -100,7 +100,7 @@ export function useTabbar() {
     () => {
       initAffixTabs();
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   watch(
@@ -109,10 +109,10 @@ export function useTabbar() {
       const meta = route.matched?.[route.matched.length - 1]?.meta;
       tabbarStore.addTab({
         ...route,
-        meta: meta || route.meta,
+        meta: meta || route.meta
       });
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   const createContextMenus = (tab: TabDefinition) => {
@@ -122,7 +122,7 @@ export function useTabbar() {
       disabledCloseLeft,
       disabledCloseOther,
       disabledCloseRight,
-      disabledRefresh,
+      disabledRefresh
     } = getTabDisableState(tab);
 
     const affixTab = tab?.meta?.affixTab ?? false;
@@ -135,7 +135,7 @@ export function useTabbar() {
         },
         icon: X,
         key: 'close',
-        text: $t('preferences.tabbar.contextMenu.close'),
+        text: $t('preferences.tabbar.contextMenu.close')
       },
       {
         handler: async () => {
@@ -145,7 +145,7 @@ export function useTabbar() {
         key: 'affix',
         text: affixTab
           ? $t('preferences.tabbar.contextMenu.unpin')
-          : $t('preferences.tabbar.contextMenu.pin'),
+          : $t('preferences.tabbar.contextMenu.pin')
       },
       {
         handler: async () => {
@@ -158,14 +158,14 @@ export function useTabbar() {
         key: contentIsMaximize.value ? 'restore-maximize' : 'maximize',
         text: contentIsMaximize.value
           ? $t('preferences.tabbar.contextMenu.restoreMaximize')
-          : $t('preferences.tabbar.contextMenu.maximize'),
+          : $t('preferences.tabbar.contextMenu.maximize')
       },
       {
         disabled: disabledRefresh,
         handler: () => refreshTab(),
         icon: RotateCw,
         key: 'reload',
-        text: $t('preferences.tabbar.contextMenu.reload'),
+        text: $t('preferences.tabbar.contextMenu.reload')
       },
       {
         handler: async () => {
@@ -174,7 +174,7 @@ export function useTabbar() {
         icon: ExternalLink,
         key: 'open-in-new-window',
         separator: true,
-        text: $t('preferences.tabbar.contextMenu.openInNewWindow'),
+        text: $t('preferences.tabbar.contextMenu.openInNewWindow')
       },
 
       {
@@ -184,7 +184,7 @@ export function useTabbar() {
         },
         icon: ArrowLeftToLine,
         key: 'close-left',
-        text: $t('preferences.tabbar.contextMenu.closeLeft'),
+        text: $t('preferences.tabbar.contextMenu.closeLeft')
       },
       {
         disabled: disabledCloseRight,
@@ -194,7 +194,7 @@ export function useTabbar() {
         icon: ArrowRightToLine,
         key: 'close-right',
         separator: true,
-        text: $t('preferences.tabbar.contextMenu.closeRight'),
+        text: $t('preferences.tabbar.contextMenu.closeRight')
       },
       {
         disabled: disabledCloseOther,
@@ -203,15 +203,15 @@ export function useTabbar() {
         },
         icon: FoldHorizontal,
         key: 'close-other',
-        text: $t('preferences.tabbar.contextMenu.closeOther'),
+        text: $t('preferences.tabbar.contextMenu.closeOther')
       },
       {
         disabled: disabledCloseAll,
         handler: closeAllTabs,
         icon: ArrowRightLeft,
         key: 'close-all',
-        text: $t('preferences.tabbar.contextMenu.closeAll'),
-      },
+        text: $t('preferences.tabbar.contextMenu.closeAll')
+      }
     ];
 
     return menus.filter((item) => tabbarStore.getMenuList.includes(item.key));
@@ -222,6 +222,6 @@ export function useTabbar() {
     currentActive,
     currentTabs,
     handleClick,
-    handleClose,
+    handleClose
   };
 }

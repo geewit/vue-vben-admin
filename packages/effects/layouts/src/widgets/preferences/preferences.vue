@@ -12,7 +12,7 @@ import { VbenButton } from '@vben-core/shadcn-ui';
 import PreferencesDrawer from './preferences-drawer.vue';
 
 const [Drawer, drawerApi] = useVbenDrawer({
-  connectedComponent: PreferencesDrawer,
+  connectedComponent: PreferencesDrawer
 });
 
 /**
@@ -39,7 +39,7 @@ const listen = computed(() => {
     if (typeof value === 'object') {
       for (const subKey of Object.keys(value)) {
         result[`update:${key}${capitalizeFirstLetter(subKey)}`] = (
-          val: any,
+          val: any
         ) => {
           updatePreferences({ [key]: { [subKey]: val } });
           if (key === 'app' && subKey === 'locale') {

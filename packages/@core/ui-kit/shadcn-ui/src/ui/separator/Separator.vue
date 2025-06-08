@@ -23,7 +23,7 @@ const delegatedProps = computed(() => {
       cn(
         'bg-border relative shrink-0',
         props.orientation === 'vertical' ? 'h-full w-px' : 'h-px w-full',
-        props.class,
+        props.class
       )
     "
   >
@@ -34,7 +34,7 @@ const delegatedProps = computed(() => {
           'text-muted-foreground bg-background absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center text-xs',
           props.orientation === 'vertical'
             ? 'w-[1px] px-1 py-2'
-            : 'h-[1px] px-2 py-1',
+            : 'h-[1px] px-2 py-1'
         )
       "
     >

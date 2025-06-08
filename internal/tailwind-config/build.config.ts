@@ -5,6 +5,6 @@ export default defineBuildConfig({
   declaration: true,
   entries: ['src/index', './src/postcss.config'],
   rollup: {
-    emitCJS: true,
-  },
+    emitCJS: true
+  }
 });

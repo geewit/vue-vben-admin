@@ -5,21 +5,21 @@ import { Palette } from '@vben/icons';
 import {
   COLOR_PRESETS,
   preferences,
-  updatePreferences,
+  updatePreferences
 } from '@vben/preferences';
 
 import { VbenIconButton } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'AuthenticationColorToggle',
+  name: 'AuthenticationColorToggle'
 });
 
 function handleUpdate(colorPrimary: string, type: BuiltinThemeType) {
   updatePreferences({
     theme: {
       colorPrimary,
-      builtinType: type,
-    },
+      builtinType: type
+    }
   });
 }
 </script>

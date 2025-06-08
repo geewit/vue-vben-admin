@@ -12,14 +12,14 @@ import { useTabsViewScroll } from './use-tabs-view-scroll';
 interface Props extends TabsProps {}
 
 defineOptions({
-  name: 'TabsView',
+  name: 'TabsView'
 });
 
 const props = withDefaults(defineProps<Props>(), {
   contentClass: 'vben-tabs-content',
   draggable: true,
   styleType: 'chrome',
-  wheelable: true,
+  wheelable: true
 });
 
 const emit = defineEmits<TabsEmits>();
@@ -33,7 +33,7 @@ const {
   scrollDirection,
   scrollIsAtLeft,
   scrollIsAtRight,
-  showScrollButton,
+  showScrollButton
 } = useTabsViewScroll(props);
 
 function onWheel(e: WheelEvent) {
@@ -54,7 +54,7 @@ useTabsDrag(props, emit);
       v-show="showScrollButton"
       :class="{
         'hover:bg-muted text-muted-foreground cursor-pointer': !scrollIsAtLeft,
-        'pointer-events-none opacity-30': scrollIsAtLeft,
+        'pointer-events-none opacity-30': scrollIsAtLeft
       }"
       class="border-r px-2"
       @click="scrollDirection('left')"
@@ -64,7 +64,7 @@ useTabsDrag(props, emit);
 
     <div
       :class="{
-        'pt-[3px]': styleType === 'chrome',
+        'pt-[3px]': styleType === 'chrome'
       }"
       class="size-full flex-1 overflow-hidden"
     >
@@ -95,7 +95,7 @@ useTabsDrag(props, emit);
       v-show="showScrollButton"
       :class="{
         'hover:bg-muted text-muted-foreground cursor-pointer': !scrollIsAtRight,
-        'pointer-events-none opacity-30': scrollIsAtRight,
+        'pointer-events-none opacity-30': scrollIsAtRight
       }"
       class="hover:bg-muted text-muted-foreground cursor-pointer border-l px-2"
       @click="scrollDirection('right')"

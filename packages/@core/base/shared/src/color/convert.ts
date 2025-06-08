@@ -58,5 +58,5 @@ export {
   convertToHslCssVar,
   convertToRgb,
   isValidColor,
-  TinyColor,
+  TinyColor
 };

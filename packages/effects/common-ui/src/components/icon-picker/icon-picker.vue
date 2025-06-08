@@ -20,7 +20,7 @@ import {
   PaginationPrev,
   VbenIcon,
   VbenIconButton,
-  VbenPopover,
+  VbenPopover
 } from '@vben-core/shadcn-ui';
 import { isFunction } from '@vben-core/shared/utils';
 
@@ -58,7 +58,7 @@ const props = withDefaults(defineProps<Props>(), {
   autoFetchApi: true,
   modelValueProp: 'modelValue',
   inputComponent: undefined,
-  type: 'input',
+  type: 'input'
 });
 
 const emit = defineEmits<{
@@ -83,7 +83,7 @@ watchDebounced(
       innerIcons.value = await fetchIconsData(prefix);
     }
   },
-  { immediate: true, debounce: 500, maxWait: 1000 },
+  { immediate: true, debounce: 500, maxWait: 1000 }
 );
 
 const currentList = computed(() => {
@@ -112,13 +112,13 @@ const currentList = computed(() => {
 
 const showList = computed(() => {
   return currentList.value.filter((item) =>
-    item.includes(keywordDebounce.value),
+    item.includes(keywordDebounce.value)
   );
 });
 
 const { paginationList, total, setCurrentPage } = usePagination(
   showList,
-  props.pageSize,
+  props.pageSize
 );
 
 watchEffect(() => {
@@ -129,7 +129,7 @@ watch(
   () => currentSelect.value,
   (v) => {
     emit('change', v);
-  },
+  }
 );
 
 const handleClick = (icon: string) => {
@@ -164,7 +164,7 @@ const searchInputProps = computed(() => {
     placeholder: $t('ui.iconPicker.search'),
     [props.modelValueProp]: keyword.value,
     [`onUpdate:${props.modelValueProp}`]: onKeywordChange,
-    class: 'mx-2',
+    class: 'mx-2'
   };
 });
 
@@ -258,7 +258,7 @@ defineExpose({ toggleOpenState, open, close });
         >
           <VbenIcon
             :class="{
-              'text-primary transition-all': currentSelect === item,
+              'text-primary transition-all': currentSelect === item
             }"
             :icon="item"
           />

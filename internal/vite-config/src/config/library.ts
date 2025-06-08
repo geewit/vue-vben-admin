@@ -22,7 +22,7 @@ function defineLibraryConfig(userConfigPromise?: DefineLibraryOptions) {
       injectMetadata: true,
       isBuild,
       mode,
-      ...library,
+      ...library
     });
 
     const { dependencies = {}, peerDependencies = {} } =
@@ -30,7 +30,7 @@ function defineLibraryConfig(userConfigPromise?: DefineLibraryOptions) {
 
     const externalPackages = [
       ...Object.keys(dependencies),
-      ...Object.keys(peerDependencies),
+      ...Object.keys(peerDependencies)
     ];
 
     const packageConfig: UserConfig = {
@@ -38,17 +38,17 @@ function defineLibraryConfig(userConfigPromise?: DefineLibraryOptions) {
         lib: {
           entry: 'src/index.ts',
           fileName: () => 'index.mjs',
-          formats: ['es'],
+          formats: ['es']
         },
         rollupOptions: {
           external: (id) => {
             return externalPackages.some(
-              (pkg) => id === pkg || id.startsWith(`${pkg}/`),
+              (pkg) => id === pkg || id.startsWith(`${pkg}/`)
             );
-          },
-        },
+          }
+        }
       },
-      plugins,
+      plugins
     };
     const commonConfig = await getCommonConfig();
     const mergedConmonConfig = mergeConfig(commonConfig, packageConfig);

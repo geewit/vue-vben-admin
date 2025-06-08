@@ -19,14 +19,14 @@ function sendCodeApi(phoneNumber: string) {
   message.loading({
     content: $t('page.auth.sendingCode'),
     duration: 0,
-    key: 'sending-code',
+    key: 'sending-code'
   });
   return new Promise((resolve) => {
     setTimeout(() => {
       message.success({
         content: $t('page.auth.codeSentTo', [phoneNumber]),
         duration: 3,
-        key: 'sending-code',
+        key: 'sending-code'
       });
       resolve({ code: '123456', phoneNumber });
     }, 3000);
@@ -37,7 +37,7 @@ const formSchema = computed((): VbenFormSchema[] => {
     {
       component: 'VbenInput',
       componentProps: {
-        placeholder: $t('authentication.mobile'),
+        placeholder: $t('authentication.mobile')
       },
       fieldName: 'phoneNumber',
       label: $t('authentication.mobile'),
@@ -45,8 +45,8 @@ const formSchema = computed((): VbenFormSchema[] => {
         .string()
         .min(1, { message: $t('authentication.mobileTip') })
         .refine((v) => /^\d{11}$/.test(v), {
-          message: $t('authentication.mobileErrortip'),
-        }),
+          message: $t('authentication.mobileErrortip')
+        })
     },
     {
       component: 'VbenPinInput',
@@ -54,8 +54,8 @@ const formSchema = computed((): VbenFormSchema[] => {
         codeLength: CODE_LENGTH,
         createText: (countdown: number) => {
           return countdown > 0
-              ? $t('authentication.sendText', [countdown])
-              : $t('authentication.sendCode');
+            ? $t('authentication.sendText', [countdown])
+            : $t('authentication.sendCode');
         },
         handleSendCode: async () => {
           // 模拟发送验证码
@@ -76,14 +76,14 @@ const formSchema = computed((): VbenFormSchema[] => {
           await sendCodeApi(phoneNumber);
           loading.value = false;
         },
-        placeholder: $t('authentication.code'),
+        placeholder: $t('authentication.code')
       },
       fieldName: 'code',
       label: $t('authentication.code'),
       rules: z.string().length(CODE_LENGTH, {
-        message: $t('authentication.codeTip', [CODE_LENGTH]),
-      }),
-    },
+        message: $t('authentication.codeTip', [CODE_LENGTH])
+      })
+    }
   ];
 });
 /**

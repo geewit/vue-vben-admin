@@ -12,7 +12,7 @@ import {
   GlobalSearch,
   LanguageToggle,
   PreferencesButton,
-  ThemeToggle,
+  ThemeToggle
 } from '../../widgets';
 
 interface Props {
@@ -23,11 +23,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'LayoutHeader',
+  name: 'LayoutHeader'
 });
 
 withDefaults(defineProps<Props>(), {
-  theme: 'light',
+  theme: 'light'
 });
 
 const emit = defineEmits<{ clearPreferencesAndLogout: [] }>();
@@ -44,38 +44,38 @@ const rightSlots = computed(() => {
   if (preferences.widget.globalSearch) {
     list.push({
       index: REFERENCE_VALUE,
-      name: 'global-search',
+      name: 'global-search'
     });
   }
 
   if (preferencesButtonPosition.value.header) {
     list.push({
       index: REFERENCE_VALUE + 10,
-      name: 'preferences',
+      name: 'preferences'
     });
   }
   if (preferences.widget.themeToggle) {
     list.push({
       index: REFERENCE_VALUE + 20,
-      name: 'theme-toggle',
+      name: 'theme-toggle'
     });
   }
   if (preferences.widget.languageToggle) {
     list.push({
       index: REFERENCE_VALUE + 30,
-      name: 'language-toggle',
+      name: 'language-toggle'
     });
   }
   if (preferences.widget.fullscreen) {
     list.push({
       index: REFERENCE_VALUE + 40,
-      name: 'fullscreen',
+      name: 'fullscreen'
     });
   }
   if (preferences.widget.notification) {
     list.push({
       index: REFERENCE_VALUE + 50,
-      name: 'notification',
+      name: 'notification'
     });
   }
 
@@ -94,7 +94,7 @@ const leftSlots = computed(() => {
   if (preferences.widget.refresh) {
     list.push({
       index: 0,
-      name: 'refresh',
+      name: 'refresh'
     });
   }
 

@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<TreeProps>(), {
   showIcon: true,
   transition: true,
   valueField: 'value',
-  childrenField: 'children',
+  childrenField: 'children'
 });
 
 const emits = defineEmits<{
@@ -49,7 +49,7 @@ function flatten<T = Recordable<any>, P = number | string>(
   items: T[],
   childrenField: string = 'children',
   level = 0,
-  parents: P[] = [],
+  parents: P[] = []
 ): InnerFlattenItem<T, P>[] {
   const result: InnerFlattenItem<T, P>[] = [];
   items.forEach((item) => {
@@ -58,15 +58,15 @@ function flatten<T = Recordable<any>, P = number | string>(
       hasChildren: Array.isArray(children) && children.length > 0,
       level,
       parents: [...parents],
-      value: item,
+      value: item
     };
     result.push(val);
     if (val.hasChildren)
       result.push(
         ...flatten(children, childrenField, level + 1, [
           ...parents,
-          get(item, props.valueField),
-        ]),
+          get(item, props.valueField)
+        ])
       );
   });
   return result;
@@ -92,7 +92,7 @@ onMounted(() => {
 
 function getItemByValue(value: number | string) {
   return flattenData.value.find(
-    (item) => get(item.value, props.valueField) === value,
+    (item) => get(item.value, props.valueField) === value
   )?.value;
 }
 
@@ -181,7 +181,7 @@ defineExpose({
   expandAll,
   expandNodes,
   expandToLevel,
-  getItemByValue,
+  getItemByValue
 });
 </script>
 <template>
@@ -202,7 +202,7 @@ defineExpose({
       cn(
         'text-blackA11 container select-none list-none rounded-lg p-2 text-sm font-medium',
         $attrs.class as unknown as ClassType,
-        bordered ? 'border' : '',
+        bordered ? 'border' : ''
       )
     "
   >
@@ -217,19 +217,19 @@ defineExpose({
           isSelected,
           isIndeterminate,
           handleSelect,
-          handleToggle,
+          handleToggle
         }"
         :key="item._id"
         :style="{ 'padding-left': `${item.level - 0.5}rem` }"
         :class="
           cn('cursor-pointer', getNodeClass?.(item), {
             'data-[selected]:bg-accent': !multiple,
-            'cursor-not-allowed': disabled,
+            'cursor-not-allowed': disabled
           })
         "
         v-bind="
           Object.assign(item.bind, {
-            onfocus: disabled ? 'this.blur()' : undefined,
+            onfocus: disabled ? 'this.blur()' : undefined
           })
         "
         @select="

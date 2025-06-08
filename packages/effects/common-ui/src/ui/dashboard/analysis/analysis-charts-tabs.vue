@@ -10,11 +10,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'AnalysisChartsTabs',
+  name: 'AnalysisChartsTabs'
 });
 
 const props = withDefaults(defineProps<Props>(), {
-  tabs: () => [],
+  tabs: () => []
 });
 
 const defaultValue = computed(() => {

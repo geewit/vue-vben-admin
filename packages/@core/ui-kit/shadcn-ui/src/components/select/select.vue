@@ -6,7 +6,7 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
+  SelectValue
 } from '../../ui';
 
 interface Props {
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  allowClear: false,
+  allowClear: false
 });
 
 const modelValue = defineModel<string>();

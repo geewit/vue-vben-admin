@@ -12,12 +12,12 @@ export default defineComponent({
       default: undefined as
         | PropType<(() => any) | Component | string>
         | undefined,
-      type: [Object, String, Function],
+      type: [Object, String, Function]
     },
     renderBr: {
       default: false,
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -46,11 +46,11 @@ export default defineComponent({
         ...attrs,
         props: {
           ...props,
-          ...attrs,
+          ...attrs
         },
-        slots,
+        slots
       });
     };
-  },
+  }
 });
 </script>

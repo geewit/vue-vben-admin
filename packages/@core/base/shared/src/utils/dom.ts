@@ -12,7 +12,7 @@ export interface VisibleDomRect {
  * @param element
  */
 export function getElementVisibleRect(
-  element?: HTMLElement | null | undefined,
+  element?: HTMLElement | null | undefined
 ): VisibleDomRect {
   if (!element) {
     return {
@@ -21,13 +21,13 @@ export function getElementVisibleRect(
       left: 0,
       right: 0,
       top: 0,
-      width: 0,
+      width: 0
     };
   }
   const rect = element.getBoundingClientRect();
   const viewHeight = Math.max(
     document.documentElement.clientHeight,
-    window.innerHeight,
+    window.innerHeight
   );
 
   const top = Math.max(rect.top, 0);
@@ -35,7 +35,7 @@ export function getElementVisibleRect(
 
   const viewWidth = Math.max(
     document.documentElement.clientWidth,
-    window.innerWidth,
+    window.innerWidth
   );
 
   const left = Math.max(rect.left, 0);
@@ -47,7 +47,7 @@ export function getElementVisibleRect(
     left,
     right,
     top,
-    width: Math.max(0, right - left),
+    width: Math.max(0, right - left)
   };
 }
 

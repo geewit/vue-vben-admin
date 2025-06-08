@@ -2,11 +2,11 @@
 import { ToggleGroup, ToggleGroupItem } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'PreferenceColorMode',
+  name: 'PreferenceColorMode'
 });
 
 const modelValue = defineModel<string | undefined>('themeRadius', {
-  default: '0.5',
+  default: '0.5'
 });
 
 const items = [
@@ -14,7 +14,7 @@ const items = [
   { label: '0.25', value: '0.25' },
   { label: '0.5', value: '0.5' },
   { label: '0.75', value: '0.75' },
-  { label: '1', value: '1' },
+  { label: '1', value: '1' }
 ];
 </script>
 

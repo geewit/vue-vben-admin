@@ -2,7 +2,7 @@ import type { ComputedRef } from 'vue';
 import type {
   RouteLocationNormalized,
   Router,
-  RouteRecordNormalized,
+  RouteRecordNormalized
 } from 'vue-router';
 
 import type { TabDefinition } from '@vben-core/typings';
@@ -13,7 +13,7 @@ import { preferences } from '@vben-core/preferences';
 import {
   openRouteInNewWindow,
   startProgress,
-  stopProgress,
+  stopProgress
 } from '@vben-core/shared/utils';
 
 import { acceptHMRUpdate, defineStore } from 'pinia';
@@ -60,7 +60,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
     async _bulkCloseByKeys(keys: string[]) {
       const keySet = new Set(keys);
       this.tabs = this.tabs.filter(
-        (item) => !keySet.has(getTabKeyFromTab(item)),
+        (item) => !keySet.has(getTabKeyFromTab(item))
       );
 
       await this.updateCacheTabs();
@@ -98,7 +98,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
       const toParams = {
         params: params || {},
         path,
-        query: query || {},
+        query: query || {}
       };
       await router.replace(toParams);
     },
@@ -133,14 +133,13 @@ export const useTabbarStore = defineStore('core-tabbar', {
         ) {
           // 关闭第一个
           const index = this.tabs.findIndex(
-            (item) => item.name === routeTab.name,
+            (item) => item.name === routeTab.name
           );
           index !== -1 && this.tabs.splice(index, 1);
         } else if (maxCount > 0 && this.tabs.length >= maxCount) {
           // 关闭第一个
           const index = this.tabs.findIndex(
-            (item) =>
-              !Reflect.has(item.meta, 'affixTab') || !item.meta.affixTab,
+            (item) => !Reflect.has(item.meta, 'affixTab') || !item.meta.affixTab
           );
           index !== -1 && this.tabs.splice(index, 1);
         }
@@ -151,7 +150,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
         const mergedTab = {
           ...currentTab,
           ...tab,
-          meta: { ...currentTab?.meta, ...tab.meta },
+          meta: { ...currentTab?.meta, ...tab.meta }
         };
         if (currentTab) {
           const curMeta = currentTab.meta;
@@ -210,7 +209,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
       for (const key of closeKeys) {
         if (key !== getTabKeyFromTab(tab)) {
           const closeTab = this.tabs.find(
-            (item) => getTabKeyFromTab(item) === key,
+            (item) => getTabKeyFromTab(item) === key
           );
           if (!closeTab) {
             continue;
@@ -256,7 +255,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
         return;
       }
       const index = this.getTabs.findIndex(
-        (item) => getTabKeyFromTab(item) === getTabKey(currentRoute.value),
+        (item) => getTabKeyFromTab(item) === getTabKey(currentRoute.value)
       );
 
       const before = this.getTabs[index - 1];
@@ -283,7 +282,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
     async closeTabByKey(key: string, router: Router) {
       const originKey = decodeURIComponent(key);
       const index = this.tabs.findIndex(
-        (item) => getTabKeyFromTab(item) === originKey,
+        (item) => getTabKeyFromTab(item) === originKey
       );
       if (index === -1) {
         return;
@@ -301,7 +300,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
      */
     getTabByKey(key: string) {
       return this.getTabs.find(
-        (item) => getTabKeyFromTab(item) === key,
+        (item) => getTabKeyFromTab(item) === key
       ) as TabDefinition;
     },
     /**
@@ -498,7 +497,7 @@ export const useTabbarStore = defineStore('core-tabbar', {
         cacheMap.add(name);
       }
       this.cachedTabs = cacheMap;
-    },
+    }
   },
   getters: {
     affixTabs(): TabDefinition[] {
@@ -522,14 +521,14 @@ export const useTabbarStore = defineStore('core-tabbar', {
     getTabs(): TabDefinition[] {
       const normalTabs = this.tabs.filter((tab) => !isAffixTab(tab));
       return [...this.affixTabs, ...normalTabs].filter(Boolean);
-    },
+    }
   },
   persist: [
     // tabs不需要保存在localStorage
     {
       pick: ['tabs'],
-      storage: sessionStorage,
-    },
+      storage: sessionStorage
+    }
   ],
   state: (): TabbarState => ({
     cachedTabs: new Set(),
@@ -544,12 +543,12 @@ export const useTabbarStore = defineStore('core-tabbar', {
       'close-left',
       'close-right',
       'close-other',
-      'close-all',
+      'close-all'
     ],
     renderRouteView: true,
     tabs: [],
-    updateTime: Date.now(),
-  }),
+    updateTime: Date.now()
+  })
 });
 
 // 解决热更新问题
@@ -573,13 +572,13 @@ function cloneTab(route: TabDefinition): TabDefinition {
       ? matched.map((item) => ({
           meta: item.meta,
           name: item.name,
-          path: item.path,
+          path: item.path
         }))
       : undefined) as RouteRecordNormalized[],
     meta: {
       ...meta,
-      newTabTitle: meta.newTabTitle,
-    },
+      newTabTitle: meta.newTabTitle
+    }
   };
 }
 
@@ -609,7 +608,7 @@ function getTabKey(tab: RouteLocationNormalized | RouteRecordNormalized) {
     fullPath,
     path,
     meta: { fullPathKey } = {},
-    query = {},
+    query = {}
   } = tab as RouteLocationNormalized;
   // pageKey可能是数组（查询参数重复时可能出现）
   const pageKey = Array.isArray(query.pageKey)
@@ -651,7 +650,7 @@ function routeToTab(route: RouteRecordNormalized) {
     meta: route.meta,
     name: route.name,
     path: route.path,
-    key: getTabKey(route),
+    key: getTabKey(route)
   } as TabDefinition;
 }
 

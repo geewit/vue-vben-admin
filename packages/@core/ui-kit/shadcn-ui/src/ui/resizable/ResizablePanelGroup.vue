@@ -28,7 +28,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
     :class="
       cn(
         'flex h-full w-full data-[panel-group-direction=vertical]:flex-col',
-        props.class,
+        props.class
       )
     "
   >

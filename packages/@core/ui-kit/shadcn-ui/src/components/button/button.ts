@@ -34,7 +34,7 @@ export interface VbenButtonGroupProps
   /** 值改变前的回调 */
   beforeChange?: (
     value: ValueType,
-    isChecked: boolean,
+    isChecked: boolean
   ) => boolean | PromiseLike<boolean | undefined> | undefined;
   /** 按钮样式 */
   btnClass?: any;

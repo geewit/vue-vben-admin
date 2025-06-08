@@ -41,13 +41,13 @@ function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
       mode,
       print: !isBuild,
       printInfoMap: {
-        'Vben Admin Docs': 'https://doc.vben.pro',
+        'Vben Admin Docs': 'https://doc.vben.pro'
       },
       pwa: true,
       pwaOptions: getDefaultPwaOptions(appTitle),
       vxeTableLazyImport: true,
       ...envConfig,
-      ...application,
+      ...application
     });
 
     const { injectGlobalScss = true } = application;
@@ -59,20 +59,20 @@ function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
           output: {
             assetFileNames: '[ext]/[name]-[hash].[ext]',
             chunkFileNames: 'js/[name]-[hash].js',
-            entryFileNames: 'jse/index-[name]-[hash].js',
-          },
+            entryFileNames: 'jse/index-[name]-[hash].js'
+          }
         },
-        target: 'es2015',
+        target: 'es2015'
       },
       css: createCssOptions(injectGlobalScss),
       esbuild: {
         drop: isBuild
           ? [
               // 'console',
-              'debugger',
+              'debugger'
             ]
           : [],
-        legalComments: 'none',
+        legalComments: 'none'
       },
       plugins,
       server: {
@@ -83,15 +83,15 @@ function defineApplicationConfig(userConfigPromise?: DefineApplicationOptions) {
           clientFiles: [
             './index.html',
             './src/bootstrap.ts',
-            './src/{views,layouts,router,store,api,adapter}/*',
-          ],
-        },
-      },
+            './src/{views,layouts,router,store,api,adapter}/*'
+          ]
+        }
+      }
     };
 
     const mergedCommonConfig = mergeConfig(
       await getCommonConfig(),
-      applicationConfig,
+      applicationConfig
     );
     return mergeConfig(mergedCommonConfig, vite);
   });
@@ -112,10 +112,10 @@ function createCssOptions(injectGlobalScss = true): CSSOptions {
               return content;
             },
             api: 'modern',
-            importers: [new NodePackageImporter()],
-          },
+            importers: [new NodePackageImporter()]
+          }
         }
-      : {},
+      : {}
   };
 }
 

@@ -33,7 +33,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'VbenLogo',
+  name: 'VbenLogo'
 });
 
 withDefaults(defineProps<Props>(), {
@@ -42,7 +42,7 @@ withDefaults(defineProps<Props>(), {
   logoSize: 32,
   src: '',
   theme: 'light',
-  fit: 'cover',
+  fit: 'cover'
 });
 </script>
 

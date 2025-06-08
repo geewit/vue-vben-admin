@@ -8,7 +8,7 @@ import {
   ArrowUp,
   CornerDownLeft,
   MdiKeyboardEsc,
-  Search,
+  Search
 } from '@vben/icons';
 import { $t } from '@vben/locales';
 import { isWindowsOs } from '@vben/utils';
@@ -20,15 +20,15 @@ import { useMagicKeys, whenever } from '@vueuse/core';
 import SearchPanel from './search-panel.vue';
 
 defineOptions({
-  name: 'GlobalSearch',
+  name: 'GlobalSearch'
 });
 
 const props = withDefaults(
   defineProps<{ enableShortcutKey?: boolean; menus?: MenuRecordRaw[] }>(),
   {
     enableShortcutKey: true,
-    menus: () => [],
-  },
+    menus: () => []
+  }
 );
 
 const keyword = ref('');
@@ -42,7 +42,7 @@ const [Modal, modalApi] = useVbenModal({
     if (!isOpen) {
       keyword.value = '';
     }
-  },
+  }
 });
 const open = modalApi.useStore((state) => state.isOpen);
 

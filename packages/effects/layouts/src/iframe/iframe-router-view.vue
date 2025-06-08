@@ -25,7 +25,7 @@ const iframeRoutes = computed(() => {
 });
 
 const tabNames = computed(
-  () => new Set(iframeRoutes.value.map((item) => item.name as string)),
+  () => new Set(iframeRoutes.value.map((item) => item.name as string))
 );
 
 const showIframe = computed(() => iframeRoutes.value.length > 0);

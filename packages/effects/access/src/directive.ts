@@ -10,7 +10,7 @@ import { useAccess } from './use-access';
 
 function isAccessible(
   el: Element,
-  binding: DirectiveBinding<string | string[]>,
+  binding: DirectiveBinding<string | string[]>
 ) {
   const { accessMode, hasAccessByCodes, hasAccessByRoles } = useAccess();
 
@@ -34,7 +34,7 @@ const mounted = (el: Element, binding: DirectiveBinding<string | string[]>) => {
 };
 
 const authDirective: Directive = {
-  mounted,
+  mounted
 };
 
 export function registerAccessDirective(app: App) {

@@ -17,12 +17,12 @@ const props = withDefaults(defineProps<Props>(), {
   isGroup: false,
   right: 24,
   target: '',
-  visibilityHeight: 200,
+  visibilityHeight: 200
 });
 
 const backTopStyle = computed(() => ({
   bottom: `${props.bottom}px`,
-  right: `${props.right}px`,
+  right: `${props.right}px`
 }));
 
 const { handleClick, visible } = useBackTop(props);

@@ -23,11 +23,11 @@ interface SheetContentProps extends DialogContentProps {
 }
 
 defineOptions({
-  inheritAttrs: false,
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<SheetContentProps>(), {
-  appendTo: 'body',
+  appendTo: 'body'
 });
 
 const emits = defineEmits<
@@ -81,7 +81,7 @@ function onAnimationEnd(event: AnimationEvent) {
           ...(zIndex ? { zIndex } : {}),
           position,
           backdropFilter:
-            overlayBlur && overlayBlur > 0 ? `blur(${overlayBlur}px)` : 'none',
+            overlayBlur && overlayBlur > 0 ? `blur(${overlayBlur}px)` : 'none'
         }"
       />
     </Transition>
@@ -90,7 +90,7 @@ function onAnimationEnd(event: AnimationEvent) {
       :class="cn('z-popup', sheetVariants({ side }), props.class)"
       :style="{
         ...(zIndex ? { zIndex } : {}),
-        position,
+        position
       }"
       @animationend="onAnimationEnd"
       v-bind="{ ...forwarded, ...$attrs }"

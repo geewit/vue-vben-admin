@@ -9,7 +9,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from '../../ui';
 
 interface Props {
@@ -21,7 +21,7 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   delayDuration: 0,
-  side: 'right',
+  side: 'right'
 });
 </script>
 

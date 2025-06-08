@@ -10,7 +10,7 @@ export function useFormSchema(): VbenFormSchema[] {
       component: 'Input',
       fieldName: 'name',
       label: $t('system.role.roleName'),
-      rules: 'required',
+      rules: 'required'
     },
     {
       component: 'RadioGroup',
@@ -18,26 +18,26 @@ export function useFormSchema(): VbenFormSchema[] {
         buttonStyle: 'solid',
         options: [
           { label: $t('common.enabled'), value: 1 },
-          { label: $t('common.disabled'), value: 0 },
+          { label: $t('common.disabled'), value: 0 }
         ],
-        optionType: 'button',
+        optionType: 'button'
       },
       defaultValue: 1,
       fieldName: 'status',
-      label: $t('system.role.status'),
+      label: $t('system.role.status')
     },
     {
       component: 'Textarea',
       fieldName: 'remark',
-      label: $t('system.role.remark'),
+      label: $t('system.role.remark')
     },
     {
       component: 'Input',
       fieldName: 'permissions',
       formItemClass: 'items-start',
       label: $t('system.role.setPermissions'),
-      modelPropName: 'modelValue',
-    },
+      modelPropName: 'modelValue'
+    }
   ];
 }
 
@@ -46,7 +46,7 @@ export function useGridFormSchema(): VbenFormSchema[] {
     {
       component: 'Input',
       fieldName: 'name',
-      label: $t('system.role.roleName'),
+      label: $t('system.role.roleName')
     },
     { component: 'Input', fieldName: 'id', label: $t('system.role.id') },
     {
@@ -55,58 +55,58 @@ export function useGridFormSchema(): VbenFormSchema[] {
         allowClear: true,
         options: [
           { label: $t('common.enabled'), value: 1 },
-          { label: $t('common.disabled'), value: 0 },
-        ],
+          { label: $t('common.disabled'), value: 0 }
+        ]
       },
       fieldName: 'status',
-      label: $t('system.role.status'),
+      label: $t('system.role.status')
     },
     {
       component: 'Input',
       fieldName: 'remark',
-      label: $t('system.role.remark'),
+      label: $t('system.role.remark')
     },
     {
       component: 'RangePicker',
       fieldName: 'createTime',
-      label: $t('system.role.createTime'),
-    },
+      label: $t('system.role.createTime')
+    }
   ];
 }
 
 export function useColumns<T = SystemRoleApi.SystemRole>(
   onActionClick: OnActionClickFn<T>,
-  onStatusChange?: (newStatus: any, row: T) => PromiseLike<boolean | undefined>,
+  onStatusChange?: (newStatus: any, row: T) => PromiseLike<boolean | undefined>
 ): VxeTableGridOptions['columns'] {
   return [
     {
       field: 'name',
       title: $t('system.role.roleName'),
-      width: 200,
+      width: 200
     },
     {
       field: 'id',
       title: $t('system.role.id'),
-      width: 200,
+      width: 200
     },
     {
       cellRender: {
         attrs: { beforeChange: onStatusChange },
-        name: onStatusChange ? 'CellSwitch' : 'CellTag',
+        name: onStatusChange ? 'CellSwitch' : 'CellTag'
       },
       field: 'status',
       title: $t('system.role.status'),
-      width: 100,
+      width: 100
     },
     {
       field: 'remark',
       minWidth: 100,
-      title: $t('system.role.remark'),
+      title: $t('system.role.remark')
     },
     {
       field: 'createTime',
       title: $t('system.role.createTime'),
-      width: 200,
+      width: 200
     },
     {
       align: 'center',
@@ -114,14 +114,14 @@ export function useColumns<T = SystemRoleApi.SystemRole>(
         attrs: {
           nameField: 'name',
           nameTitle: $t('system.role.name'),
-          onClick: onActionClick,
+          onClick: onActionClick
         },
-        name: 'CellOperation',
+        name: 'CellOperation'
       },
       field: 'operation',
       fixed: 'right',
       title: $t('system.role.operation'),
-      width: 130,
-    },
+      width: 130
+    }
   ];
 }

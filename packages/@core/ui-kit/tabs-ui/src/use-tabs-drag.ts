@@ -22,7 +22,7 @@ export function useTabsDrag(props: TabsProps, emit: EmitType) {
     await nextTick();
 
     const el = document.querySelectorAll(
-      `.${props.contentClass}`,
+      `.${props.contentClass}`
     )?.[0] as HTMLElement;
 
     if (!el) {
@@ -91,7 +91,7 @@ export function useTabsDrag(props: TabsProps, emit: EmitType) {
         el.style.cursor = 'grabbing';
         el.querySelector('.draggable')?.classList.add('dragging');
         // el.classList.add('dragging');
-      },
+      }
     });
 
     sortableInstance.value = await initializeSortable();
@@ -115,7 +115,7 @@ export function useTabsDrag(props: TabsProps, emit: EmitType) {
     () => {
       sortableInstance.value?.destroy();
       init();
-    },
+    }
   );
 
   onUnmounted(() => {

@@ -14,7 +14,7 @@ import { readPackageJSON } from '@vben/node-utils';
 async function viteInjectAppLoadingPlugin(
   isBuild: boolean,
   env: Record<string, any> = {},
-  loadingTemplate = 'loading.html',
+  loadingTemplate = 'loading.html'
 ): Promise<PluginOption | undefined> {
   const loadingHtml = await getLoadingRawByHtmlTemplate(loadingTemplate);
   const { version } = await readPackageJSON(process.cwd());
@@ -43,8 +43,8 @@ async function viteInjectAppLoadingPlugin(
         html = html.replace(re, `<body>${injectScript}${loadingHtml}`);
         return html;
       },
-      order: 'pre',
-    },
+      order: 'pre'
+    }
   };
 }
 

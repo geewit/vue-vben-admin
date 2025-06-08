@@ -4,7 +4,7 @@ import { computed, getCurrentInstance, unref, useAttrs, useSlots } from 'vue';
 
 import {
   getFirstNonNullOrUndefined,
-  kebabToCamelCase,
+  kebabToCamelCase
 } from '@vben-core/shared/utils';
 
 /**
@@ -16,7 +16,7 @@ import {
 export function usePriorityValue<
   T extends Record<string, any>,
   S extends Record<string, any>,
-  K extends keyof T = keyof T,
+  K extends keyof T = keyof T
 >(key: K, props: T, state: Readonly<Ref<NoInfer<S>>> | undefined) {
   const instance = getCurrentInstance();
   const slots = useSlots();
@@ -40,7 +40,7 @@ export function usePriorityValue<
       slots[key as string],
       attrs[key],
       propsKey,
-      state?.value?.[key as keyof S],
+      state?.value?.[key as keyof S]
     ) as T[K];
   }) as unknown as ComputedRef<T[K]>;
 }
@@ -52,7 +52,7 @@ export function usePriorityValue<
  */
 export function usePriorityValues<
   T extends Record<string, any>,
-  S extends Ref<Record<string, any>> = Readonly<Ref<NoInfer<T>, NoInfer<T>>>,
+  S extends Ref<Record<string, any>> = Readonly<Ref<NoInfer<T>, NoInfer<T>>>
 >(props: T, state: S | undefined) {
   const result: { [K in keyof T]: ComputedRef<T[K]> } = {} as never;
 
@@ -70,7 +70,7 @@ export function usePriorityValues<
  */
 export function useForwardPriorityValues<
   T extends Record<string, any>,
-  S extends Ref<Record<string, any>> = Readonly<Ref<NoInfer<T>, NoInfer<T>>>,
+  S extends Ref<Record<string, any>> = Readonly<Ref<NoInfer<T>, NoInfer<T>>>
 >(props: T, state: S | undefined) {
   const computedResult: { [K in keyof T]: ComputedRef<T[K]> } = {} as never;
 
@@ -78,7 +78,7 @@ export function useForwardPriorityValues<
     computedResult[key] = usePriorityValue(
       key as keyof typeof props,
       props,
-      state,
+      state
     );
   });
 

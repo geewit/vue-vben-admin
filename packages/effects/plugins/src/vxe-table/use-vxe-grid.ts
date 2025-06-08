@@ -25,8 +25,8 @@ export function useVbenVxeGrid(options: VxeGridProps) {
     },
     {
       name: 'VbenVxeGrid',
-      inheritAttrs: false,
-    },
+      inheritAttrs: false
+    }
   );
   // Add reactivity support
   // if (IS_REACTIVE) {

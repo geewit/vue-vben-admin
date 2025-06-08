@@ -53,7 +53,7 @@ export const useAccessStore = defineStore('core-access', {
     getMenuByPath(path: string) {
       function findMenu(
         menus: MenuRecordRaw[],
-        path: string,
+        path: string
       ): MenuRecordRaw | undefined {
         for (const menu of menus) {
           if (menu.path === path) {
@@ -97,7 +97,7 @@ export const useAccessStore = defineStore('core-access', {
     unlockScreen() {
       this.isLockScreen = false;
       this.lockScreenPassword = undefined;
-    },
+    }
   },
   persist: {
     // 持久化
@@ -106,8 +106,8 @@ export const useAccessStore = defineStore('core-access', {
       'refreshToken',
       'accessCodes',
       'isLockScreen',
-      'lockScreenPassword',
-    ],
+      'lockScreenPassword'
+    ]
   },
   state: (): AccessState => ({
     accessCodes: [],
@@ -118,8 +118,8 @@ export const useAccessStore = defineStore('core-access', {
     isLockScreen: false,
     lockScreenPassword: undefined,
     loginExpired: false,
-    refreshToken: null,
-  }),
+    refreshToken: null
+  })
 });
 
 // 解决热更新问题

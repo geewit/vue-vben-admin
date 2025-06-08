@@ -6,11 +6,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'WorkbenchHeader',
+  name: 'WorkbenchHeader'
 });
 
 withDefaults(defineProps<Props>(), {
-  avatar: '',
+  avatar: ''
 });
 </script>
 <template>
