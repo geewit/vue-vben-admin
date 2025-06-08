@@ -32,14 +32,14 @@ withDefaults(defineProps<Props>(), {
         <slot name="trigger"></slot>
       </TooltipTrigger>
       <TooltipContent
-        :align="'center'"
+        align="center"
         :align-offset="0"
         :arrow-padding="0"
         :avoid-collisions="true"
         :collision-boundary="undefined"
         :collision-padding="0"
         :hide-when-detached="false"
-        :sticky="'partial'"
+        sticky="partial"
         :class="contentClass"
         :side="side"
         :style="contentStyle"

@@ -85,7 +85,7 @@ const withDefaultPlaceholder = <T extends Component>(
       const publicApi: Recordable<any> = {};
       expose(publicApi);
       const instance = getCurrentInstance();
-      instance?.proxy?.$nextTick(() => {
+      void instance?.proxy?.$nextTick(() => {
         for (const key in innerRef.value) {
           if (typeof innerRef.value[key] === 'function') {
             publicApi[key] = innerRef.value[key];

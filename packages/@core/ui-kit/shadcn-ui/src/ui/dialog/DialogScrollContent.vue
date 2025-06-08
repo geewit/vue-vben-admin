@@ -27,6 +27,18 @@ const delegatedProps = computed(() => {
 });
 
 const forwarded = useForwardPropsEmits(delegatedProps, emits);
+
+function handlePointerDownOutside(event: PointerDownOutsideEvent) {
+  const originalEvent = event.detail.originalEvent as PointerEvent;
+  const target = originalEvent.target as HTMLElement;
+  // 如果点击位置在 target 边界之外，就阻止默认关闭行为
+  if (
+    originalEvent.offsetX > target.clientWidth ||
+    originalEvent.offsetY > target.clientHeight
+  ) {
+    event.preventDefault();
+  }
+}
 </script>
 
 <template>
@@ -44,18 +56,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
         "
         :style="{ zIndex }"
         v-bind="forwarded"
-        @pointer-down-outside="
-          (event) => {
-            const originalEvent = event.detail.originalEvent;
-            const target = originalEvent.target as HTMLElement;
-            if (
-              originalEvent.offsetX > target.clientWidth ||
-              originalEvent.offsetY > target.clientHeight
-            ) {
-              event.preventDefault();
-            }
-          }
-        "
+        @pointer-down-outside="handlePointerDownOutside"
       >
         <slot></slot>
 
