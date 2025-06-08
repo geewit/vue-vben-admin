@@ -8,13 +8,19 @@ export default defineConfig(async () => {
         proxy: {
           '/api': {
             changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, ''),
-            // mock代理目标地址
             target: 'http://localhost:5320/api',
             ws: true,
-          },
-        },
-      },
-    },
+            configure: (proxy, _options) => {
+              proxy.on('proxyReq', (proxyReq, req) => {
+                if (req.url?.startsWith('/api')) {
+                  req.url = req.url.replace(/^\/api/, '');
+                  proxyReq.path = req.url;
+                }
+              });
+            }
+          }
+        }
+      }
+    }
   };
 });
