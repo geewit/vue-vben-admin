@@ -197,7 +197,7 @@ defineExpose({ toggleOpenState, open, close });
           :placeholder="$t('ui.iconPicker.placeholder')"
           role="combobox"
           :aria-label="$t('ui.iconPicker.placeholder')"
-          aria-expanded="visible"
+          aria-expanded="true"
           :[`onUpdate:${modelValueProp}`]="updateCurrentSelect"
           v-bind="getBindAttrs"
         >
@@ -217,7 +217,7 @@ defineExpose({ toggleOpenState, open, close });
             class="h-8 w-full pr-8"
             role="combobox"
             :aria-label="$t('ui.iconPicker.placeholder')"
-            aria-expanded="visible"
+            aria-expanded="true"
           />
           <VbenIcon
             :icon="currentSelect || Grip"

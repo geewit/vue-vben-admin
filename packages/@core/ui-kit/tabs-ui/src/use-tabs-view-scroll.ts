@@ -63,10 +63,10 @@ export function useTabsViewScroll(props: TabsProps) {
     );
 
     scrollViewportEl.value = viewportEl;
-    calcShowScrollbarButton();
+    void calcShowScrollbarButton();
 
     await nextTick();
-    scrollToActiveIntoView();
+    void scrollToActiveIntoView();
 
     // 监听大小变化
     resizeObserver?.disconnect();
@@ -154,7 +154,7 @@ export function useTabsViewScroll(props: TabsProps) {
     async () => {
       // 200为了等待 tab 切换动画完成
       // setTimeout(() => {
-      scrollToActiveIntoView();
+      void scrollToActiveIntoView();
       // }, 300);
     },
     {
@@ -176,7 +176,7 @@ export function useTabsViewScroll(props: TabsProps) {
   watch(
     () => props.styleType,
     () => {
-      initScrollbar();
+      void initScrollbar();
     }
   );
 

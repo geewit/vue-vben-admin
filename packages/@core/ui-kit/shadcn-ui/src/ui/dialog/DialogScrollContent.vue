@@ -14,6 +14,10 @@ import {
   useForwardPropsEmits
 } from 'radix-vue';
 
+type PointerDownOutsideEvent = CustomEvent<{
+  originalEvent: PointerEvent;
+}>;
+
 const props = withDefaults(
   defineProps<DialogContentProps & { class?: any; zIndex?: number }>(),
   { zIndex: 1000 }

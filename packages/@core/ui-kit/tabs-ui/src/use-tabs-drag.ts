@@ -105,7 +105,7 @@ export function useTabsDrag(props: TabsProps, emit: EmitType) {
       return;
     }
     await nextTick();
-    initTabsSortable();
+    await initTabsSortable();
   }
 
   onMounted(init);
@@ -114,7 +114,7 @@ export function useTabsDrag(props: TabsProps, emit: EmitType) {
     () => props.styleType,
     () => {
       sortableInstance.value?.destroy();
-      init();
+      void init();
     }
   );
 
