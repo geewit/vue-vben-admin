@@ -3,15 +3,10 @@ import type { Linter } from 'eslint';
 import { interopDefault } from '../util';
 
 export async function typescript(): Promise<Linter.Config[]> {
-  const pluginTsPromise = interopDefault(
-    import('@typescript-eslint/eslint-plugin')
-  );
-  const parserTsPromise = interopDefault(import('@typescript-eslint/parser'));
-
-  const [pluginTs, parserTs] = (await Promise.all([
-    pluginTsPromise,
-    parserTsPromise
-  ])) as [Linter.Plugin, any];
+  const [pluginTs, parserTs] = await Promise.all([
+    import('@typescript-eslint/eslint-plugin').then(interopDefault),
+    import('@typescript-eslint/parser').then(interopDefault)
+  ] as const);
 
   return [
     {
@@ -30,9 +25,7 @@ export async function typescript(): Promise<Linter.Config[]> {
           sourceType: 'module'
         }
       },
-      plugins: {
-        '@typescript-eslint': pluginTs
-      },
+      plugins: {},
       rules: {
         ...pluginTs.configs['eslint-recommended']?.overrides?.[0]?.rules,
         ...pluginTs.configs?.strict?.rules,
