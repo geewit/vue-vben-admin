@@ -3,14 +3,17 @@ import type { Linter } from 'eslint';
 import { interopDefault } from '../util';
 
 export async function vue(): Promise<Linter.Config[]> {
+  const pluginVuePromise = interopDefault(import('eslint-plugin-vue'));
+  const parserVuePromise = interopDefault(import('vue-eslint-parser'));
+  /**
+   * @ts-expect-error missing types
+   */
+  const parserTsPromise = interopDefault(import('@typescript-eslint/parser'));
   const [pluginVue, parserVue, parserTs] = await Promise.all([
-    interopDefault(import('eslint-plugin-vue')),
-    interopDefault(import('vue-eslint-parser')),
-    /**
-     * @ts-expect-error missing types
-     */
-    interopDefault(import('@typescript-eslint/parser'))
-  ] as const);
+    pluginVuePromise,
+    parserVuePromise,
+    parserTsPromise
+  ]);
 
   const flatEssential = pluginVue.configs?.['flat/essential'] || [];
   const flatStronglyRecommended =
