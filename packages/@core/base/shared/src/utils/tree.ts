@@ -13,11 +13,11 @@ interface TreeConfigOptions {
 function traverseTreeValues<T, V>(
   tree: T[],
   getValue: (node: T) => V,
-  options?: TreeConfigOptions,
+  options?: TreeConfigOptions
 ): V[] {
   const result: V[] = [];
   const { childProps } = options || {
-    childProps: 'children',
+    childProps: 'children'
   };
 
   const dfs = (treeNode: T) => {
@@ -50,10 +50,10 @@ function traverseTreeValues<T, V>(
 function filterTree<T extends Record<string, any>>(
   tree: T[],
   filter: (node: T) => boolean,
-  options?: TreeConfigOptions,
+  options?: TreeConfigOptions
 ): T[] {
   const { childProps } = options || {
-    childProps: 'children',
+    childProps: 'children'
   };
 
   const _filterTree = (nodes: T[]): T[] => {
@@ -80,10 +80,10 @@ function filterTree<T extends Record<string, any>>(
 function mapTree<T, V extends Record<string, any>>(
   tree: T[],
   mapper: (node: T) => V,
-  options?: TreeConfigOptions,
+  options?: TreeConfigOptions
 ): V[] {
   const { childProps } = options || {
-    childProps: 'children',
+    childProps: 'children'
   };
   return tree.map((node) => {
     const mapperNode: Record<string, any> = mapper(node);

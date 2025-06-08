@@ -15,15 +15,15 @@ const formSchema = computed((): VbenFormSchema[] => {
     {
       component: 'VbenInput',
       componentProps: {
-        placeholder: 'example@example.com',
+        placeholder: 'example@example.com'
       },
       fieldName: 'email',
       label: $t('authentication.email'),
       rules: z
         .string()
         .min(1, { message: $t('authentication.emailTip') })
-        .email($t('authentication.emailValidErrorTip')),
-    },
+        .email($t('authentication.emailValidErrorTip'))
+    }
   ];
 });
 

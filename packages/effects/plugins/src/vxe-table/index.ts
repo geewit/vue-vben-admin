@@ -6,5 +6,5 @@ export { default as VbenVxeGrid } from './use-vxe-grid.vue';
 export type {
   VxeGridListeners,
   VxeGridProps,
-  VxeGridPropTypes,
+  VxeGridPropTypes
 } from 'vxe-table';

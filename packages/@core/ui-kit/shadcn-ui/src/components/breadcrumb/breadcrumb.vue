@@ -13,7 +13,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from '../../ui';
 import { VbenIcon } from '../icon';
 
@@ -21,7 +21,7 @@ interface Props extends BreadcrumbProps {}
 
 defineOptions({ name: 'Breadcrumb' });
 withDefaults(defineProps<Props>(), {
-  showIcon: false,
+  showIcon: false
 });
 
 const emit = defineEmits<{ select: [string] }>();

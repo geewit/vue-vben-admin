@@ -7,13 +7,13 @@ async function viteVxeTableImportsPlugin(): Promise<PluginOption> {
     lazyImport({
       resolvers: [
         VxeResolver({
-          libraryName: 'vxe-table',
+          libraryName: 'vxe-table'
         }),
         VxeResolver({
-          libraryName: 'vxe-pc-ui',
-        }),
-      ],
-    }),
+          libraryName: 'vxe-pc-ui'
+        })
+      ]
+    })
   ];
 }
 

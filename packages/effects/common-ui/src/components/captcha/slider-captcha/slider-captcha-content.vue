@@ -18,14 +18,14 @@ const style = computed(() => {
   const { contentStyle } = props;
 
   return {
-    ...contentStyle,
+    ...contentStyle
   };
 });
 
 defineExpose({
   getEl: () => {
     return contentRef.value;
-  },
+  }
 });
 </script>
 
@@ -33,7 +33,7 @@ defineExpose({
   <div
     ref="contentRef"
     :class="{
-      [$style.success]: isPassing,
+      [$style.success]: isPassing
     }"
     :style="style"
     class="absolute top-0 flex size-full select-none items-center justify-center text-xs"

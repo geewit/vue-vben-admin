@@ -15,7 +15,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   defaultValue: '',
-  tabs: () => [],
+  tabs: () => []
 });
 
 const activeTab = defineModel<string>();
@@ -26,13 +26,13 @@ const getDefaultValue = computed(() => {
 
 const tabsStyle = computed(() => {
   return {
-    'grid-template-columns': `repeat(${props.tabs.length}, minmax(0, 1fr))`,
+    'grid-template-columns': `repeat(${props.tabs.length}, minmax(0, 1fr))`
   };
 });
 
 const tabsIndicatorStyle = computed(() => {
   return {
-    width: `${(100 / props.tabs.length).toFixed(0)}%`,
+    width: `${(100 / props.tabs.length).toFixed(0)}%`
   };
 });
 </script>

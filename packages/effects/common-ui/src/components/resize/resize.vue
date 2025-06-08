@@ -11,153 +11,153 @@ import {
   onMounted,
   ref,
   toRefs,
-  watch,
+  watch
 } from 'vue';
 
 const props = defineProps({
   stickSize: {
     type: Number,
-    default: 8,
+    default: 8
   },
   parentScaleX: {
     type: Number,
-    default: 1,
+    default: 1
   },
   parentScaleY: {
     type: Number,
-    default: 1,
+    default: 1
   },
   isActive: {
     type: Boolean,
-    default: false,
+    default: false
   },
   preventActiveBehavior: {
     type: Boolean,
-    default: false,
+    default: false
   },
   isDraggable: {
     type: Boolean,
-    default: true,
+    default: true
   },
   isResizable: {
     type: Boolean,
-    default: true,
+    default: true
   },
   aspectRatio: {
     type: Boolean,
-    default: false,
+    default: false
   },
   parentLimitation: {
     type: Boolean,
-    default: false,
+    default: false
   },
   snapToGrid: {
     type: Boolean,
-    default: false,
+    default: false
   },
   gridX: {
     type: Number,
     default: 50,
     validator(val: number) {
       return val >= 0;
-    },
+    }
   },
   gridY: {
     type: Number,
     default: 50,
     validator(val: number) {
       return val >= 0;
-    },
+    }
   },
   parentW: {
     type: Number,
     default: 0,
     validator(val: number) {
       return val >= 0;
-    },
+    }
   },
   parentH: {
     type: Number,
     default: 0,
     validator(val: number) {
       return val >= 0;
-    },
+    }
   },
   w: {
     type: [String, Number],
     default: 200,
     validator(val: number) {
       return typeof val === 'string' ? val === 'auto' : val >= 0;
-    },
+    }
   },
   h: {
     type: [String, Number],
     default: 200,
     validator(val: number) {
       return typeof val === 'string' ? val === 'auto' : val >= 0;
-    },
+    }
   },
   minw: {
     type: Number,
     default: 50,
     validator(val: number) {
       return val >= 0;
-    },
+    }
   },
   minh: {
     type: Number,
     default: 50,
     validator(val: number) {
       return val >= 0;
-    },
+    }
   },
   x: {
     type: Number,
     default: 0,
     validator(val: number) {
       return typeof val === 'number';
-    },
+    }
   },
   y: {
     type: Number,
     default: 0,
     validator(val: number) {
       return typeof val === 'number';
-    },
+    }
   },
   z: {
     type: [String, Number],
     default: 'auto',
     validator(val: number) {
       return typeof val === 'string' ? val === 'auto' : val >= 0;
-    },
+    }
   },
   dragHandle: {
     type: String,
-    default: null,
+    default: null
   },
   dragCancel: {
     type: String,
-    default: null,
+    default: null
   },
   sticks: {
     type: Array<'bl' | 'bm' | 'br' | 'ml' | 'mr' | 'tl' | 'tm' | 'tr'>,
     default() {
       return ['tl', 'tm', 'tr', 'mr', 'br', 'bm', 'bl', 'ml'];
-    },
+    }
   },
   axis: {
     type: String,
     default: 'both',
     validator(val: string) {
       return ['both', 'none', 'x', 'y'].includes(val);
-    },
+    }
   },
   contentClass: {
     type: String,
     required: false,
-    default: '',
-  },
+    default: ''
+  }
 });
 
 const emit = defineEmits([
@@ -167,20 +167,20 @@ const emit = defineEmits([
   'resizing',
   'resizestop',
   'activated',
-  'deactivated',
+  'deactivated'
 ]);
 
 const styleMapping = {
   y: {
     t: 'top',
     m: 'marginTop',
-    b: 'bottom',
+    b: 'bottom'
   },
   x: {
     l: 'left',
     m: 'marginLeft',
-    r: 'right',
-  },
+    r: 'right'
+  }
 };
 
 function addEvents(events: Map<string, (...args: any[]) => void>) {
@@ -221,7 +221,7 @@ const {
   dragCancel,
   sticks,
   axis,
-  contentClass,
+  contentClass
 } = toRefs(props);
 
 // states
@@ -252,13 +252,13 @@ const dimensionsBeforeMove = ref({
   bottom: 0,
   left: 0,
   width: 0,
-  height: 0,
+  height: 0
 });
 const limits = ref({
   left: { min: null as null | number, max: null as null | number },
   right: { min: null as null | number, max: null as null | number },
   top: { min: null as null | number, max: null as null | number },
-  bottom: { min: null as null | number, max: null as null | number },
+  bottom: { min: null as null | number, max: null as null | number }
 });
 const currentStick = ref<null | string>(null);
 
@@ -272,12 +272,12 @@ const rect = computed(() => ({
   left: Math.round(left.value!),
   top: Math.round(top.value!),
   width: Math.round(width.value),
-  height: Math.round(height.value),
+  height: Math.round(height.value)
 }));
 
 const saveDimensionsBeforeMove = ({
   pointerX,
-  pointerY,
+  pointerY
 }: {
   pointerX: number;
   pointerY: number;
@@ -298,7 +298,7 @@ const saveDimensionsBeforeMove = ({
 
 const sideCorrectionByLimit = (
   limit: { max: number; min: number },
-  current: number,
+  current: number
 ) => {
   let value = current;
 
@@ -330,14 +330,14 @@ const rectCorrectionByLimit = (rect: {
   newTop = sideCorrectionByLimit(limits.value.top as RectRange, newTop);
   newBottom = sideCorrectionByLimit(
     limits.value.bottom as RectRange,
-    newBottom,
+    newBottom
   );
 
   return {
     newLeft,
     newRight,
     newTop,
-    newBottom,
+    newBottom
   };
 };
 
@@ -397,7 +397,7 @@ const stickMove = (delta: { x: number; y: number }) => {
         newBottom =
           (parentHeight.value as number) -
           Math.round(
-            ((parentHeight.value as number) - newBottom) / gridY.value,
+            ((parentHeight.value as number) - newBottom) / gridY.value
           ) *
             gridY.value;
       }
@@ -451,7 +451,7 @@ const stickMove = (delta: { x: number; y: number }) => {
     newLeft,
     newRight,
     newTop,
-    newBottom,
+    newBottom
   }));
 
   if (aspectRatio.value) {
@@ -459,7 +459,7 @@ const stickMove = (delta: { x: number; y: number }) => {
       newLeft,
       newRight,
       newTop,
-      newBottom,
+      newBottom
     }));
   }
 
@@ -488,14 +488,14 @@ const stickUp = () => {
     x: 0,
     y: 0,
     w: 0,
-    h: 0,
+    h: 0
   });
 
   limits.value = {
     left: { min: null, max: null },
     right: { min: null, max: null },
     top: { min: null, max: null },
-    bottom: { min: null, max: null },
+    bottom: { min: null, max: null }
   };
 
   emit('resizing', rect.value);
@@ -507,7 +507,7 @@ const calcDragLimitation = () => {
     left: { min: 0, max: (parentWidth.value as number) - width.value },
     right: { min: 0, max: (parentWidth.value as number) - width.value },
     top: { min: 0, max: (parentHeight.value as number) - height.value },
-    bottom: { min: 0, max: (parentHeight.value as number) - height.value },
+    bottom: { min: 0, max: (parentHeight.value as number) - height.value }
   };
 };
 
@@ -527,20 +527,20 @@ const calcResizeLimits = () => {
   const limits = {
     left: {
       min: parentLim,
-      max: (left.value as number) + (width.value - minw.value),
+      max: (left.value as number) + (width.value - minw.value)
     },
     right: {
       min: parentLim,
-      max: (right.value as number) + (width.value - minw.value),
+      max: (right.value as number) + (width.value - minw.value)
     },
     top: {
       min: parentLim,
-      max: (top.value as number) + (height.value - minh.value),
+      max: (top.value as number) + (height.value - minh.value)
     },
     bottom: {
       min: parentLim,
-      max: (bottom.value as number) + (height.value - minh.value),
-    },
+      max: (bottom.value as number) + (height.value - minh.value)
+    }
   };
 
   if (aspectRatio.value) {
@@ -551,7 +551,7 @@ const calcResizeLimits = () => {
           Math.min(top.value!, bottom.value!) * aspectFactor.value! * 2,
         max:
           left.value! +
-          ((height.value - minh.value!) / 2) * aspectFactor.value! * 2,
+          ((height.value - minh.value!) / 2) * aspectFactor.value! * 2
       },
       right: {
         min:
@@ -559,7 +559,7 @@ const calcResizeLimits = () => {
           Math.min(top.value!, bottom.value!) * aspectFactor.value! * 2,
         max:
           right.value! +
-          ((height.value - minh.value!) / 2) * aspectFactor.value! * 2,
+          ((height.value - minh.value!) / 2) * aspectFactor.value! * 2
       },
       top: {
         min:
@@ -567,7 +567,7 @@ const calcResizeLimits = () => {
           (Math.min(left.value!, right.value!) / aspectFactor.value!) * 2,
         max:
           top.value! +
-          ((width.value - minw.value) / 2 / aspectFactor.value!) * 2,
+          ((width.value - minw.value) / 2 / aspectFactor.value!) * 2
       },
       bottom: {
         min:
@@ -575,27 +575,27 @@ const calcResizeLimits = () => {
           (Math.min(left.value!, right.value!) / aspectFactor.value!) * 2,
         max:
           bottom.value! +
-          ((width.value - minw.value) / 2 / aspectFactor.value!) * 2,
-      },
+          ((width.value - minw.value) / 2 / aspectFactor.value!) * 2
+      }
     };
 
     if (currentStick.value![0] === 'm') {
       limits.left = {
         min: Math.max(limits.left.min!, aspectLimits.left.min),
-        max: Math.min(limits.left.max, aspectLimits.left.max),
+        max: Math.min(limits.left.max, aspectLimits.left.max)
       };
       limits.right = {
         min: Math.max(limits.right.min!, aspectLimits.right.min),
-        max: Math.min(limits.right.max, aspectLimits.right.max),
+        max: Math.min(limits.right.max, aspectLimits.right.max)
       };
     } else if (currentStick.value![1] === 'm') {
       limits.top = {
         min: Math.max(limits.top.min!, aspectLimits.top.min),
-        max: Math.min(limits.top.max, aspectLimits.top.max),
+        max: Math.min(limits.top.max, aspectLimits.top.max)
       };
       limits.bottom = {
         min: Math.max(limits.bottom.min!, aspectLimits.bottom.min),
-        max: Math.min(limits.bottom.max, aspectLimits.bottom.max),
+        max: Math.min(limits.bottom.max, aspectLimits.bottom.max)
       };
     }
   }
@@ -606,18 +606,18 @@ const calcResizeLimits = () => {
 const positionStyle = computed(() => ({
   top: `${top.value}px`,
   left: `${left.value}px`,
-  zIndex: zIndex.value!,
+  zIndex: zIndex.value!
 }));
 
 const sizeStyle = computed(() => ({
   width: w.value === 'auto' ? 'auto' : `${width.value}px`,
-  height: h.value === 'auto' ? 'auto' : `${height.value}px`,
+  height: h.value === 'auto' ? 'auto' : `${height.value}px`
 }));
 
 const stickStyles = computed(() => (stick: string) => {
   const stickStyle = {
     width: `${stickSize.value / parentScaleX.value}px`,
-    height: `${stickSize.value / parentScaleY.value}px`,
+    height: `${stickSize.value / parentScaleY.value}px`
   };
   stickStyle[
     styleMapping.y[stick[0] as 'b' | 'm' | 't'] as 'height' | 'width'
@@ -681,7 +681,7 @@ const bodyMove = (delta: { x: number; y: number }) => {
     newLeft: left.value,
     newRight: right.value,
     newTop: top.value,
-    newBottom: bottom.value,
+    newBottom: bottom.value
   } = rectCorrectionByLimit({ newLeft, newRight, newTop, newBottom }));
 
   emit('dragging', rect.value);
@@ -699,21 +699,21 @@ const bodyUp = () => {
     x: 0,
     y: 0,
     w: 0,
-    h: 0,
+    h: 0
   });
 
   limits.value = {
     left: { min: null, max: null },
     right: { min: null, max: null },
     top: { min: null, max: null },
-    bottom: { min: null, max: null },
+    bottom: { min: null, max: null }
   };
 };
 
 const stickDown = (
   stick: string,
   ev: { pageX: any; pageY: any; touches?: any },
-  force = false,
+  force = false
 ) => {
   if ((!isResizable.value || !active.value) && !force) {
     return;
@@ -744,7 +744,7 @@ const move = (ev: MouseEvent & TouchEvent) => {
 
   const delta = {
     x: (dimensionsBeforeMove.value.pointerX - pageX) / parentScaleX.value,
-    y: (dimensionsBeforeMove.value.pointerY - pageY) / parentScaleY.value,
+    y: (dimensionsBeforeMove.value.pointerY - pageY) / parentScaleY.value
   };
 
   if (stickDrag.value) {
@@ -796,8 +796,8 @@ const domEvents = ref(
     ['touchcancel', up],
     ['touchend', up],
     ['touchmove', move],
-    ['touchstart', up],
-  ]),
+    ['touchstart', up]
+  ])
 );
 
 const container = ref<HTMLDivElement>();
@@ -825,9 +825,9 @@ onMounted(() => {
     [...($el?.querySelectorAll(dragHandle.value) || [])].forEach(
       (dragHandle) => {
         (dragHandle as HTMLElement).dataset.dragHandle = String(
-          currentInstance?.uid,
+          currentInstance?.uid
         );
-      },
+      }
     );
   }
 
@@ -835,9 +835,9 @@ onMounted(() => {
     [...($el?.querySelectorAll(dragCancel.value) || [])].forEach(
       (cancelHandle) => {
         (cancelHandle as HTMLElement).dataset.dragCancel = String(
-          currentInstance?.uid,
+          currentInstance?.uid
         );
-      },
+      }
     );
   }
 });
@@ -909,7 +909,7 @@ watch(
     } else {
       emit('deactivated');
     }
-  },
+  }
 );
 
 watch(
@@ -917,7 +917,7 @@ watch(
   (val) => {
     active.value = val;
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 watch(
@@ -927,7 +927,7 @@ watch(
       zIndex.value = val as number;
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 watch(
@@ -946,7 +946,7 @@ watch(
     nextTick(() => {
       bodyUp();
     });
-  },
+  }
 );
 
 watch(
@@ -965,7 +965,7 @@ watch(
     nextTick(() => {
       bodyUp();
     });
-  },
+  }
 );
 
 watch(
@@ -981,14 +981,14 @@ watch(
     stickDown(
       stick,
       { pageX: right.value, pageY: top.value! + height.value / 2 },
-      true,
+      true
     );
     stickMove({ x: delta, y: 0 });
 
     nextTick(() => {
       stickUp();
     });
-  },
+  }
 );
 
 watch(
@@ -1004,14 +1004,14 @@ watch(
     stickDown(
       stick,
       { pageX: left.value! + width.value / 2, pageY: bottom.value },
-      true,
+      true
     );
     stickMove({ x: 0, y: delta });
 
     nextTick(() => {
       stickUp();
     });
-  },
+  }
 );
 
 watch(
@@ -1019,7 +1019,7 @@ watch(
   (val) => {
     right.value = val - width.value - left.value!;
     parentWidth.value = val;
-  },
+  }
 );
 
 watch(
@@ -1027,7 +1027,7 @@ watch(
   (val) => {
     bottom.value = val - height.value - top.value!;
     parentHeight.value = val;
-  },
+  }
 );
 </script>
 

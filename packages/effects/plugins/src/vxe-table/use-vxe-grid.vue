@@ -5,7 +5,7 @@ import type {
   VxeGridListeners,
   VxeGridPropTypes,
   VxeGridProps as VxeTableGridProps,
-  VxeToolbarPropTypes,
+  VxeToolbarPropTypes
 } from 'vxe-table';
 
 import type { SetupContext } from 'vue';
@@ -22,7 +22,7 @@ import {
   toRaw,
   useSlots,
   useTemplateRef,
-  watch,
+  watch
 } from 'vue';
 
 import { usePriorityValues } from '@vben/hooks';
@@ -34,7 +34,7 @@ import {
   cn,
   isBoolean,
   isEqual,
-  mergeWithArrayOverride,
+  mergeWithArrayOverride
 } from '@vben/utils';
 
 import { VbenHelpTooltip, VbenLoading } from '@vben-core/shadcn-ui';
@@ -74,13 +74,14 @@ const {
   tableTitle,
   tableTitleHelp,
   showSearchForm,
-  separator,
+  separator
 } = usePriorityValues(props, state);
 
 const { isMobile } = usePreferences();
 const isSeparator = computed(() => {
   if (
-    !formOptions.value || !showSearchForm.value ||
+    !formOptions.value ||
+    !showSearchForm.value ||
     separator.value === false
   ) {
     return false;
@@ -101,31 +102,31 @@ const slots: SetupContext['slots'] = useSlots();
 
 const [Form, formApi] = useTableForm({
   compact: true,
-    handleSubmit: async () => {
-      const formValues = await formApi.getValues();
-      formApi.setLatestSubmissionValues(toRaw(formValues));
-      await props.api.reload(formValues);
-    },
+  handleSubmit: async () => {
+    const formValues = await formApi.getValues();
+    formApi.setLatestSubmissionValues(toRaw(formValues));
+    await props.api.reload(formValues);
+  },
   handleReset: async () => {
     const prevValues = await formApi.getValues();
     await formApi.resetForm();
     const formValues = await formApi.getValues();
     formApi.setLatestSubmissionValues(formValues);
     // 如果值发生了变化，submitOnChange会触发刷新。所以只在submitOnChange为false或者值没有发生变化时，手动刷新
-      if (isEqual(prevValues, formValues) || !formOptions.value?.submitOnChange) {
-        await props.api.reload(formValues);
-      }
+    if (isEqual(prevValues, formValues) || !formOptions.value?.submitOnChange) {
+      await props.api.reload(formValues);
+    }
   },
   commonConfig: {
     componentProps: {
-      class: 'w-full',
-    },
+      class: 'w-full'
+    }
   },
   showCollapseButton: true,
   submitButtonOptions: {
-    content: computed(() => $t('common.search')),
+    content: computed(() => $t('common.search'))
   },
-  wrapperClass: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+  wrapperClass: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
 });
 
 const showTableTitle = computed(() => {
@@ -150,12 +151,12 @@ const toolbarOptions = computed(() => {
     status: showSearchForm.value ? 'primary' : undefined,
     title: showSearchForm.value
       ? $t('common.hideSearchPanel')
-      : $t('common.showSearchPanel'),
+      : $t('common.showSearchPanel')
   };
   // 将搜索按钮合并到用户配置的toolbarConfig.tools中
   const toolbarConfig: VxeGridPropTypes.ToolbarConfig = {
     tools: (gridOptions.value?.toolbarConfig?.tools ??
-      []) as VxeToolbarPropTypes.ToolConfig[],
+      []) as VxeToolbarPropTypes.ToolConfig[]
   };
   if (gridOptions.value?.toolbarConfig?.search && !!formOptions.value) {
     toolbarConfig.tools = Array.isArray(toolbarConfig.tools)
@@ -173,7 +174,7 @@ const toolbarOptions = computed(() => {
     ...(slotActions || showTableTitle.value
       ? { buttons: TOOLBAR_ACTIONS }
       : {}),
-    ...(slotTools ? { tools: TOOLBAR_TOOLS } : {}),
+    ...(slotTools ? { tools: TOOLBAR_TOOLS } : {})
   };
   return { toolbarConfig };
 });
@@ -186,8 +187,8 @@ const options = computed(() => {
       {},
       toRaw(toolbarOptions.value),
       toRaw(gridOptions.value),
-      globalGridConfig,
-    ),
+      globalGridConfig
+    )
   );
 
   if (mergedOptions.proxyConfig) {
@@ -203,14 +204,14 @@ const options = computed(() => {
       'PrevPage',
       'Number',
       'NextPage',
-      'NextJump',
+      'NextJump'
     ] as any;
     const layouts = [
       'Total',
       'Sizes',
       'Home',
       ...mobileLayouts,
-      'End',
+      'End'
     ] as readonly string[];
     mergedOptions.pagerConfig = mergeWithArrayOverride(
       {},
@@ -221,8 +222,8 @@ const options = computed(() => {
         pageSizes: [10, 20, 30, 50, 100, 200],
         className: 'mt-2 w-full',
         layouts: isMobile.value ? mobileLayouts : layouts,
-        size: 'mini' as const,
-      },
+        size: 'mini' as const
+      }
     );
   }
   if (mergedOptions.formConfig) {
@@ -247,7 +248,7 @@ function onSearchBtnClick() {
 const events = computed(() => {
   return {
     ...gridEvents.value,
-    toolbarToolClick: onToolbarToolClick,
+    toolbarToolClick: onToolbarToolClick
   };
 });
 
@@ -257,7 +258,7 @@ const delegatedSlots = computed(() => {
   for (const key of Object.keys(slots)) {
     if (
       !['empty', 'form', 'loading', TOOLBAR_ACTIONS, TOOLBAR_TOOLS].includes(
-        key,
+        key
       )
     ) {
       resultSlots.push(key);
@@ -292,7 +293,7 @@ async function init() {
   const defaultGridOptions: VxeTableGridProps = mergeWithArrayOverride(
     {},
     toRaw(gridOptions.value),
-    toRaw(globalGridConfig),
+    toRaw(globalGridConfig)
   );
   // 内部主动加载数据，防止form的默认值影响
   const autoLoad = defaultGridOptions.proxyConfig?.autoLoad;
@@ -300,7 +301,7 @@ async function init() {
   if (enableProxyConfig && autoLoad) {
     props.api.grid.commitProxy?.(
       '_init',
-      formOptions.value ? ((await formApi.getValues()) ?? {}) : {},
+      formOptions.value ? ((await formApi.getValues()) ?? {}) : {}
     );
     // props.api.reload(formApi.form?.values ?? {});
   }
@@ -311,13 +312,13 @@ async function init() {
   // 因为第一次初始化之后会把defaultGridOptions和gridOptions合并后缓存进State
   if (formConfig && formConfig.enabled) {
     console.warn(
-      '[Vben Vxe Table]: The formConfig in the grid is not supported, please use the `formOptions` props',
+      '[Vben Vxe Table]: The formConfig in the grid is not supported, please use the `formOptions` props'
     );
   }
   props.api?.setState?.({ gridOptions: defaultGridOptions });
   // form 由 vben-form 代替，所以需要保证query相关事件可以拿到参数
   extendProxyOptions(props.api, defaultGridOptions, () =>
-    formApi.getLatestSubmissionValues(),
+    formApi.getLatestSubmissionValues()
   );
 }
 
@@ -329,17 +330,17 @@ watch(
       const finalFormOptions: VbenFormProps = mergeWithArrayOverride(
         {},
         formOptions.value,
-        prev,
+        prev
       );
       return {
         ...finalFormOptions,
-        collapseTriggerResize: !!finalFormOptions.showCollapseButton,
+        collapseTriggerResize: !!finalFormOptions.showCollapseButton
       };
     });
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 const isCompactForm = computed(() => {
@@ -365,9 +366,9 @@ onUnmounted(() => {
         cn(
           'p-2',
           {
-            'pt-0': showToolbar && !formOptions,
+            'pt-0': showToolbar && !formOptions
           },
-          gridClass,
+          gridClass
         )
       "
       v-bind="options"
@@ -421,7 +422,7 @@ onUnmounted(() => {
                   : 'pb-4'
                 : isSeparator
                   ? 'pb-4'
-                  : 'pb-0',
+                  : 'pb-0'
             )
           "
         >
@@ -454,7 +455,7 @@ onUnmounted(() => {
           <div
             v-if="isSeparator"
             :style="{
-              ...(separatorBg ? { backgroundColor: separatorBg } : undefined),
+              ...(separatorBg ? { backgroundColor: separatorBg } : undefined)
             }"
             class="bg-background-deep z-100 absolute -left-2 bottom-1 h-2 w-[calc(100%+1rem)] overflow-hidden md:bottom-2 md:h-3"
           ></div>

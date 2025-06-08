@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type {
   OnActionClickParams,
-  VxeTableGridOptions,
+  VxeTableGridOptions
 } from '#/adapter/vxe-table';
 
 import { Page, useVbenDrawer } from '@vben/common-ui';
@@ -20,7 +20,7 @@ import Form from './modules/form.vue';
 
 const [FormDrawer, formDrawerApi] = await useVbenDrawer({
   connectedComponent: Form,
-  destroyOnClose: true,
+  destroyOnClose: true
 });
 
 const [Grid, gridApi] = useVbenVxeGrid({
@@ -29,35 +29,35 @@ const [Grid, gridApi] = useVbenVxeGrid({
     height: 'auto',
     keepSource: true,
     pagerConfig: {
-      enabled: false,
+      enabled: false
     },
     proxyConfig: {
       ajax: {
         query: async (_params) => {
           return await getMenuList();
-        },
-      },
+        }
+      }
     },
     rowConfig: {
-      keyField: 'id',
+      keyField: 'id'
     },
     toolbarConfig: {
       custom: true,
       export: false,
       refresh: { code: 'query' },
-      zoom: true,
+      zoom: true
     },
     treeConfig: {
       parentField: 'pid',
       rowField: 'id',
-      transform: false,
-    },
-  } as VxeTableGridOptions,
+      transform: false
+    }
+  } as VxeTableGridOptions
 });
 
 function onActionClick({
   code,
-  row,
+  row
 }: OnActionClickParams<SystemMenuApi.SystemMenu>) {
   switch (code) {
     case 'append': {
@@ -95,13 +95,13 @@ function onDelete(row: SystemMenuApi.SystemMenu) {
   const hideLoading = message.loading({
     content: $t('ui.actionMessage.deleting', [row.name]),
     duration: 0,
-    key: 'action_process_msg',
+    key: 'action_process_msg'
   });
   deleteMenu(row.id)
     .then(() => {
       message.success({
         content: $t('ui.actionMessage.deleteSuccess', [row.name]),
-        key: 'action_process_msg',
+        key: 'action_process_msg'
       });
       onRefresh();
     })

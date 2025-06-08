@@ -7,7 +7,7 @@ import {
   onMounted,
   onUpdated,
   ref,
-  watchEffect,
+  watchEffect
 } from 'vue';
 
 import { VbenTooltip } from '@vben-core/shadcn-ui';
@@ -85,7 +85,7 @@ const props = withDefaults(defineProps<Props>(), {
   tooltipColor: '',
   tooltipFontSize: 14,
   tooltipMaxWidth: undefined,
-  tooltipOverlayStyle: () => ({ textAlign: 'justify' }),
+  tooltipOverlayStyle: () => ({ textAlign: 'justify' })
 });
 
 const emit = defineEmits<{ expandChange: [boolean] }>();
@@ -167,7 +167,7 @@ watchEffect(
         props.tooltipMaxWidth ?? eleWidth.value + 24;
     }
   },
-  { flush: 'post' },
+  { flush: 'post' }
 );
 
 function onExpand() {
@@ -190,7 +190,7 @@ function handleExpand() {
         maxWidth: `${defaultTooltipMaxWidth}px`,
         fontSize: `${tooltipFontSize}px`,
         color: tooltipColor,
-        backgroundColor: tooltipBackgroundColor,
+        backgroundColor: tooltipBackgroundColor
       }"
       :disabled="
         !props.tooltip || isExpand || (props.tooltipWhenEllipsis && !isEllipsis)
@@ -207,11 +207,11 @@ function handleExpand() {
           :class="{
             '!cursor-pointer': expand,
             ['block truncate']: line === 1,
-            [$style.ellipsisMultiLine]: line > 1,
+            [$style.ellipsisMultiLine]: line > 1
           }"
           :style="{
             '-webkit-line-clamp': isExpand ? '' : line,
-            'max-width': textMaxWidth,
+            'max-width': textMaxWidth
           }"
           class="cursor-text overflow-hidden"
           @click="handleExpand"

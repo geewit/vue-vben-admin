@@ -9,7 +9,7 @@ import { ref } from 'vue';
 import {
   $t,
   setupI18n as coreSetup,
-  loadLocalesMapFromDir,
+  loadLocalesMapFromDir
 } from '@vben/locales';
 import { preferences } from '@vben/preferences';
 
@@ -23,7 +23,7 @@ const modules = import.meta.glob('./langs/**/*.json');
 
 const localesMap = loadLocalesMapFromDir(
   /\.\/langs\/([^/]+)\/(.*)\.json$/,
-  modules,
+  modules
 );
 /**
  * 加载应用特有的语言包
@@ -33,7 +33,7 @@ const localesMap = loadLocalesMapFromDir(
 async function loadMessages(lang: SupportedLanguagesType) {
   const [appLocaleMessages] = await Promise.all([
     localesMap[lang]?.(),
-    loadThirdPartyMessage(lang),
+    loadThirdPartyMessage(lang)
   ]);
   return appLocaleMessages?.default;
 }
@@ -95,7 +95,7 @@ async function setupI18n(app: App, options: LocaleSetupOptions = {}) {
     defaultLocale: preferences.app.locale,
     loadMessages,
     missingWarn: !import.meta.env.PROD,
-    ...options,
+    ...options
   });
 }
 

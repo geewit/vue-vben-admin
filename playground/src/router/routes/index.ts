@@ -5,7 +5,7 @@ import { mergeRouteModules, traverseTreeValues } from '@vben/utils';
 import { coreRoutes, fallbackNotFoundRoute } from './core';
 
 const dynamicRouteFiles = import.meta.glob('./modules/**/*.ts', {
-  eager: true,
+  eager: true
 });
 
 // 有需要可以自行打开注释，并创建文件夹
@@ -26,7 +26,7 @@ const externalRoutes: RouteRecordRaw[] = [];
 const routes: RouteRecordRaw[] = [
   ...coreRoutes,
   ...externalRoutes,
-  fallbackNotFoundRoute,
+  fallbackNotFoundRoute
 ];
 
 /** 基本路由列表，这些路由不需要进入权限拦截 */
@@ -36,7 +36,7 @@ const coreRouteNames = traverseTreeValues(coreRoutes, (route) => route.name);
 const accessRoutes = [...dynamicRoutes, ...staticRoutes];
 
 const componentKeys: string[] = Object.keys(
-  import.meta.glob('../../views/**/*.vue'),
+  import.meta.glob('../../views/**/*.vue')
 )
   .filter((item) => !item.includes('/modules/'))
   .map((v) => {

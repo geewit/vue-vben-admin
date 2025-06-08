@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 const props = withDefaults(defineProps<{ password?: string }>(), {
-  password: '',
+  password: ''
 });
 
 const strengthList: string[] = [
@@ -11,7 +11,7 @@ const strengthList: string[] = [
   '#ED6F6F',
   '#EFBD47',
   '#55D18780',
-  '#55D187',
+  '#55D187'
 ];
 
 const currentStrength = computed(() => {
@@ -56,7 +56,7 @@ function checkPasswordStrength(password: string) {
         <span
           :style="{
             backgroundColor: currentColor,
-            width: currentStrength >= index ? '100%' : '',
+            width: currentStrength >= index ? '100%' : ''
           }"
           class="absolute left-0 h-full w-0 rounded-sm transition-all duration-500"
         ></span>

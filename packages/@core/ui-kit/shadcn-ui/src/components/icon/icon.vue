@@ -8,7 +8,7 @@ import {
   isFunction,
   isHttpUrl,
   isObject,
-  isString,
+  isString
 } from '@vben-core/shared/utils';
 
 const props = defineProps<{

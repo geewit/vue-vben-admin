@@ -9,7 +9,7 @@ import type {
   LayoutType,
   NavigationStyleType,
   PreferencesButtonPositionType,
-  ThemeModeType,
+  ThemeModeType
 } from '@vben/types';
 
 import type { SegmentedItem } from '@vben-core/shadcn-ui';
@@ -22,14 +22,14 @@ import {
   clearPreferencesCache,
   preferences,
   resetPreferences,
-  usePreferences,
+  usePreferences
 } from '@vben/preferences';
 
 import { useVbenDrawer } from '@vben-core/popup-ui';
 import {
   VbenButton,
   VbenIconButton,
-  VbenSegmented,
+  VbenSegmented
 } from '@vben-core/shadcn-ui';
 import { globalShareState } from '@vben-core/shared/global-state';
 
@@ -53,7 +53,7 @@ import {
   Sidebar,
   Tabbar,
   Theme,
-  Widget,
+  Widget
 } from './blocks';
 
 const emit = defineEmits<{ clearPreferencesAndLogout: [] }>();
@@ -69,7 +69,7 @@ const appContentCompact = defineModel<ContentCompactType>('appContentCompact');
 const appWatermark = defineModel<boolean>('appWatermark');
 const appEnableCheckUpdates = defineModel<boolean>('appEnableCheckUpdates');
 const appPreferencesButtonPosition = defineModel<PreferencesButtonPositionType>(
-  'appPreferencesButtonPosition',
+  'appPreferencesButtonPosition'
 );
 
 const transitionProgress = defineModel<boolean>('transitionProgress');
@@ -88,10 +88,10 @@ const sidebarEnable = defineModel<boolean>('sidebarEnable');
 const sidebarWidth = defineModel<number>('sidebarWidth');
 const sidebarCollapsed = defineModel<boolean>('sidebarCollapsed');
 const sidebarCollapsedShowTitle = defineModel<boolean>(
-  'sidebarCollapsedShowTitle',
+  'sidebarCollapsedShowTitle'
 );
 const sidebarAutoActivateChild = defineModel<boolean>(
-  'sidebarAutoActivateChild',
+  'sidebarAutoActivateChild'
 );
 const sidebarExpandOnHover = defineModel<boolean>('sidebarExpandOnHover');
 const sidebarCollapsedButton = defineModel<boolean>('sidebarCollapsedButton');
@@ -105,7 +105,7 @@ const breadcrumbEnable = defineModel<boolean>('breadcrumbEnable');
 const breadcrumbShowIcon = defineModel<boolean>('breadcrumbShowIcon');
 const breadcrumbShowHome = defineModel<boolean>('breadcrumbShowHome');
 const breadcrumbStyleType = defineModel<BreadcrumbStyleType>(
-  'breadcrumbStyleType',
+  'breadcrumbStyleType'
 );
 const breadcrumbHideOnlyOne = defineModel<boolean>('breadcrumbHideOnlyOne');
 
@@ -119,11 +119,11 @@ const tabbarWheelable = defineModel<boolean>('tabbarWheelable');
 const tabbarStyleType = defineModel<string>('tabbarStyleType');
 const tabbarMaxCount = defineModel<number>('tabbarMaxCount');
 const tabbarMiddleClickToClose = defineModel<boolean>(
-  'tabbarMiddleClickToClose',
+  'tabbarMiddleClickToClose'
 );
 
 const navigationStyleType = defineModel<NavigationStyleType>(
-  'navigationStyleType',
+  'navigationStyleType'
 );
 const navigationSplit = defineModel<boolean>('navigationSplit');
 const navigationAccordion = defineModel<boolean>('navigationAccordion');
@@ -137,7 +137,7 @@ const copyrightSettingShow = defineModel<boolean>('copyrightSettingShow');
 const copyrightEnable = defineModel<boolean>('copyrightEnable');
 const copyrightCompanyName = defineModel<string>('copyrightCompanyName');
 const copyrightCompanySiteLink = defineModel<string>(
-  'copyrightCompanySiteLink',
+  'copyrightCompanySiteLink'
 );
 const copyrightDate = defineModel<string>('copyrightDate');
 const copyrightIcp = defineModel<string>('copyrightIcp');
@@ -145,14 +145,14 @@ const copyrightIcpLink = defineModel<string>('copyrightIcpLink');
 
 const shortcutKeysEnable = defineModel<boolean>('shortcutKeysEnable');
 const shortcutKeysGlobalSearch = defineModel<boolean>(
-  'shortcutKeysGlobalSearch',
+  'shortcutKeysGlobalSearch'
 );
 const shortcutKeysGlobalLogout = defineModel<boolean>(
-  'shortcutKeysGlobalLogout',
+  'shortcutKeysGlobalLogout'
 );
 
 const shortcutKeysGlobalLockScreen = defineModel<boolean>(
-  'shortcutKeysGlobalLockScreen',
+  'shortcutKeysGlobalLockScreen'
 );
 
 const widgetGlobalSearch = defineModel<boolean>('widgetGlobalSearch');
@@ -173,7 +173,7 @@ const {
   isMixedNav,
   isSideMixedNav,
   isSideMode,
-  isSideNav,
+  isSideNav
 } = usePreferences();
 const { copy } = useClipboard({ legacy: true });
 
@@ -185,20 +185,20 @@ const tabs = computed((): SegmentedItem[] => {
   return [
     {
       label: $t('preferences.appearance'),
-      value: 'appearance',
+      value: 'appearance'
     },
     {
       label: $t('preferences.layout'),
-      value: 'layout',
+      value: 'layout'
     },
     {
       label: $t('preferences.shortcutKeys.title'),
-      value: 'shortcutKey',
+      value: 'shortcutKey'
     },
     {
       label: $t('preferences.general'),
-      value: 'general',
-    },
+      value: 'general'
+    }
   ];
 });
 
@@ -216,7 +216,7 @@ async function handleCopy() {
 
   message.copyPreferencesSuccess?.(
     $t('preferences.copyPreferencesSuccessTitle'),
-    $t('preferences.copyPreferencesSuccess'),
+    $t('preferences.copyPreferencesSuccess')
   );
 }
 

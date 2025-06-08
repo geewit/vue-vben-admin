@@ -9,7 +9,7 @@ import {
   authenticateResponseInterceptor,
   defaultResponseInterceptor,
   errorMessageResponseInterceptor,
-  RequestClient,
+  RequestClient
 } from '@vben/request';
 import { useAccessStore } from '@vben/stores';
 import { cloneDeep } from '@vben/utils';
@@ -31,10 +31,10 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
       // storeAsString指示将BigInt存储为字符串，设为false则会存储为内置的BigInt类型
       return header.getContentType()?.toString().includes('application/json')
         ? cloneDeep(
-            JSONBigInt({ storeAsString: true, strict: true }).parse(data),
+            JSONBigInt({ storeAsString: true, strict: true }).parse(data)
           )
         : data;
-    },
+    }
   });
 
   /**
@@ -78,7 +78,7 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
       config.headers.Authorization = formatToken(accessStore.accessToken);
       config.headers['Accept-Language'] = preferences.app.locale;
       return config;
-    },
+    }
   });
 
   // 处理返回的响应数据格式
@@ -86,8 +86,8 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
     defaultResponseInterceptor({
       codeField: 'code',
       dataField: 'data',
-      successCode: 0,
-    }),
+      successCode: 0
+    })
   );
 
   // token过期的处理
@@ -97,8 +97,8 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
       doReAuthenticate,
       doRefreshToken,
       enableRefreshToken: preferences.app.enableRefreshToken,
-      formatToken,
-    }),
+      formatToken
+    })
   );
 
   // 通用的错误处理,如果没有进入上面的错误处理逻辑，就会进入这里
@@ -110,14 +110,14 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
       const errorMessage = responseData?.error ?? responseData?.message ?? '';
       // 如果没有错误信息，则会根据状态码进行提示
       message.error(errorMessage || msg);
-    }),
+    })
   );
 
   return client;
 }
 
 export const requestClient = createRequestClient(apiURL, {
-  responseReturn: 'data',
+  responseReturn: 'data'
 });
 
 export const baseRequestClient = new RequestClient({ baseURL: apiURL });

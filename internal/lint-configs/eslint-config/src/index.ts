@@ -15,7 +15,7 @@ import {
   regexp,
   typescript,
   unicorn,
-  vue,
+  vue
 } from './configs';
 import { customConfig } from './custom-config';
 
@@ -45,7 +45,7 @@ async function defineConfig(config: FlatConfig[] = []) {
     regexp(),
     command(),
     ...customConfig,
-    ...config,
+    ...config
   ];
 
   const resolved = await Promise.all(configs);

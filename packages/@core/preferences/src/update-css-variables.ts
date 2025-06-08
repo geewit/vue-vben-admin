@@ -36,7 +36,7 @@ function updateCSSVariables(preferences: Preferences) {
 
   // 获取当前的内置主题
   const currentBuiltType = [...BUILT_IN_THEME_PRESETS].find(
-    (item) => item.type === builtinType,
+    (item) => item.type === builtinType
   );
 
   let builtinTypeColorPrimary: string | undefined = '';
@@ -83,7 +83,7 @@ function updateMainColorVariables(preference: Preferences) {
     { color: colorPrimary, name: 'primary' },
     { alias: 'warning', color: colorWarning, name: 'yellow' },
     { alias: 'success', color: colorSuccess, name: 'green' },
-    { alias: 'destructive', color: colorDestructive, name: 'red' },
+    { alias: 'destructive', color: colorDestructive, name: 'red' }
   ]);
 
   // 要设置的 CSS 变量映射
@@ -91,7 +91,7 @@ function updateMainColorVariables(preference: Preferences) {
     '--green-500': '--success',
     '--primary-500': '--primary',
     '--red-500': '--destructive',
-    '--yellow-500': '--warning',
+    '--yellow-500': '--warning'
   };
 
   // 统一处理颜色变量的更新

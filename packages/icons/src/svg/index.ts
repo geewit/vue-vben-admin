@@ -21,5 +21,5 @@ export {
   SvgBellIcon,
   SvgCakeIcon,
   SvgCardIcon,
-  SvgDownloadIcon,
+  SvgDownloadIcon
 };

@@ -12,7 +12,7 @@ import { convertToHsl, TinyColor } from '@vben/utils';
 import { useThrottleFn } from '@vueuse/core';
 
 defineOptions({
-  name: 'PreferenceBuiltinTheme',
+  name: 'PreferenceBuiltinTheme'
 });
 
 const props = defineProps<{ isDark: boolean }>();
@@ -27,7 +27,7 @@ const updateThemeColorPrimary = useThrottleFn(
   },
   300,
   true,
-  true,
+  true
 );
 
 const inputValue = computed(() => {
@@ -106,7 +106,7 @@ watch(
   () => [modelValue.value, props.isDark] as [BuiltinThemeType, boolean],
   ([themeType, isDark]) => {
     const theme = builtinThemePresets.value.find(
-      (item) => item.type === themeType,
+      (item) => item.type === themeType
     );
     if (theme) {
       const primaryColor = isDark
@@ -115,7 +115,7 @@ watch(
 
       themeColorPrimary.value = primaryColor || theme.color;
     }
-  },
+  }
 );
 </script>
 
@@ -125,7 +125,7 @@ watch(
       <div class="flex cursor-pointer flex-col" @click="handleSelect(theme)">
         <div
           :class="{
-            'outline-box-active': theme.type === modelValue,
+            'outline-box-active': theme.type === modelValue
           }"
           class="outline-box flex-center group cursor-pointer"
         >

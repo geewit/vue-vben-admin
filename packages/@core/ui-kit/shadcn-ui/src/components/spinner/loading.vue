@@ -22,12 +22,12 @@ interface Props {
 }
 
 defineOptions({
-  name: 'VbenLoading',
+  name: 'VbenLoading'
 });
 
 const props = withDefaults(defineProps<Props>(), {
   minLoadingTime: 50,
-  text: '',
+  text: ''
 });
 // const startTime = ref(0);
 const showSpinner = ref(false);
@@ -54,8 +54,8 @@ watch(
     }, props.minLoadingTime);
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 function onTransitionEnd() {
@@ -71,9 +71,9 @@ function onTransitionEnd() {
       cn(
         'z-100 dark:bg-overlay bg-overlay-content absolute left-0 top-0 flex size-full flex-col items-center justify-center transition-all duration-500',
         {
-          'invisible opacity-0': !showSpinner,
+          'invisible opacity-0': !showSpinner
         },
-        props.class,
+        props.class
       )
     "
     @transitionend="onTransitionEnd"

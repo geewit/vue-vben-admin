@@ -3,7 +3,7 @@ import type Sortable from 'sortablejs';
 
 function useSortable<T extends HTMLElement>(
   sortableContainer: T,
-  options: SortableOptions = {},
+  options: SortableOptions = {}
 ) {
   const initializeSortable = async () => {
     const Sortable = await import(
@@ -14,13 +14,13 @@ function useSortable<T extends HTMLElement>(
       animation: 300,
       delay: 400,
       delayOnTouchOnly: true,
-      ...options,
+      ...options
     });
     return sortable as Sortable;
   };
 
   return {
-    initializeSortable,
+    initializeSortable
   };
 }
 

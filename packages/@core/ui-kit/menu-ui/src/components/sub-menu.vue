@@ -13,7 +13,7 @@ import {
   useMenu,
   useMenuContext,
   useMenuStyle,
-  useSubMenuContext,
+  useSubMenuContext
 } from '../hooks';
 import CollapseTransition from './collapse-transition.vue';
 import SubMenuContent from './sub-menu-content.vue';
@@ -26,7 +26,7 @@ defineOptions({ name: 'SubMenu' });
 
 const props = withDefaults(defineProps<Props>(), {
   disabled: false,
-  isSubMenuMore: false,
+  isSubMenuMore: false
 });
 
 const { parentMenu, parentPaths } = useMenu();
@@ -47,14 +47,14 @@ createSubMenuContext({
   handleMouseleave,
   level: (subMenu?.level ?? 0) + 1,
   mouseInChild,
-  removeSubMenu,
+  removeSubMenu
 });
 
 const opened = computed(() => {
   return rootMenu?.openedMenus.includes(props.path);
 });
 const isTopLevelMenuSubmenu = computed(
-  () => parentMenu.value?.type.name === 'Menu',
+  () => parentMenu.value?.type.name === 'Menu'
 );
 const mode = computed(() => rootMenu?.props.mode ?? 'vertical');
 const rounded = computed(() => rootMenu?.props.rounded);
@@ -69,7 +69,7 @@ const contentProps = computed((): HoverCardContentProps => {
   return {
     collisionPadding: { top: 20 },
     side,
-    sideOffset: isHorizontal ? 5 : 10,
+    sideOffset: isHorizontal ? 5 : 10
   };
 });
 
@@ -116,7 +116,7 @@ function handleClick() {
   rootMenu?.handleSubMenuClick({
     active: active.value,
     parentPaths: parentPaths.value,
-    path: props.path,
+    path: props.path
   });
 }
 
@@ -170,13 +170,13 @@ function handleMouseleave(deepDispatch = false) {
 }
 
 const menuIcon = computed(() =>
-  active.value ? props.activeIcon || props.icon : props.icon,
+  active.value ? props.activeIcon || props.icon : props.icon
 );
 
 const item = reactive({
   active,
   parentPaths,
-  path: props.path,
+  path: props.path
 });
 
 onMounted(() => {
@@ -195,7 +195,7 @@ onBeforeUnmount(() => {
       b(),
       is('opened', opened),
       is('active', active),
-      is('disabled', disabled),
+      is('disabled', disabled)
     ]"
     @focus="handleMouseenter"
     @mouseenter="handleMouseenter"
@@ -209,7 +209,7 @@ onBeforeUnmount(() => {
           is(rootMenu.theme, true),
           opened ? '' : 'hidden',
           'overflow-auto',
-          'max-h-[calc(var(--radix-hover-card-content-available-height)-20px)]',
+          'max-h-[calc(var(--radix-hover-card-content-available-height)-20px)]'
         ]"
         :content-props="contentProps"
         :open="true"

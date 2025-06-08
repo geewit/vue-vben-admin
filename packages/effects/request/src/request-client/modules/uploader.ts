@@ -11,7 +11,7 @@ class FileUploader {
   public async upload<T = any>(
     url: string,
     data: Record<string, any> & { file: Blob | File },
-    config?: RequestClientConfig,
+    config?: RequestClientConfig
   ): Promise<T> {
     const formData = new FormData();
 
@@ -29,8 +29,8 @@ class FileUploader {
       ...config,
       headers: {
         'Content-Type': 'multipart/form-data',
-        ...config?.headers,
-      },
+        ...config?.headers
+      }
     };
 
     return this.client.post(url, formData, finalConfig);

@@ -49,5 +49,5 @@ export {
   createMenuContext,
   createSubMenuContext,
   useMenuContext,
-  useSubMenuContext,
+  useSubMenuContext
 };

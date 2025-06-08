@@ -16,7 +16,7 @@ import { useElementHover } from '@vueuse/core';
  */
 export function useHoverToggle(
   refElement: Arrayable<MaybeElementRef>,
-  delay: (() => number) | number = 500,
+  delay: (() => number) | number = 500
 ) {
   const isHovers: Array<Ref<boolean>> = [];
   const value = ref(false);
@@ -39,7 +39,7 @@ export function useHoverToggle(
         value.value = val;
         timer.value = undefined;
       },
-      isFunction(delay) ? delay() : delay,
+      isFunction(delay) ? delay() : delay
     );
   }
 
@@ -48,7 +48,7 @@ export function useHoverToggle(
     (val) => {
       setValueDelay(!val);
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   const controller = {
@@ -57,7 +57,7 @@ export function useHoverToggle(
     },
     disable() {
       watcher.pause();
-    },
+    }
   };
 
   onUnmounted(() => {

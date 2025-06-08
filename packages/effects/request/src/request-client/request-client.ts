@@ -12,7 +12,7 @@ import { InterceptorManager } from './modules/interceptor';
 import { FileUploader } from './modules/uploader';
 
 function getParamsSerializer(
-  paramsSerializer: RequestClientOptions['paramsSerializer'],
+  paramsSerializer: RequestClientOptions['paramsSerializer']
 ) {
   if (isString(paramsSerializer)) {
     switch (paramsSerializer) {
@@ -56,16 +56,16 @@ class RequestClient {
     // 合并默认配置和传入的配置
     const defaultConfig: RequestClientOptions = {
       headers: {
-        'Content-Type': 'application/json;charset=utf-8',
+        'Content-Type': 'application/json;charset=utf-8'
       },
       responseReturn: 'raw',
       // 默认超时时间
-      timeout: 10_000,
+      timeout: 10_000
     };
     const { ...axiosConfig } = options;
     const requestConfig = merge(axiosConfig, defaultConfig);
     requestConfig.paramsSerializer = getParamsSerializer(
-      requestConfig.paramsSerializer,
+      requestConfig.paramsSerializer
     );
     this.instance = axios.create(requestConfig);
 
@@ -91,7 +91,7 @@ class RequestClient {
    */
   public delete<T = any>(
     url: string,
-    config?: RequestClientConfig,
+    config?: RequestClientConfig
   ): Promise<T> {
     return this.request<T>(url, { ...config, method: 'DELETE' });
   }
@@ -109,7 +109,7 @@ class RequestClient {
   public post<T = any>(
     url: string,
     data?: any,
-    config?: RequestClientConfig,
+    config?: RequestClientConfig
   ): Promise<T> {
     return this.request<T>(url, { ...config, data, method: 'POST' });
   }
@@ -120,7 +120,7 @@ class RequestClient {
   public put<T = any>(
     url: string,
     data?: any,
-    config?: RequestClientConfig,
+    config?: RequestClientConfig
   ): Promise<T> {
     return this.request<T>(url, { ...config, data, method: 'PUT' });
   }
@@ -130,7 +130,7 @@ class RequestClient {
    */
   public async request<T>(
     url: string,
-    config: RequestClientConfig,
+    config: RequestClientConfig
   ): Promise<T> {
     try {
       const response: AxiosResponse<T> = await this.instance({
@@ -138,7 +138,7 @@ class RequestClient {
         ...config,
         ...(config.paramsSerializer
           ? { paramsSerializer: getParamsSerializer(config.paramsSerializer) }
-          : {}),
+          : {})
       });
       return response as T;
     } catch (error: any) {

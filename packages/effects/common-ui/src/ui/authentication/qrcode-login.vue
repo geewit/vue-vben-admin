@@ -38,7 +38,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'AuthenticationQrCodeLogin',
+  name: 'AuthenticationQrCodeLogin'
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
   loginPath: '/auth/login',
   submitButtonText: '',
   subTitle: '',
-  title: '',
+  title: ''
 });
 
 const router = useRouter();
@@ -56,7 +56,7 @@ const text = ref('https://vben.vvbin.cn');
 
 const qrcode = useQRCode(text, {
   errorCorrectionLevel: 'H',
-  margin: 4,
+  margin: 4
 });
 
 function goToLogin() {

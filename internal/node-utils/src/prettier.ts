@@ -10,7 +10,7 @@ async function prettierFormat(filepath: string) {
   const input = await fs.readFile(filepath, 'utf8');
   const output = await format(input, {
     ...prettierOptions,
-    parser: fileInfo.inferredParser as any,
+    parser: fileInfo.inferredParser as any
   });
   if (output !== input) {
     await fs.writeFile(filepath, output, 'utf8');

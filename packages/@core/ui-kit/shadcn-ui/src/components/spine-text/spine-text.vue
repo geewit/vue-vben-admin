@@ -11,7 +11,7 @@ const { animationDuration = 2, animationIterationCount = 'infinite' } =
 
 const style = computed(() => {
   return {
-    animation: `shine ${animationDuration}s linear ${animationIterationCount}`,
+    animation: `shine ${animationDuration}s linear ${animationIterationCount}`
   };
 });
 </script>

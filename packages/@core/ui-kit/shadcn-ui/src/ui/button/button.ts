@@ -5,7 +5,7 @@ export const buttonVariants = cva(
   {
     defaultVariants: {
       size: 'default',
-      variant: 'default',
+      variant: 'default'
     },
     variants: {
       size: {
@@ -13,7 +13,7 @@ export const buttonVariants = cva(
         icon: 'h-8 w-8 rounded-sm px-1 text-lg',
         lg: 'h-10 rounded-md px-4',
         sm: 'h-8 rounded-md px-2 text-xs',
-        xs: 'h-8 w-8 rounded-sm px-1 text-xs',
+        xs: 'h-8 w-8 rounded-sm px-1 text-xs'
       },
       variant: {
         default:
@@ -27,8 +27,8 @@ export const buttonVariants = cva(
         outline:
           'border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
         secondary:
-          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
-      },
-    },
-  },
+          'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80'
+      }
+    }
+  }
 );

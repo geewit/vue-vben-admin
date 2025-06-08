@@ -24,7 +24,7 @@ const getTitle = computed(() => {
 const [Form, formApi] = useVbenForm({
   layout: 'vertical',
   schema: useSchema(),
-  showDefaultActions: false,
+  showDefaultActions: false
 });
 
 function resetForm() {
@@ -60,7 +60,7 @@ const [Modal, modalApi] = useVbenModal({
         formApi.setValues(formData.value);
       }
     }
-  },
+  }
 });
 </script>
 

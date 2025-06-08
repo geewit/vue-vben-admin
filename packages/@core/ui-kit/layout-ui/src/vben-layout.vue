@@ -8,7 +8,7 @@ import { computed, ref, watch } from 'vue';
 import {
   SCROLL_FIXED_CLASS,
   useLayoutFooterStyle,
-  useLayoutHeaderStyle,
+  useLayoutHeaderStyle
 } from '@vben-core/composables';
 import { Menu } from '@vben-core/icons';
 import { VbenIconButton } from '@vben-core/shadcn-ui';
@@ -21,14 +21,14 @@ import {
   LayoutFooter,
   LayoutHeader,
   LayoutSidebar,
-  LayoutTabbar,
+  LayoutTabbar
 } from './components';
 import { useLayout } from './hooks/use-layout';
 
 interface Props extends VbenLayoutProps {}
 
 defineOptions({
-  name: 'VbenLayout',
+  name: 'VbenLayout'
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -60,19 +60,19 @@ const props = withDefaults(defineProps<Props>(), {
   sideCollapseWidth: 60,
   tabbarEnable: true,
   tabbarHeight: 40,
-  zIndex: 200,
+  zIndex: 200
 });
 
 const emit = defineEmits<{ sideMouseLeave: []; toggleSidebar: [] }>();
 const sidebarCollapse = defineModel<boolean>('sidebarCollapse', {
-  default: false,
+  default: false
 });
 const sidebarExtraVisible = defineModel<boolean>('sidebarExtraVisible');
 const sidebarExtraCollapse = defineModel<boolean>('sidebarExtraCollapse', {
-  default: false,
+  default: false
 });
 const sidebarExpandOnHover = defineModel<boolean>('sidebarExpandOnHover', {
-  default: false,
+  default: false
 });
 const sidebarEnable = defineModel<boolean>('sidebarEnable', { default: true });
 
@@ -85,7 +85,7 @@ const {
   arrivedState,
   directions,
   isScrolling,
-  y: scrollY,
+  y: scrollY
 } = useScroll(document);
 
 const { setLayoutHeaderHeight } = useLayoutHeaderStyle();
@@ -99,7 +99,7 @@ const {
   isHeaderMixedNav,
   isHeaderNav,
   isMixedNav,
-  isSidebarMixedNav,
+  isSidebarMixedNav
 } = useLayout(props);
 
 /**
@@ -193,7 +193,7 @@ const isSideMode = computed(
     currentLayout.value === 'sidebar-mixed-nav' ||
     currentLayout.value === 'sidebar-nav' ||
     currentLayout.value === 'header-mixed-nav' ||
-    currentLayout.value === 'header-sidebar-nav',
+    currentLayout.value === 'header-sidebar-nav'
 );
 
 /**
@@ -256,7 +256,7 @@ const mainStyle = computed(() => {
   }
   return {
     sidebarAndExtraWidth,
-    width,
+    width
   };
 });
 
@@ -288,7 +288,7 @@ const tabbarStyle = computed((): CSSProperties => {
 
   return {
     marginLeft: `${marginLeft}px`,
-    width,
+    width
   };
 });
 
@@ -304,7 +304,7 @@ const contentStyle = computed((): CSSProperties => {
       (!isHeaderAutoMode.value || scrollY.value < headerWrapperHeight.value)
         ? `${headerWrapperHeight.value}px`
         : 0,
-    paddingBottom: `${footerEnable && footerFixed ? footerHeight : 0}px`,
+    paddingBottom: `${footerEnable && footerFixed ? footerHeight : 0}px`
   };
 });
 
@@ -325,7 +325,7 @@ const headerWrapperStyle = computed((): CSSProperties => {
         ? `-${headerWrapperHeight.value}px`
         : 0,
     width: mainStyle.value.width,
-    'z-index': headerZIndex.value,
+    'z-index': headerZIndex.value
   };
 });
 
@@ -378,8 +378,8 @@ watch(
     }
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 watch(
@@ -388,8 +388,8 @@ watch(
     setLayoutHeaderHeight(isFullContent.value ? 0 : height);
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 watch(
@@ -398,8 +398,8 @@ watch(
     setLayoutFooterHeight(height);
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 {
@@ -421,8 +421,8 @@ watch(
       mouseMove();
     },
     {
-      immediate: true,
-    },
+      immediate: true
+    }
   );
 }
 
@@ -458,10 +458,10 @@ watch(
         checkHeaderIsHidden(
           directions.top,
           directions.bottom,
-          arrivedState.top,
+          arrivedState.top
         );
       }
-    },
+    }
   );
 }
 
@@ -531,9 +531,9 @@ const idMainContent = ELEMENT_ID_MAIN_CONTENT;
       <div
         :class="[
           {
-            'shadow-[0_16px_24px_hsl(var(--background))]': scrollY > 20,
+            'shadow-[0_16px_24px_hsl(var(--background))]': scrollY > 20
           },
-          SCROLL_FIXED_CLASS,
+          SCROLL_FIXED_CLASS
         ]"
         :style="headerWrapperStyle"
         class="overflow-hidden transition-all duration-200"

@@ -20,10 +20,7 @@ export function useSchema(): VbenFormSchema[] {
       rules: z
         .string()
         .min(2, $t('ui.formRules.minLength', [$t('system.dept.deptName'), 2]))
-        .max(
-          20,
-          $t('ui.formRules.maxLength', [$t('system.dept.deptName'), 20]),
-        ),
+        .max(20, $t('ui.formRules.maxLength', [$t('system.dept.deptName'), 20]))
     },
     {
       component: 'ApiTreeSelect',
@@ -33,10 +30,10 @@ export function useSchema(): VbenFormSchema[] {
         class: 'w-full',
         labelField: 'name',
         valueField: 'id',
-        childrenField: 'children',
+        childrenField: 'children'
       },
       fieldName: 'pid',
-      label: $t('system.dept.parentDept'),
+      label: $t('system.dept.parentDept')
     },
     {
       component: 'RadioGroup',
@@ -44,28 +41,28 @@ export function useSchema(): VbenFormSchema[] {
         buttonStyle: 'solid',
         options: [
           { label: $t('common.enabled'), value: 1 },
-          { label: $t('common.disabled'), value: 0 },
+          { label: $t('common.disabled'), value: 0 }
         ],
-        optionType: 'button',
+        optionType: 'button'
       },
       defaultValue: 1,
       fieldName: 'status',
-      label: $t('system.dept.status'),
+      label: $t('system.dept.status')
     },
     {
       component: 'Textarea',
       componentProps: {
         maxLength: 50,
         rows: 3,
-        showCount: true,
+        showCount: true
       },
       fieldName: 'remark',
       label: $t('system.dept.remark'),
       rules: z
         .string()
         .max(50, $t('ui.formRules.maxLength', [$t('system.dept.remark'), 50]))
-        .optional(),
-    },
+        .optional()
+    }
   ];
 }
 
@@ -75,7 +72,7 @@ export function useSchema(): VbenFormSchema[] {
  * @param onActionClick 表格操作按钮点击事件
  */
 export function useColumns(
-  onActionClick?: OnActionClickFn<SystemDeptApi.SystemDept>,
+  onActionClick?: OnActionClickFn<SystemDeptApi.SystemDept>
 ): VxeTableGridOptions<SystemDeptApi.SystemDept>['columns'] {
   return [
     {
@@ -84,22 +81,22 @@ export function useColumns(
       fixed: 'left',
       title: $t('system.dept.deptName'),
       treeNode: true,
-      width: 150,
+      width: 150
     },
     {
       cellRender: { name: 'CellTag' },
       field: 'status',
       title: $t('system.dept.status'),
-      width: 100,
+      width: 100
     },
     {
       field: 'createTime',
       title: $t('system.dept.createTime'),
-      width: 180,
+      width: 180
     },
     {
       field: 'remark',
-      title: $t('system.dept.remark'),
+      title: $t('system.dept.remark')
     },
     {
       align: 'right',
@@ -107,29 +104,29 @@ export function useColumns(
         attrs: {
           nameField: 'name',
           nameTitle: $t('system.dept.name'),
-          onClick: onActionClick,
+          onClick: onActionClick
         },
         name: 'CellOperation',
         options: [
           {
             code: 'append',
-            text: '新增下级',
+            text: '新增下级'
           },
           'edit', // 默认的编辑按钮
           {
             code: 'delete', // 默认的删除按钮
             disabled: (row: SystemDeptApi.SystemDept) => {
               return !!(row.children && row.children.length > 0);
-            },
-          },
-        ],
+            }
+          }
+        ]
       },
       field: 'operation',
       fixed: 'right',
       headerAlign: 'center',
       showOverflow: false,
       title: $t('system.dept.operation'),
-      width: 200,
-    },
+      width: 200
+    }
   ];
 }

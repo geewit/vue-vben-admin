@@ -1,14 +1,14 @@
 import type {
   // 系列类型的定义后缀都为 SeriesOption
   BarSeriesOption,
-  LineSeriesOption,
+  LineSeriesOption
 } from 'echarts/charts';
 import type {
   DatasetComponentOption,
   GridComponentOption,
   // 组件类型的定义后缀都为 ComponentOption
   TitleComponentOption,
-  TooltipComponentOption,
+  TooltipComponentOption
 } from 'echarts/components';
 import type { ComposeOption } from 'echarts/core';
 
@@ -22,7 +22,7 @@ import {
   ToolboxComponent,
   TooltipComponent,
   // 内置数据转换器组件 (filter, sort)
-  TransformComponent,
+  TransformComponent
 } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
@@ -53,7 +53,7 @@ echarts.use([
   UniversalTransition,
   CanvasRenderer,
   LegendComponent,
-  ToolboxComponent,
+  ToolboxComponent
 ]);
 
 export default echarts;

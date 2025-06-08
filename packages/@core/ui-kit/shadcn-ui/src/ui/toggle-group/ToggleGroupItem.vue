@@ -37,9 +37,9 @@ const forwardedProps = useForwardProps(delegatedProps);
       cn(
         toggleVariants({
           variant: context?.variant || variant,
-          size: context?.size || size,
+          size: context?.size || size
         }),
-        props.class,
+        props.class
       )
     "
   >

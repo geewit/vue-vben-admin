@@ -21,12 +21,12 @@ setupVbenVxeTable({
         align: 'center',
         border: false,
         columnConfig: {
-          resizable: true,
+          resizable: true
         },
 
         formConfig: {
           // 全局禁用vxe-table的表单配置，使用formOptions
-          enabled: false,
+          enabled: false
         },
         minHeight: 180,
         proxyConfig: {
@@ -34,15 +34,15 @@ setupVbenVxeTable({
           response: {
             result: 'items',
             total: 'total',
-            list: '',
+            list: ''
           },
           showActiveMsg: true,
-          showResponseMsg: false,
+          showResponseMsg: false
         },
         round: true,
         showOverflow: true,
-        size: 'small',
-      },
+        size: 'small'
+      }
     });
 
     /**
@@ -59,7 +59,7 @@ setupVbenVxeTable({
       renderTableDefault(_renderOpts, params) {
         const { column, row } = params;
         return h(Image, { src: row[column.field] });
-      },
+      }
     });
 
     // 表格配置项可以用 cellRender: { name: 'CellLink' },
@@ -69,9 +69,9 @@ setupVbenVxeTable({
         return h(
           Button,
           { size: 'small', type: 'link' },
-          { default: () => props?.text },
+          { default: () => props?.text }
         );
-      },
+      }
     });
 
     // 单元格渲染： Tag
@@ -80,18 +80,18 @@ setupVbenVxeTable({
         const value = get(row, column.field);
         const tagOptions = options ?? [
           { color: 'success', label: $t('common.enabled'), value: 1 },
-          { color: 'error', label: $t('common.disabled'), value: 0 },
+          { color: 'error', label: $t('common.disabled'), value: 0 }
         ];
         const tagItem = tagOptions.find((item) => item.value === value);
         return h(
           Tag,
           {
             ...props,
-            ...objectOmit(tagItem ?? {}, ['label']),
+            ...objectOmit(tagItem ?? {}, ['label'])
           },
-          { default: () => tagItem?.label ?? value },
+          { default: () => tagItem?.label ?? value }
         );
-      },
+      }
     });
 
     vxeUI.renderer.add('CellSwitch', {
@@ -105,7 +105,7 @@ setupVbenVxeTable({
           ...props,
           checked: row[column.field],
           loading: row[loadingKey] ?? false,
-          'onUpdate:checked': onChange,
+          'onUpdate:checked': onChange
         };
         async function onChange(newVal: any) {
           row[loadingKey] = true;
@@ -119,7 +119,7 @@ setupVbenVxeTable({
           }
         }
         return h(Switch, finallyProps);
-      },
+      }
     });
 
     /**
@@ -146,11 +146,11 @@ setupVbenVxeTable({
         const presets: Recordable<Recordable<any>> = {
           delete: {
             danger: true,
-            text: $t('common.delete'),
+            text: $t('common.delete')
           },
           edit: {
-            text: $t('common.edit'),
-          },
+            text: $t('common.edit')
+          }
         };
         const operations: Array<Recordable<any>> = (
           options || ['edit', 'delete']
@@ -162,7 +162,7 @@ setupVbenVxeTable({
                 : {
                     code: opt,
                     text: $te(`common.${opt}`) ? $t(`common.${opt}`) : opt,
-                    ...defaultProps,
+                    ...defaultProps
                   };
             } else {
               return { ...defaultProps, ...presets[opt.code], ...opt };
@@ -188,22 +188,22 @@ setupVbenVxeTable({
                 ? () =>
                     attrs?.onClick?.({
                       code: opt.code,
-                      row,
+                      row
                     })
-                : undefined,
+                : undefined
             },
             {
               default: () => {
                 const content = [];
                 if (opt.icon) {
                   content.push(
-                    h(IconifyIcon, { class: 'size-5', icon: opt.icon }),
+                    h(IconifyIcon, { class: 'size-5', icon: opt.icon })
                   );
                 }
                 content.push(opt.text);
                 return content;
-              },
-            },
+              }
+            }
           );
         }
 
@@ -239,9 +239,9 @@ setupVbenVxeTable({
               onConfirm: () => {
                 attrs?.onClick?.({
                   code: opt.code,
-                  row,
+                  row
                 });
-              },
+              }
             },
             {
               default: () => renderBtn({ ...opt }, false),
@@ -250,31 +250,31 @@ setupVbenVxeTable({
                   'div',
                   { class: 'truncate' },
                   $t('ui.actionMessage.deleteConfirm', [
-                    row[attrs?.nameField || 'name'],
-                  ]),
-                ),
-            },
+                    row[attrs?.nameField || 'name']
+                  ])
+                )
+            }
           );
         }
 
         const btns = operations.map((opt) =>
-          opt.code === 'delete' ? renderConfirm(opt) : renderBtn(opt),
+          opt.code === 'delete' ? renderConfirm(opt) : renderBtn(opt)
         );
         return h(
           'div',
           {
             class: 'flex table-operations',
-            style: { justifyContent: align },
+            style: { justifyContent: align }
           },
-          btns,
+          btns
         );
-      },
+      }
     });
 
     // 这里可以自行扩展 vxe-table 的全局配置，比如自定义格式化
     // vxeUI.formats.add
   },
-  useVbenForm,
+  useVbenForm
 });
 
 export { useVbenVxeGrid };
@@ -283,6 +283,6 @@ export type OnActionClickParams<T = Recordable<any>> = {
   row: T;
 };
 export type OnActionClickFn<T = Recordable<any>> = (
-  params: OnActionClickParams<T>,
+  params: OnActionClickParams<T>
 ) => void;
 export type * from '@vben/plugins/vxe-table';

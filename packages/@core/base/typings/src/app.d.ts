@@ -107,5 +107,5 @@ export type {
   PageTransitionType,
   PreferencesButtonPositionType,
   TabsStyleType,
-  ThemeModeType,
+  ThemeModeType
 };

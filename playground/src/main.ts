@@ -16,7 +16,7 @@ async function initApplication() {
   // app偏好设置初始化
   await initPreferences({
     namespace,
-    overrides: overridesPreferences,
+    overrides: overridesPreferences
   });
 
   // 启动应用并挂载

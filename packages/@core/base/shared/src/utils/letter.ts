@@ -34,7 +34,7 @@ function kebabToCamelCase(str: string): string {
     .split('-')
     .filter(Boolean)
     .map((word, index) =>
-      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1),
+      index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)
     )
     .join('');
 }
@@ -43,5 +43,5 @@ export {
   capitalizeFirstLetter,
   kebabToCamelCase,
   toCamelCase,
-  toLowerCaseFirstLetter,
+  toLowerCaseFirstLetter
 };

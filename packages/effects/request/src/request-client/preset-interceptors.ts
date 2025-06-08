@@ -9,7 +9,7 @@ import axios from 'axios';
 export const defaultResponseInterceptor = ({
   codeField = 'code',
   dataField = 'data',
-  successCode = 0,
+  successCode = 0
 }: {
   /** 响应数据中代表访问结果的字段名 */
   codeField: string;
@@ -40,7 +40,7 @@ export const defaultResponseInterceptor = ({
         }
       }
       throw Object.assign({}, response, { response });
-    },
+    }
   };
 };
 
@@ -49,7 +49,7 @@ export const authenticateResponseInterceptor = ({
   doReAuthenticate,
   doRefreshToken,
   enableRefreshToken,
-  formatToken,
+  formatToken
 }: {
   client: RequestClient;
   doReAuthenticate: () => Promise<void>;
@@ -105,12 +105,12 @@ export const authenticateResponseInterceptor = ({
       } finally {
         client.isRefreshing = false;
       }
-    },
+    }
   };
 };
 
 export const errorMessageResponseInterceptor = (
-  makeErrorMessage?: MakeErrorMessageFn,
+  makeErrorMessage?: MakeErrorMessageFn
 ): ResponseInterceptorConfig => {
   return {
     rejected: (error: any) => {
@@ -160,6 +160,6 @@ export const errorMessageResponseInterceptor = (
       }
       makeErrorMessage?.(errorMessage, error);
       return Promise.reject(error);
-    },
+    }
   };
 };

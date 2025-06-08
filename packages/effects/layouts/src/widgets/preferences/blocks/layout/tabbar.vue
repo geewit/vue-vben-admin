@@ -10,7 +10,7 @@ import SelectItem from '../select-item.vue';
 import SwitchItem from '../switch-item.vue';
 
 defineOptions({
-  name: 'PreferenceTabsConfig',
+  name: 'PreferenceTabsConfig'
 });
 
 defineProps<{ disabled?: boolean }>();
@@ -25,27 +25,27 @@ const tabbarShowMore = defineModel<boolean>('tabbarShowMore');
 const tabbarShowMaximize = defineModel<boolean>('tabbarShowMaximize');
 const tabbarMaxCount = defineModel<number>('tabbarMaxCount');
 const tabbarMiddleClickToClose = defineModel<boolean>(
-  'tabbarMiddleClickToClose',
+  'tabbarMiddleClickToClose'
 );
 
 const styleItems = computed((): SelectOption[] => [
   {
     label: $t('preferences.tabbar.styleType.chrome'),
-    value: 'chrome',
+    value: 'chrome'
   },
   {
     label: $t('preferences.tabbar.styleType.plain'),
-    value: 'plain',
+    value: 'plain'
   },
   {
     label: $t('preferences.tabbar.styleType.card'),
-    value: 'card',
+    value: 'card'
   },
 
   {
     label: $t('preferences.tabbar.styleType.brisk'),
-    value: 'brisk',
-  },
+    value: 'brisk'
+  }
 ]);
 </script>
 

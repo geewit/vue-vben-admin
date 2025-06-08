@@ -9,7 +9,7 @@ import SelectItem from '../select-item.vue';
 import SwitchItem from '../switch-item.vue';
 
 defineOptions({
-  name: 'PreferenceInterfaceControl',
+  name: 'PreferenceInterfaceControl'
 });
 
 const widgetGlobalSearch = defineModel<boolean>('widgetGlobalSearch');
@@ -20,23 +20,23 @@ const widgetThemeToggle = defineModel<boolean>('widgetThemeToggle');
 const widgetSidebarToggle = defineModel<boolean>('widgetSidebarToggle');
 const widgetLockScreen = defineModel<boolean>('widgetLockScreen');
 const appPreferencesButtonPosition = defineModel<string>(
-  'appPreferencesButtonPosition',
+  'appPreferencesButtonPosition'
 );
 const widgetRefresh = defineModel<boolean>('widgetRefresh');
 
 const positionItems = computed((): SelectOption[] => [
   {
     label: $t('preferences.position.auto'),
-    value: 'auto',
+    value: 'auto'
   },
   {
     label: $t('preferences.position.header'),
-    value: 'header',
+    value: 'header'
   },
   {
     label: $t('preferences.position.fixed'),
-    value: 'fixed',
-  },
+    value: 'fixed'
+  }
 ]);
 </script>
 

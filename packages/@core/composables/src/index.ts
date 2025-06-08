@@ -9,5 +9,5 @@ export {
   useEmitAsProps,
   useForwardExpose,
   useForwardProps,
-  useForwardPropsEmits,
+  useForwardPropsEmits
 } from 'radix-vue';

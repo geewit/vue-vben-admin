@@ -38,7 +38,7 @@ function handleClick(index: number, path?: string) {
               <span
                 :class="{
                   'text-foreground font-normal':
-                    index === breadcrumbs.length - 1,
+                    index === breadcrumbs.length - 1
                 }"
                 >{{ item.title }}
               </span>

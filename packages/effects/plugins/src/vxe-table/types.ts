@@ -2,7 +2,7 @@ import type {
   VxeGridListeners,
   VxeGridPropTypes,
   VxeGridProps as VxeTableGridProps,
-  VxeUIExport,
+  VxeUIExport
 } from 'vxe-table';
 
 import type { Ref } from 'vue';
@@ -76,7 +76,7 @@ export interface VxeGridProps {
 
 export type ExtendedVxeGridApi = VxeGridApi & {
   useStore: <T = NoInfer<VxeGridProps>>(
-    selector?: (state: NoInfer<VxeGridProps>) => T,
+    selector?: (state: NoInfer<VxeGridProps>) => T
   ) => Readonly<Ref<T>>;
 };
 

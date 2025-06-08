@@ -11,7 +11,7 @@ export * from './library';
 
 function defineConfig(
   userConfigPromise?: DefineConfig,
-  type: 'application' | 'auto' | 'library' = 'auto',
+  type: 'application' | 'auto' | 'library' = 'auto'
 ) {
   let projectType = type;
 

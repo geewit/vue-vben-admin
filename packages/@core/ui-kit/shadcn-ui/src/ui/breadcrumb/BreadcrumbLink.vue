@@ -6,7 +6,7 @@ import { cn } from '@vben-core/shared/utils';
 import { Primitive } from 'radix-vue';
 
 const props = withDefaults(defineProps<PrimitiveProps & { class?: any }>(), {
-  as: 'a',
+  as: 'a'
 });
 </script>
 

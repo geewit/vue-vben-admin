@@ -12,7 +12,7 @@ import {
   CircleHelp,
   CircleX,
   Info,
-  X,
+  X
 } from '@vben-core/icons';
 import {
   AlertDialog,
@@ -23,7 +23,7 @@ import {
   AlertDialogTitle,
   VbenButton,
   VbenLoading,
-  VbenRenderContent,
+  VbenRenderContent
 } from '@vben-core/shadcn-ui';
 import { globalShareState } from '@vben-core/shared/global-state';
 import { cn } from '@vben-core/shared/utils';
@@ -33,7 +33,7 @@ import { provideAlertContext } from './alert';
 const props = withDefaults(defineProps<AlertProps>(), {
   bordered: true,
   buttonAlign: 'end',
-  centered: true,
+  centered: true
 });
 const emits = defineEmits(['closed', 'confirm', 'opened']);
 const open = defineModel<boolean>('open', { default: false });
@@ -57,7 +57,7 @@ const getIconRender = computed(() => {
       switch (props.icon) {
         case 'error': {
           iconRender = h(CircleX, {
-            style: { color: 'hsl(var(--destructive))' },
+            style: { color: 'hsl(var(--destructive))' }
           });
           break;
         }
@@ -71,13 +71,13 @@ const getIconRender = computed(() => {
         }
         case 'success': {
           iconRender = h(CircleCheckBig, {
-            style: { color: 'hsl(var(--success))' },
+            style: { color: 'hsl(var(--success))' }
           });
           break;
         }
         case 'warning': {
           iconRender = h(CircleAlert, {
-            style: { color: 'hsl(var(--warning))' },
+            style: { color: 'hsl(var(--warning))' }
           });
           break;
         }
@@ -105,7 +105,7 @@ function doConfirm() {
 
 provideAlertContext({
   doCancel,
-  doConfirm,
+  doConfirm
 });
 
 function handleConfirm() {
@@ -150,8 +150,8 @@ async function handleOpenChange(val: boolean) {
           'left-0 right-0 mx-auto flex max-h-[80%] flex-col p-0 duration-300 sm:w-[520px] sm:max-w-[80%] sm:rounded-[var(--radius)]',
           {
             'border-border border': bordered,
-            'shadow-3xl': !bordered,
-          },
+            'shadow-3xl': !bordered
+          }
         )
       "
     >

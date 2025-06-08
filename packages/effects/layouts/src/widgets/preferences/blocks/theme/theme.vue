@@ -9,7 +9,7 @@ import { $t } from '@vben/locales';
 import SwitchItem from '../switch-item.vue';
 
 defineOptions({
-  name: 'PreferenceTheme',
+  name: 'PreferenceTheme'
 });
 
 const modelValue = defineModel<string>({ default: 'auto' });
@@ -19,16 +19,16 @@ const themeSemiDarkHeader = defineModel<boolean>('themeSemiDarkHeader');
 const THEME_PRESET: Array<{ icon: Component; name: ThemeModeType }> = [
   {
     icon: Sun,
-    name: 'light',
+    name: 'light'
   },
   {
     icon: MoonStar,
-    name: 'dark',
+    name: 'dark'
   },
   {
     icon: SunMoon,
-    name: 'auto',
-  },
+    name: 'auto'
+  }
 ];
 
 function activeClass(theme: string): string[] {

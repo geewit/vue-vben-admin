@@ -149,5 +149,5 @@ export type {
   GenerateMenuAndRoutesOptions,
   RouteMeta,
   RouteRecordRaw,
-  RouteRecordStringComponent,
+  RouteRecordStringComponent
 };

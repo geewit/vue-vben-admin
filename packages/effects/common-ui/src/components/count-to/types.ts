@@ -7,7 +7,7 @@ import { TransitionPresets as TransitionPresetsData } from '@vueuse/core';
 export type TransitionPresets = keyof typeof TransitionPresetsData;
 
 export const TransitionPresetsKeys = Object.keys(
-  TransitionPresetsData,
+  TransitionPresetsData
 ) as TransitionPresets[];
 
 export interface CountToProps {

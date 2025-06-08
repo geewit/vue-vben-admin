@@ -12,11 +12,11 @@ import { unrefElement } from '@vueuse/core';
 export function useModalDraggable(
   targetRef: Ref<HTMLElement | undefined>,
   dragRef: Ref<HTMLElement | undefined>,
-  draggable: ComputedRef<boolean>,
+  draggable: ComputedRef<boolean>
 ) {
   const transform = reactive({
     offsetX: 0,
-    offsetY: 0,
+    offsetY: 0
   });
 
   const dragging = ref(false);
@@ -112,6 +112,6 @@ export function useModalDraggable(
   return {
     dragging,
     resetPosition,
-    transform,
+    transform
   };
 }

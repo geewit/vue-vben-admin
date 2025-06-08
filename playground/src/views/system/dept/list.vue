@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type {
   OnActionClickParams,
-  VxeTableGridOptions,
+  VxeTableGridOptions
 } from '#/adapter/vxe-table';
 import type { SystemDeptApi } from '#/api/system/dept';
 
@@ -19,7 +19,7 @@ import Form from './modules/form.vue';
 
 const [FormModal, formModalApi] = useVbenModal({
   connectedComponent: Form,
-  destroyOnClose: true,
+  destroyOnClose: true
 });
 
 /**
@@ -53,13 +53,13 @@ function onDelete(row: SystemDeptApi.SystemDept) {
   const hideLoading = message.loading({
     content: $t('ui.actionMessage.deleting', [row.name]),
     duration: 0,
-    key: 'action_process_msg',
+    key: 'action_process_msg'
   });
   deleteDept(row.id)
     .then(() => {
       message.success({
         content: $t('ui.actionMessage.deleteSuccess', [row.name]),
-        key: 'action_process_msg',
+        key: 'action_process_msg'
       });
       refreshGrid();
     })
@@ -73,7 +73,7 @@ function onDelete(row: SystemDeptApi.SystemDept) {
  */
 function onActionClick({
   code,
-  row,
+  row
 }: OnActionClickParams<SystemDeptApi.SystemDept>) {
   switch (code) {
     case 'append': {
@@ -98,27 +98,27 @@ const [Grid, gridApi] = useVbenVxeGrid({
     height: 'auto',
     keepSource: true,
     pagerConfig: {
-      enabled: false,
+      enabled: false
     },
     proxyConfig: {
       ajax: {
         query: async (_params) => {
           return await getDeptList();
-        },
-      },
+        }
+      }
     },
     toolbarConfig: {
       custom: true,
       export: false,
       refresh: { code: 'query' },
-      zoom: true,
+      zoom: true
     },
     treeConfig: {
       parentField: 'pid',
       rowField: 'id',
-      transform: false,
-    },
-  } as VxeTableGridOptions,
+      transform: false
+    }
+  } as VxeTableGridOptions
 });
 
 /**

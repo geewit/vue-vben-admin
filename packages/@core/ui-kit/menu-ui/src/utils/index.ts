@@ -2,7 +2,7 @@ import type {
   ComponentInternalInstance,
   VNode,
   VNodeChild,
-  VNodeNormalizedChildren,
+  VNodeNormalizedChildren
 } from 'vue';
 
 import { isVNode } from 'vue';
@@ -19,7 +19,7 @@ type FlattenVNodes = Array<RawSlots | VNodeChildAtom>;
  */
 function findComponentUpward(
   instance: ComponentInternalInstance,
-  parentNames: string[],
+  parentNames: string[]
 ) {
   let parent = instance.parent;
   while (parent && !parentNames.includes(parent?.type?.name ?? '')) {
@@ -29,7 +29,7 @@ function findComponentUpward(
 }
 
 const flattedChildren = (
-  children: FlattenVNodes | VNode | VNodeNormalizedChildren,
+  children: FlattenVNodes | VNode | VNodeNormalizedChildren
 ): FlattenVNodes => {
   const vNodes = Array.isArray(children) ? children : [children];
   const result: FlattenVNodes = [];

@@ -10,25 +10,25 @@ const enterAnimationPlugin = plugin(({ addUtilities }) => {
     utilities[`.enter-x:nth-child(${i})`] = {
       animation: `enter-x-animation 0.3s ease-in-out ${delay} forwards`,
       opacity: '0',
-      transform: `translateX(50px)`,
+      transform: `translateX(50px)`
     };
 
     utilities[`.enter-y:nth-child(${i})`] = {
       animation: `enter-y-animation 0.3s ease-in-out ${delay} forwards`,
       opacity: '0',
-      transform: `translateY(50px)`,
+      transform: `translateY(50px)`
     };
 
     utilities[`.-enter-x:nth-child(${i})`] = {
       animation: `enter-x-animation 0.3s ease-in-out ${delay} forwards`,
       opacity: '0',
-      transform: `translateX(-50px)`,
+      transform: `translateX(-50px)`
     };
 
     utilities[`.-enter-y:nth-child(${i})`] = {
       animation: `enter-y-animation 0.3s ease-in-out ${delay} forwards`,
       opacity: '0',
-      transform: `translateY(-50px)`,
+      transform: `translateY(-50px)`
     };
   }
 
@@ -38,15 +38,15 @@ const enterAnimationPlugin = plugin(({ addUtilities }) => {
     '@keyframes enter-x-animation': {
       to: {
         opacity: '1',
-        transform: 'translateX(0)',
-      },
+        transform: 'translateX(0)'
+      }
     },
     '@keyframes enter-y-animation': {
       to: {
         opacity: '1',
-        transform: 'translateY(0)',
-      },
-    },
+        transform: 'translateY(0)'
+      }
+    }
   });
 });
 

@@ -12,7 +12,7 @@ import {
   isBoolean,
   isFunction,
   mergeWithArrayOverride,
-  StateHandler,
+  StateHandler
 } from '@vben-core/shared/utils';
 
 function getDefaultState(): VxeGridProps {
@@ -22,7 +22,7 @@ function getDefaultState(): VxeGridProps {
     gridOptions: {},
     gridEvents: {},
     formOptions: undefined,
-    showSearchForm: true,
+    showSearchForm: true
   };
 }
 
@@ -49,8 +49,8 @@ export class VxeGridApi {
         onUpdate: () => {
           // this.prevState = this.state;
           this.state = this.store.state;
-        },
-      },
+        }
+      }
     );
 
     this.state = this.store.state;
@@ -85,22 +85,22 @@ export class VxeGridApi {
 
   setGridOptions(options: Partial<VxeGridProps['gridOptions']>) {
     this.setState({
-      gridOptions: options,
+      gridOptions: options
     });
   }
 
   setLoading(isLoading: boolean) {
     this.setState({
       gridOptions: {
-        loading: isLoading,
-      },
+        loading: isLoading
+      }
     });
   }
 
   setState(
     stateOrFn:
       | ((prev: VxeGridProps) => Partial<VxeGridProps>)
-      | Partial<VxeGridProps>,
+      | Partial<VxeGridProps>
   ) {
     if (isFunction(stateOrFn)) {
       this.store.setState((prev) => {
@@ -113,7 +113,7 @@ export class VxeGridApi {
 
   toggleSearchForm(show?: boolean) {
     this.setState({
-      showSearchForm: isBoolean(show) ? show : !this.state?.showSearchForm,
+      showSearchForm: isBoolean(show) ? show : !this.state?.showSearchForm
     });
     // nextTick(() => {
     //   this.grid.recalculate();

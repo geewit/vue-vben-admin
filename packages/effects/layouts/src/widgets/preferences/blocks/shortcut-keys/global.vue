@@ -7,12 +7,12 @@ import { isWindowsOs } from '@vben/utils';
 import SwitchItem from '../switch-item.vue';
 
 defineOptions({
-  name: 'PreferenceGeneralConfig',
+  name: 'PreferenceGeneralConfig'
 });
 
 const shortcutKeysEnable = defineModel<boolean>('shortcutKeysEnable');
 const shortcutKeysGlobalSearch = defineModel<boolean>(
-  'shortcutKeysGlobalSearch',
+  'shortcutKeysGlobalSearch'
 );
 const shortcutKeysLogout = defineModel<boolean>('shortcutKeysLogout');
 // const shortcutKeysPreferences = defineModel<boolean>('shortcutKeysPreferences');

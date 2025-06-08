@@ -37,7 +37,7 @@ async function bootstrap(namespace: string) {
   // 注册v-loading指令
   registerLoadingDirective(app, {
     loading: 'loading', // 在这里可以自定义指令名称，也可以明确提供false表示不注册这个指令
-    spinning: 'spinning',
+    spinning: 'spinning'
   });
 
   // 国际化 i18n 配置

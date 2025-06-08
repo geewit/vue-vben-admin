@@ -6,7 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  VbenIcon,
+  VbenIcon
 } from '@vben-core/shadcn-ui';
 
 interface Props {
@@ -15,11 +15,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'WorkbenchQuickNav',
+  name: 'WorkbenchQuickNav'
 });
 
 withDefaults(defineProps<Props>(), {
-  items: () => [],
+  items: () => []
 });
 
 defineEmits(['click']);
@@ -38,7 +38,7 @@ defineEmits(['click']);
             'border-b-0': index < 3,
             'pb-4': index > 2,
             'rounded-bl-xl': index === items.length - 3,
-            'rounded-br-xl': index === items.length - 1,
+            'rounded-br-xl': index === items.length - 1
           }"
           class="flex-col-center border-border group w-1/3 cursor-pointer border-r border-t py-8 hover:shadow-xl"
           @click="$emit('click', item)"

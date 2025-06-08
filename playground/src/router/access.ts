@@ -1,6 +1,6 @@
 import type {
   ComponentRecordType,
-  GenerateMenuAndRoutesOptions,
+  GenerateMenuAndRoutesOptions
 } from '@vben/types';
 
 import { generateAccessible } from '@vben/access';
@@ -19,7 +19,7 @@ async function generateAccess(options: GenerateMenuAndRoutesOptions) {
 
   const layoutMap: ComponentRecordType = {
     BasicLayout,
-    IFrameView,
+    IFrameView
   };
 
   return await generateAccessible(preferences.app.accessMode, {
@@ -27,7 +27,7 @@ async function generateAccess(options: GenerateMenuAndRoutesOptions) {
     fetchMenuListAsync: async () => {
       message.loading({
         content: `${$t('common.loadingMenu')}...`,
-        duration: 1.5,
+        duration: 1.5
       });
       return await getAllMenusApi();
     },
@@ -35,7 +35,7 @@ async function generateAccess(options: GenerateMenuAndRoutesOptions) {
     forbiddenComponent,
     // 如果 route.meta.menuVisibleWithForbidden = true
     layoutMap,
-    pageMap,
+    pageMap
   });
 }
 

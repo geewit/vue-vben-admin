@@ -25,7 +25,7 @@ const tokenTheme = computed(() => {
 
   return {
     algorithm,
-    token: tokens,
+    token: tokens
   };
 });
 </script>

@@ -3,7 +3,7 @@ import type { Linter } from 'eslint';
 const restrictedImportIgnores = [
   '**/vite.config.mts',
   '**/tailwind.config.mjs',
-  '**/postcss.config.mjs',
+  '**/postcss.config.mjs'
 ];
 
 const customConfig: Linter.Config[] = [
@@ -11,8 +11,8 @@ const customConfig: Linter.Config[] = [
   {
     files: ['packages/@core/ui-kit/shadcn-ui/**/**'],
     rules: {
-      'vue/require-default-prop': 'off',
-    },
+      'vue/require-default-prop': 'off'
+    }
   },
   {
     files: [
@@ -20,20 +20,20 @@ const customConfig: Linter.Config[] = [
       'packages/effects/**/**',
       'packages/utils/**/**',
       'packages/types/**/**',
-      'packages/locales/**/**',
+      'packages/locales/**/**'
     ],
     ignores: restrictedImportIgnores,
     rules: {
       'perfectionist/sort-interfaces': 'off',
-      'perfectionist/sort-objects': 'off',
-    },
+      'perfectionist/sort-objects': 'off'
+    }
   },
   {
     files: ['**/**.vue'],
     ignores: restrictedImportIgnores,
     rules: {
-      'perfectionist/sort-objects': 'off',
-    },
+      'perfectionist/sort-objects': 'off'
+    }
   },
   {
     // apps内部的一些基础规则
@@ -47,28 +47,28 @@ const customConfig: Linter.Config[] = [
             {
               group: ['#/api/*'],
               message:
-                'The #/api package cannot be imported, please use the @core package itself',
+                'The #/api package cannot be imported, please use the @core package itself'
             },
             {
               group: ['#/layouts/*'],
               message:
-                'The #/layouts package cannot be imported, please use the @core package itself',
+                'The #/layouts package cannot be imported, please use the @core package itself'
             },
             {
               group: ['#/locales/*'],
               message:
-                'The #/locales package cannot be imported, please use the @core package itself',
+                'The #/locales package cannot be imported, please use the @core package itself'
             },
             {
               group: ['#/stores/*'],
               message:
-                'The #/stores package cannot be imported, please use the @core package itself',
-            },
-          ],
-        },
+                'The #/stores package cannot be imported, please use the @core package itself'
+            }
+          ]
+        }
       ],
-      'perfectionist/sort-interfaces': 'off',
-    },
+      'perfectionist/sort-interfaces': 'off'
+    }
   },
   {
     // @core内部组件，不能引入@vben/* 里面的包
@@ -82,12 +82,12 @@ const customConfig: Linter.Config[] = [
             {
               group: ['@vben/*'],
               message:
-                'The @core package cannot import the @vben package, please use the @core package itself',
-            },
-          ],
-        },
-      ],
-    },
+                'The @core package cannot import the @vben package, please use the @core package itself'
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     // @core/shared内部组件，不能引入@vben/* 或者 @vben-core/* 里面的包
@@ -101,12 +101,12 @@ const customConfig: Linter.Config[] = [
             {
               group: ['@vben/*', '@vben-core/*'],
               message:
-                'The @vben-core/shared package cannot import the @vben package, please use the @core/shared package itself',
-            },
-          ],
-        },
-      ],
-    },
+                'The @vben-core/shared package cannot import the @vben package, please use the @core/shared package itself'
+            }
+          ]
+        }
+      ]
+    }
   },
 
   {
@@ -119,7 +119,7 @@ const customConfig: Linter.Config[] = [
       'packages/styles/**/**',
       'packages/stores/**/**',
       'packages/preferences/**/**',
-      'packages/locales/**/**',
+      'packages/locales/**/**'
     ],
     ignores: restrictedImportIgnores,
     rules: {
@@ -130,12 +130,12 @@ const customConfig: Linter.Config[] = [
             {
               group: ['@vben/*'],
               message:
-                'The @vben package cannot be imported, please use the @core package itself',
-            },
-          ],
-        },
-      ],
-    },
+                'The @vben package cannot be imported, please use the @core package itself'
+            }
+          ]
+        }
+      ]
+    }
   },
   // 后端模拟代码，不需要太多规则
   {
@@ -146,15 +146,15 @@ const customConfig: Linter.Config[] = [
       'n/prefer-global/buffer': 'off',
       'n/prefer-global/process': 'off',
       'no-console': 'off',
-      'unicorn/prefer-module': 'off',
-    },
+      'unicorn/prefer-module': 'off'
+    }
   },
   {
     files: ['internal/**/**', 'scripts/**/**'],
     rules: {
-      'no-console': 'off',
-    },
-  },
+      'no-console': 'off'
+    }
+  }
 ];
 
 export { customConfig };

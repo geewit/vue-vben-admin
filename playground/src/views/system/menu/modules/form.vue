@@ -21,7 +21,7 @@ import {
   isMenuNameExists,
   isMenuPathExists,
   SystemMenuApi,
-  updateMenu,
+  updateMenu
 } from '#/api/system/menu';
 import { $t } from '#/locales';
 import { componentKeys } from '#/router/routes';
@@ -39,12 +39,12 @@ const schema: VbenFormSchema[] = [
     componentProps: {
       buttonStyle: 'solid',
       options: getMenuTypeOptions(),
-      optionType: 'button',
+      optionType: 'button'
     },
     defaultValue: 'menu',
     fieldName: 'type',
     formItemClass: 'col-span-2 md:col-span-2',
-    label: $t('system.menu.type'),
+    label: $t('system.menu.type')
   },
   {
     component: 'Input',
@@ -61,10 +61,10 @@ const schema: VbenFormSchema[] = [
         (value) => ({
           message: $t('ui.formRules.alreadyExists', [
             $t('system.menu.menuName'),
-            value,
-          ]),
-        }),
-      ),
+            value
+          ])
+        })
+      )
   },
   {
     component: 'ApiTreeSelect',
@@ -84,7 +84,7 @@ const schema: VbenFormSchema[] = [
       showSearch: true,
       treeDefaultExpandAll: true,
       valueField: 'id',
-      childrenField: 'children',
+      childrenField: 'children'
     },
     fieldName: 'pid',
     label: $t('system.menu.parent'),
@@ -98,9 +98,9 @@ const schema: VbenFormSchema[] = [
           }
           coms.push(h('span', { class: '' }, $t(label || '')));
           return h('div', { class: 'flex items-center gap-1' }, coms);
-        },
+        }
       };
-    },
+    }
   },
   {
     component: 'Input',
@@ -110,12 +110,12 @@ const schema: VbenFormSchema[] = [
         addonAfter: titleSuffix.value,
         onChange({ target: { value } }: ChangeEvent) {
           titleSuffix.value = value && $te(value) ? $t(value) : undefined;
-        },
+        }
       };
     },
     fieldName: 'meta.title',
     label: $t('system.menu.menuTitle'),
-    rules: 'required',
+    rules: 'required'
   },
   {
     component: 'Input',
@@ -123,7 +123,7 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return ['catalog', 'embedded', 'menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'path',
     label: $t('system.menu.path'),
@@ -135,7 +135,7 @@ const schema: VbenFormSchema[] = [
         (value: string) => {
           return value.startsWith('/');
         },
-        $t('ui.formRules.startWith', [$t('system.menu.path'), '/']),
+        $t('ui.formRules.startWith', [$t('system.menu.path'), '/'])
       )
       .refine(
         async (value: string) => {
@@ -144,10 +144,10 @@ const schema: VbenFormSchema[] = [
         (value) => ({
           message: $t('ui.formRules.alreadyExists', [
             $t('system.menu.path'),
-            value,
-          ]),
-        }),
-      ),
+            value
+          ])
+        })
+      )
   },
   {
     component: 'Input',
@@ -155,7 +155,7 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return ['embedded', 'menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'activePath',
     help: $t('system.menu.activePathHelp'),
@@ -168,40 +168,40 @@ const schema: VbenFormSchema[] = [
         (value: string) => {
           return value.startsWith('/');
         },
-        $t('ui.formRules.startWith', [$t('system.menu.path'), '/']),
+        $t('ui.formRules.startWith', [$t('system.menu.path'), '/'])
       )
       .refine(async (value: string) => {
         return await isMenuPathExists(value, formData.value?.id);
       }, $t('system.menu.activePathMustExist'))
-      .optional(),
+      .optional()
   },
   {
     component: 'IconPicker',
     componentProps: {
-      prefix: 'carbon',
+      prefix: 'carbon'
     },
     dependencies: {
       show: (values) => {
         return ['catalog', 'embedded', 'link', 'menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.icon',
-    label: $t('system.menu.icon'),
+    label: $t('system.menu.icon')
   },
   {
     component: 'IconPicker',
     componentProps: {
-      prefix: 'carbon',
+      prefix: 'carbon'
     },
     dependencies: {
       show: (values) => {
         return ['catalog', 'embedded', 'menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.activeIcon',
-    label: $t('system.menu.activeIcon'),
+    label: $t('system.menu.activeIcon')
   },
   {
     component: 'AutoComplete',
@@ -211,7 +211,7 @@ const schema: VbenFormSchema[] = [
       filterOption(input: string, option: { value: string }) {
         return option.value.toLowerCase().includes(input.toLowerCase());
       },
-      options: componentKeys.map((v) => ({ value: v })),
+      options: componentKeys.map((v) => ({ value: v }))
     },
     dependencies: {
       rules: (values) => {
@@ -220,10 +220,10 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return values.type === 'menu';
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'component',
-    label: $t('system.menu.component'),
+    label: $t('system.menu.component')
   },
   {
     component: 'Input',
@@ -231,11 +231,11 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return ['embedded', 'link'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'linkSrc',
     label: $t('system.menu.linkSrc'),
-    rules: z.string().url($t('ui.formRules.invalidURL')),
+    rules: z.string().url($t('ui.formRules.invalidURL'))
   },
   {
     component: 'Input',
@@ -246,10 +246,10 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return ['action', 'catalog', 'embedded', 'menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'authCode',
-    label: $t('system.menu.authCode'),
+    label: $t('system.menu.authCode')
   },
   {
     component: 'RadioGroup',
@@ -257,13 +257,13 @@ const schema: VbenFormSchema[] = [
       buttonStyle: 'solid',
       options: [
         { label: $t('common.enabled'), value: 1 },
-        { label: $t('common.disabled'), value: 0 },
+        { label: $t('common.disabled'), value: 0 }
       ],
-      optionType: 'button',
+      optionType: 'button'
     },
     defaultValue: 1,
     fieldName: 'status',
-    label: $t('system.menu.status'),
+    label: $t('system.menu.status')
   },
   {
     component: 'Select',
@@ -272,17 +272,17 @@ const schema: VbenFormSchema[] = [
       class: 'w-full',
       options: [
         { label: $t('system.menu.badgeType.dot'), value: 'dot' },
-        { label: $t('system.menu.badgeType.normal'), value: 'normal' },
-      ],
+        { label: $t('system.menu.badgeType.normal'), value: 'normal' }
+      ]
     },
     dependencies: {
       show: (values) => {
         return values.type !== 'action';
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.badgeType',
-    label: $t('system.menu.badgeType.title'),
+    label: $t('system.menu.badgeType.title')
   },
   {
     component: 'Input',
@@ -290,17 +290,17 @@ const schema: VbenFormSchema[] = [
       return {
         allowClear: true,
         class: 'w-full',
-        disabled: values.meta?.badgeType !== 'normal',
+        disabled: values.meta?.badgeType !== 'normal'
       };
     },
     dependencies: {
       show: (values) => {
         return values.type !== 'action';
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.badge',
-    label: $t('system.menu.badge'),
+    label: $t('system.menu.badge')
   },
   {
     component: 'Select',
@@ -309,17 +309,17 @@ const schema: VbenFormSchema[] = [
       class: 'w-full',
       options: SystemMenuApi.BadgeVariants.map((v) => ({
         label: v,
-        value: v,
-      })),
+        value: v
+      }))
     },
     dependencies: {
       show: (values) => {
         return values.type !== 'action';
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.badgeVariants',
-    label: $t('system.menu.badgeVariants'),
+    label: $t('system.menu.badgeVariants')
   },
   {
     component: 'Divider',
@@ -327,16 +327,16 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return !['action', 'link'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'divider1',
     formItemClass: 'col-span-2 md:col-span-2 pb-0',
     hideLabel: true,
     renderComponentContent() {
       return {
-        default: () => $t('system.menu.advancedSettings'),
+        default: () => $t('system.menu.advancedSettings')
       };
-    },
+    }
   },
   {
     component: 'Checkbox',
@@ -344,14 +344,14 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return ['menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.keepAlive',
     renderComponentContent() {
       return {
-        default: () => $t('system.menu.keepAlive'),
+        default: () => $t('system.menu.keepAlive')
       };
-    },
+    }
   },
   {
     component: 'Checkbox',
@@ -359,14 +359,14 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return ['embedded', 'menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.affixTab',
     renderComponentContent() {
       return {
-        default: () => $t('system.menu.affixTab'),
+        default: () => $t('system.menu.affixTab')
       };
-    },
+    }
   },
   {
     component: 'Checkbox',
@@ -374,14 +374,14 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return !['action'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.hideInMenu',
     renderComponentContent() {
       return {
-        default: () => $t('system.menu.hideInMenu'),
+        default: () => $t('system.menu.hideInMenu')
       };
-    },
+    }
   },
   {
     component: 'Checkbox',
@@ -389,14 +389,14 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return ['catalog', 'menu'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.hideChildrenInMenu',
     renderComponentContent() {
       return {
-        default: () => $t('system.menu.hideChildrenInMenu'),
+        default: () => $t('system.menu.hideChildrenInMenu')
       };
-    },
+    }
   },
   {
     component: 'Checkbox',
@@ -404,14 +404,14 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return !['action', 'link'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.hideInBreadcrumb',
     renderComponentContent() {
       return {
-        default: () => $t('system.menu.hideInBreadcrumb'),
+        default: () => $t('system.menu.hideInBreadcrumb')
       };
-    },
+    }
   },
   {
     component: 'Checkbox',
@@ -419,15 +419,15 @@ const schema: VbenFormSchema[] = [
       show: (values) => {
         return !['action', 'link'].includes(values.type);
       },
-      triggerFields: ['type'],
+      triggerFields: ['type']
     },
     fieldName: 'meta.hideInTab',
     renderComponentContent() {
       return {
-        default: () => $t('system.menu.hideInTab'),
+        default: () => $t('system.menu.hideInTab')
       };
-    },
-  },
+    }
+  }
 ];
 
 const breakpoints = useBreakpoints(breakpointsTailwind);
@@ -436,11 +436,11 @@ const isHorizontal = computed(() => breakpoints.greaterOrEqual('md').value);
 const [Form, formApi] = useVbenForm({
   commonConfig: {
     colon: true,
-    formItemClass: 'col-span-2 md:col-span-1',
+    formItemClass: 'col-span-2 md:col-span-1'
   },
   schema,
   showDefaultActions: false,
-  wrapperClass: 'grid-cols-2 gap-x-4',
+  wrapperClass: 'grid-cols-2 gap-x-4'
 });
 
 const [Drawer, drawerApi] = await useVbenDrawer({
@@ -462,7 +462,7 @@ const [Drawer, drawerApi] = await useVbenDrawer({
         titleSuffix.value = '';
       }
     }
-  },
+  }
 });
 
 async function onSubmit() {
@@ -493,7 +493,7 @@ async function onSubmit() {
 const getDrawerTitle = computed(() =>
   formData.value?.id
     ? $t('ui.actionTitle.edit', [$t('system.menu.name')])
-    : $t('ui.actionTitle.create', [$t('system.menu.name')]),
+    : $t('ui.actionTitle.create', [$t('system.menu.name')])
 );
 </script>
 <template>

@@ -10,7 +10,7 @@ import { isMacOs, merge } from '@vben-core/shared/utils';
 import {
   breakpointsTailwind,
   useBreakpoints,
-  useDebounceFn,
+  useDebounceFn
 } from '@vueuse/core';
 
 import { defaultPreferences } from './config';
@@ -27,7 +27,7 @@ class PreferenceManager {
   private isInitialized: boolean = false;
   private readonly savePreferences: (preference: Preferences) => void;
   private state: Preferences = reactive<Preferences>({
-    ...this.loadPreferences(),
+    ...this.loadPreferences()
   });
   constructor() {
     this.cache = new StorageManager();
@@ -35,7 +35,7 @@ class PreferenceManager {
     // 避免频繁的操作缓存
     this.savePreferences = useDebounceFn(
       (preference: Preferences) => this._savePreferences(preference),
-      150,
+      150
     );
   }
 
@@ -73,7 +73,7 @@ class PreferenceManager {
       {},
       // overrides,
       this.loadCachedPreferences() || {},
-      this.initialPreferences,
+      this.initialPreferences
     );
 
     // 更新偏好设置
@@ -188,10 +188,10 @@ class PreferenceManager {
       () => isMobile.value,
       (val) => {
         this.updatePreferences({
-          app: { isMobile: val },
+          app: { isMobile: val }
         });
       },
-      { immediate: true },
+      { immediate: true }
     );
 
     // 监听系统主题偏好设置变化
@@ -201,11 +201,11 @@ class PreferenceManager {
         // 如果偏好设置中主题模式为auto，则跟随系统更新
         if (this.state.theme.mode === 'auto') {
           this.updatePreferences({
-            theme: { mode: isDark ? 'dark' : 'light' },
+            theme: { mode: isDark ? 'dark' : 'light' }
           });
           // 恢复为auto模式
           this.updatePreferences({
-            theme: { mode: 'auto' },
+            theme: { mode: 'auto' }
           });
         }
       });

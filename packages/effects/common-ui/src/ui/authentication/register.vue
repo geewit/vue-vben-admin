@@ -38,7 +38,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'RegisterForm',
+  name: 'RegisterForm'
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
   loginPath: '/auth/login',
   submitButtonText: '',
   subTitle: '',
-  title: '',
+  title: ''
 });
 
 const emit = defineEmits<{
@@ -58,11 +58,11 @@ const [Form, formApi] = useVbenForm(
   reactive({
     commonConfig: {
       hideLabel: true,
-      hideRequiredMark: true,
+      hideRequiredMark: true
     },
     schema: computed(() => props.formSchema),
-    showDefaultActions: false,
-  }),
+    showDefaultActions: false
+  })
 );
 
 const router = useRouter();
@@ -80,7 +80,7 @@ function goToLogin() {
 }
 
 defineExpose({
-  getFormApi: () => formApi,
+  getFormApi: () => formApi
 });
 </script>
 
@@ -100,7 +100,7 @@ defineExpose({
 
     <VbenButton
       :class="{
-        'cursor-wait': loading,
+        'cursor-wait': loading
       }"
       :loading="loading"
       aria-label="register"

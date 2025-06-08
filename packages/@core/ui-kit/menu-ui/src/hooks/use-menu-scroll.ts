@@ -11,7 +11,7 @@ interface UseMenuScrollOptions {
 
 export function useMenuScroll(
   activePath: Ref<string | undefined>,
-  options: UseMenuScrollOptions = {},
+  options: UseMenuScrollOptions = {}
 ) {
   const { enable = true, delay = 320 } = options;
 
@@ -20,13 +20,13 @@ export function useMenuScroll(
     if (!isEnabled) return;
 
     const activeElement = document.querySelector(
-      `aside li[role=menuitem].is-active`,
+      `aside li[role=menuitem].is-active`
     );
     if (activeElement) {
       activeElement.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
-        inline: 'center',
+        inline: 'center'
       });
     }
   }
@@ -45,6 +45,6 @@ export function useMenuScroll(
   });
 
   return {
-    scrollToActiveItem,
+    scrollToActiveItem
   };
 }

@@ -33,7 +33,7 @@ async function getShimsUrl(provide: string) {
     jsdelivr: `https://cdn.jsdelivr.net/npm/es-module-shims@${version}/${shimsSubpath}`,
 
     // 下面两个CDN不稳定，暂时不用
-    'jspm.io': `https://ga.jspm.io/npm:es-module-shims@${version}/${shimsSubpath}`,
+    'jspm.io': `https://ga.jspm.io/npm:es-module-shims@${version}/${shimsSubpath}`
   };
 
   return providerShimsMap[provide] || providerShimsMap[DEFAULT_PROVIDER];
@@ -42,7 +42,7 @@ async function getShimsUrl(provide: string) {
 let generator: Generator;
 
 async function viteImportMapPlugin(
-  pluginOptions?: pluginOptions,
+  pluginOptions?: pluginOptions
 ): Promise<Plugin[]> {
   const { importmap } = pluginOptions || {};
 
@@ -57,14 +57,14 @@ async function viteImportMapPlugin(
       debug: false,
       defaultProvider: 'jspm.io',
       env: ['production', 'browser', 'module'],
-      importmap: [],
+      importmap: []
     },
-    pluginOptions,
+    pluginOptions
   );
 
   generator = new Generator({
     ...options,
-    baseUrl: process.cwd(),
+    baseUrl: process.cwd()
   });
 
   if (options?.debug) {
@@ -87,13 +87,13 @@ async function viteImportMapPlugin(
   const allDepNames: string[] = [
     ...(importmap?.map((item) => item.name) || []),
     ...inputMapImports,
-    ...inputMapScopes,
+    ...inputMapScopes
   ];
   const depNames = new Set<string>(allDepNames);
 
   const installDeps = importmap?.map((item) => ({
     range: item.range,
-    target: item.name,
+    target: item.name
   }));
 
   return [
@@ -113,7 +113,7 @@ async function viteImportMapPlugin(
           return null;
         }
         return { external: true, id };
-      },
+      }
     },
     {
       enforce: 'post',
@@ -125,14 +125,14 @@ async function viteImportMapPlugin(
         try {
           installed = true;
           await Promise.allSettled(
-            (installDeps || []).map((dep) => generator.install(dep)),
+            (installDeps || []).map((dep) => generator.install(dep))
           );
         } catch (error: any) {
           installError = error;
           installed = false;
         }
         return null;
-      },
+      }
     },
     {
       buildEnd() {
@@ -157,18 +157,18 @@ async function viteImportMapPlugin(
           }
 
           const esModuleShimsSrc = await getShimsUrl(
-            options.defaultProvider || DEFAULT_PROVIDER,
+            options.defaultProvider || DEFAULT_PROVIDER
           );
 
           const resultHtml = await injectShimsToHtml(
             html,
-            esModuleShimsSrc || '',
+            esModuleShimsSrc || ''
           );
           html = await minify(resultHtml || html, {
             collapseWhitespace: true,
             minifyCSS: true,
             minifyJS: true,
-            removeComments: false,
+            removeComments: false
           });
 
           return {
@@ -176,18 +176,18 @@ async function viteImportMapPlugin(
             tags: [
               {
                 attrs: {
-                  type: 'importmap',
+                  type: 'importmap'
                 },
                 injectTo: 'head-prepend',
                 tag: 'script',
-                children: `${JSON.stringify(importmapJson)}`,
-              },
-            ],
+                children: `${JSON.stringify(importmapJson)}`
+              }
+            ]
           };
         },
-        order: 'post',
-      },
-    },
+        order: 'post'
+      }
+    }
   ];
 }
 

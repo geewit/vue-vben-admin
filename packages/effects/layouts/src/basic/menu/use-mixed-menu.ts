@@ -24,7 +24,7 @@ function useMixedMenu() {
   const needSplit = computed(
     () =>
       (preferences.navigation.split && isMixedNav.value) ||
-      isHeaderMixedNav.value,
+      isHeaderMixedNav.value
   );
 
   const sidebarVisible = computed(() => {
@@ -46,7 +46,7 @@ function useMixedMenu() {
     return menus.value.map((item) => {
       return {
         ...item,
-        children: [],
+        children: []
       };
     });
   });
@@ -103,7 +103,7 @@ function useMixedMenu() {
       navigation(
         defaultSubMap.has(rootMenu.path)
           ? (defaultSubMap.get(rootMenu.path) as string)
-          : rootMenu.path,
+          : rootMenu.path
       );
     }
   };
@@ -116,7 +116,7 @@ function useMixedMenu() {
   const handleMenuOpen = (key: string, parentsPath: string[]) => {
     if (parentsPath.length <= 1 && preferences.sidebar.autoActivateChild) {
       navigation(
-        defaultSubMap.has(key) ? (defaultSubMap.get(key) as string) : key,
+        defaultSubMap.has(key) ? (defaultSubMap.get(key) as string) : key
       );
     }
   };
@@ -148,7 +148,7 @@ function useMixedMenu() {
       if (rootMenuPath.value)
         defaultSubMap.set(rootMenuPath.value, currentPath);
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   // 初始化计算侧边菜单
@@ -165,7 +165,7 @@ function useMixedMenu() {
     sidebarMenus,
     mixHeaderMenus,
     mixExtraMenus,
-    sidebarVisible,
+    sidebarVisible
   };
 }
 

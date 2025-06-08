@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
   onClick: () => {},
   tooltipDelayDuration: 200,
   tooltipSide: 'bottom',
-  variant: 'icon',
+  variant: 'icon'
 });
 
 const slots = useSlots();

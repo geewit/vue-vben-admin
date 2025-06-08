@@ -13,8 +13,8 @@ import { Button } from '../button';
 const props = withDefaults(
   defineProps<PaginationPrevProps & { class?: any }>(),
   {
-    asChild: true,
-  },
+    asChild: true
+  }
 );
 
 const delegatedProps = computed(() => {

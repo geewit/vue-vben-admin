@@ -7,7 +7,7 @@ import type {
   JsonViewerAction,
   JsonViewerProps,
   JsonViewerToggle,
-  JsonViewerValue,
+  JsonViewerValue
 } from './types';
 
 import { computed, useAttrs } from 'vue';
@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<JsonViewerProps>(), {
   expanded: false,
   previewMode: false,
   showArrayIndex: true,
-  showDoubleQuotes: false,
+  showDoubleQuotes: false
 });
 
 const emit = defineEmits<{
@@ -55,7 +55,7 @@ function handleClick(event: MouseEvent) {
       path: '',
       value: '',
       depth: 0,
-      el: event.target,
+      el: event.target
     };
 
     param.path = pathNode.getAttribute('path') || '';
@@ -73,7 +73,7 @@ const bindProps = computed<Recordable<any>>(() => {
     copyText: $t('ui.jsonViewer.copy'),
     copiedText: $t('ui.jsonViewer.copied'),
     timeout: 2000,
-    ...(isBoolean(props.copyable) ? {} : props.copyable),
+    ...(isBoolean(props.copyable) ? {} : props.copyable)
   };
 
   return {
@@ -82,7 +82,7 @@ const bindProps = computed<Recordable<any>>(() => {
     onCopied: (event: JsonViewerAction) => emit('copied', event),
     onKeyclick: (key: string) => emit('keyClick', key),
     onClick: (event: MouseEvent) => handleClick(event),
-    copyable: props.copyable ? copyable : false,
+    copyable: props.copyable ? copyable : false
   };
 });
 </script>

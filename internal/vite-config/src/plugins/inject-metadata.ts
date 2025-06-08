@@ -4,7 +4,7 @@ import {
   dateUtil,
   findMonorepoRoot,
   getPackages,
-  readPackageJSON,
+  readPackageJSON
 } from '@vben/node-utils';
 
 import { readWorkspaceManifest } from '@pnpm/workspace.read-manifest';
@@ -13,7 +13,7 @@ function resolvePackageVersion(
   pkgsMeta: Record<string, string>,
   name: string,
   value: string,
-  catalog: Record<string, string>,
+  catalog: Record<string, string>
 ) {
   if (value.includes('catalog:')) {
     return catalog[name];
@@ -45,32 +45,32 @@ async function resolveMonorepoDependencies() {
     // 显式类型断言为 string
     for (const [key, value] of Object.entries(dependencies) as [
       string,
-      string,
+      string
     ][]) {
       resultDependencies[key] = resolvePackageVersion(
         pkgsMeta,
         key,
         value,
-        catalog,
+        catalog
       );
     }
 
     for (const [key, value] of Object.entries(devDependencies) as [
       string,
-      string,
+      string
     ][]) {
       resultDevDependencies[key] = resolvePackageVersion(
         pkgsMeta,
         key,
         value,
-        catalog,
+        catalog
       );
     }
   }
 
   return {
     dependencies: resultDependencies,
-    devDependencies: resultDevDependencies,
+    devDependencies: resultDevDependencies
   };
 }
 
@@ -78,7 +78,7 @@ async function resolveMonorepoDependencies() {
  * 用于注入项目信息
  */
 async function viteMetadataPlugin(
-  root = process.cwd(),
+  root = process.cwd()
 ): Promise<PluginOption | undefined> {
   const { author, description, homepage, version } =
     await readPackageJSON(root);
@@ -106,14 +106,14 @@ async function viteMetadataPlugin(
             description,
             devDependencies,
             homepage,
-            version,
+            version
           }),
-          'import.meta.env.VITE_APP_VERSION': JSON.stringify(version),
-        },
+          'import.meta.env.VITE_APP_VERSION': JSON.stringify(version)
+        }
       };
     },
     enforce: 'post',
-    name: 'vite:inject-metadata',
+    name: 'vite:inject-metadata'
   };
 }
 

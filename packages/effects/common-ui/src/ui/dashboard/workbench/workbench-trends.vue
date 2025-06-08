@@ -6,7 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  VbenIcon,
+  VbenIcon
 } from '@vben-core/shadcn-ui';
 
 interface Props {
@@ -15,11 +15,11 @@ interface Props {
 }
 
 defineOptions({
-  name: 'WorkbenchTrends',
+  name: 'WorkbenchTrends'
 });
 
 withDefaults(defineProps<Props>(), {
-  items: () => [],
+  items: () => []
 });
 </script>
 

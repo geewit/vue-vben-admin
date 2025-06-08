@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<CountToProps>(), {
   decimal: '.',
   decimals: 0,
   delay: 0,
-  transition: () => TransitionPresets.easeOutExpo,
+  transition: () => TransitionPresets.easeOutExpo
 });
 
 const emit = defineEmits(['started', 'finished']);
@@ -29,7 +29,7 @@ watch(
   () => props.endVal,
   (val) => {
     lastValue.value = val;
-  },
+  }
 );
 
 const currentValue = useTransition(lastValue, {
@@ -46,7 +46,7 @@ const currentValue = useTransition(lastValue, {
   },
   onFinished() {
     emit('finished');
-  },
+  }
 });
 
 const numMain = computed(() => {

@@ -4,7 +4,7 @@ import type { ContextMenuRootEmits, ContextMenuRootProps } from 'radix-vue';
 import { ContextMenuRoot, useForwardPropsEmits } from 'radix-vue';
 
 const props = withDefaults(defineProps<ContextMenuRootProps>(), {
-  modal: false,
+  modal: false
 });
 const emits = defineEmits<ContextMenuRootEmits>();
 

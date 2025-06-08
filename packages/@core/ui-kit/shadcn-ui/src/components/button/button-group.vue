@@ -9,7 +9,7 @@ withDefaults(
     gap?: number;
     size?: 'large' | 'middle' | 'small';
   }>(),
-  { border: false, gap: 0, size: 'middle' },
+  { border: false, gap: 0, size: 'middle' }
 );
 </script>
 <template>
@@ -19,7 +19,7 @@ withDefaults(
         'vben-button-group rounded-md',
         `size-${size}`,
         gap ? 'with-gap' : 'no-gap',
-        $attrs.class as string,
+        $attrs.class as string
       )
     "
     :style="{ gap: gap ? `${gap}px` : '0px' }"

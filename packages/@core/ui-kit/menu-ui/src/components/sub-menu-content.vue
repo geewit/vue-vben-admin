@@ -19,7 +19,7 @@ defineOptions({ name: 'SubMenuContent' });
 
 const props = withDefaults(defineProps<Props>(), {
   isMenuMore: false,
-  level: 0,
+  level: 0
 });
 
 const rootMenu = useMenuContext();
@@ -77,7 +77,7 @@ const iconArrowStyle = computed(() => {
     :class="[
       b(),
       is('collapse-show-title', getCollapseShowTitle),
-      is('more', isMenuMore),
+      is('more', isMenuMore)
     ]"
   >
     <slot></slot>

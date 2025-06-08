@@ -4,12 +4,12 @@ import type { SelectOption } from '@vben/types';
 import { ToggleGroup, ToggleGroupItem } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'PreferenceToggleItem',
+  name: 'PreferenceToggleItem'
 });
 
 withDefaults(defineProps<{ disabled?: boolean; items?: SelectOption[] }>(), {
   disabled: false,
-  items: () => [],
+  items: () => []
 });
 
 const modelValue = defineModel<string>();
@@ -18,7 +18,7 @@ const modelValue = defineModel<string>();
 <template>
   <div
     :class="{
-      'pointer-events-none opacity-50': disabled,
+      'pointer-events-none opacity-50': disabled
     }"
     class="hover:bg-accent flex w-full items-center justify-between rounded-md px-2 py-2"
     disabled

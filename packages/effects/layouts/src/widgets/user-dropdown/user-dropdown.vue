@@ -23,7 +23,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
   VbenAvatar,
-  VbenIcon,
+  VbenIcon
 } from '@vben-core/shadcn-ui';
 
 import { useMagicKeys, whenever } from '@vueuse/core';
@@ -67,7 +67,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'UserDropdown',
+  name: 'UserDropdown'
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -79,7 +79,7 @@ const props = withDefaults(defineProps<Props>(), {
   tagText: '',
   text: '',
   trigger: 'click',
-  hoverDelay: 500,
+  hoverDelay: 500
 });
 
 const emit = defineEmits<{ logout: [] }>();
@@ -88,19 +88,19 @@ const { globalLockScreenShortcutKey, globalLogoutShortcutKey } =
   usePreferences();
 const accessStore = useAccessStore();
 const [LockModal, lockModalApi] = useVbenModal({
-  connectedComponent: LockScreenModal,
+  connectedComponent: LockScreenModal
 });
 const [LogoutModal, logoutModalApi] = useVbenModal({
   onConfirm() {
     handleSubmitLogout();
-  },
+  }
 });
 
 const refTrigger = useTemplateRef('refTrigger');
 const refContent = useTemplateRef('refContent');
 const [openPopover, hoverWatcher] = useHoverToggle(
   [refTrigger, refContent],
-  () => props.hoverDelay,
+  () => props.hoverDelay
 );
 
 watch(
@@ -113,8 +113,8 @@ watch(
     }
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 const altView = computed(() => (isWindowsOs() ? 'Alt' : '⌥'));

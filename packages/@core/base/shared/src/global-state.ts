@@ -25,7 +25,7 @@ class GlobalShareState {
    */
   public defineMessage({ copyPreferencesSuccess }: MessageState) {
     this.#message = {
-      copyPreferencesSuccess,
+      copyPreferencesSuccess
     };
   }
 

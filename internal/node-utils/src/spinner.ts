@@ -9,7 +9,7 @@ interface SpinnerOptions {
 }
 export async function spinner<T>(
   { failedText, successText, title }: SpinnerOptions,
-  callback: () => Promise<T>,
+  callback: () => Promise<T>
 ): Promise<T> {
   const loading: Ora = ora(title).start();
 

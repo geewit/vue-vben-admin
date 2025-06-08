@@ -15,7 +15,7 @@ import {
   useDebounceFn,
   useResizeObserver,
   useTimeoutFn,
-  useWindowSize,
+  useWindowSize
 } from '@vueuse/core';
 
 import echarts from './echarts';
@@ -38,7 +38,7 @@ function useEcharts(chartRef: Ref<EchartsUIType>) {
     }
 
     return {
-      backgroundColor: 'transparent',
+      backgroundColor: 'transparent'
     };
   });
 
@@ -54,12 +54,12 @@ function useEcharts(chartRef: Ref<EchartsUIType>) {
 
   const renderEcharts = (
     options: EChartsOption,
-    clear = true,
+    clear = true
   ): Promise<Nullable<echarts.ECharts>> => {
     cacheOptions = options;
     const currentOptions = {
       ...options,
-      ...getOptions.value,
+      ...getOptions.value
     };
     return new Promise((resolve) => {
       if (chartRef.value?.offsetHeight === 0) {
@@ -86,8 +86,8 @@ function useEcharts(chartRef: Ref<EchartsUIType>) {
     chartInstance?.resize({
       animation: {
         duration: 300,
-        easing: 'quadraticIn',
-      },
+        easing: 'quadraticIn'
+      }
     });
   }
 
@@ -101,7 +101,7 @@ function useEcharts(chartRef: Ref<EchartsUIType>) {
     if (chartInstance) {
       chartInstance.dispose();
       initCharts();
-        void renderEcharts(cacheOptions);
+      void renderEcharts(cacheOptions);
       resize();
     }
   });
@@ -113,7 +113,7 @@ function useEcharts(chartRef: Ref<EchartsUIType>) {
   return {
     renderEcharts,
     resize,
-    getChartInstance: () => chartInstance,
+    getChartInstance: () => chartInstance
   };
 }
 

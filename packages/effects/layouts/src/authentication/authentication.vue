@@ -29,7 +29,7 @@ withDefaults(defineProps<Props>(), {
   sloganImage: '',
   toolbar: true,
   toolbarList: () => ['color', 'language', 'layout', 'theme'],
-  clickLogo: () => {},
+  clickLogo: () => {}
 });
 
 const { authPanelCenter, authPanelLeft, authPanelRight, isDark } =

@@ -30,7 +30,7 @@ import {
   VxeSelect,
   VxeTooltip,
   VxeUI,
-  VxeUpload,
+  VxeUpload
   // VxeSwitch,
   // VxeTextarea,
 } from 'vxe-pc-ui';
@@ -42,7 +42,7 @@ import {
   VxeColumn,
   VxeGrid,
   VxeTable,
-  VxeToolbar,
+  VxeToolbar
 } from 'vxe-table';
 
 import { extendsDefaultFormatter } from './extends';
@@ -56,7 +56,7 @@ export let useTableForm: typeof useVbenForm;
 // 部分组件，如果没注册，vxe-table 会报错，这里实际没用组件，只是为了不报错，同时可以减少打包体积
 const createVirtualComponent = (name = '') => {
   return defineComponent({
-    name,
+    name
   });
 };
 
@@ -110,7 +110,7 @@ export function setupVbenVxeTable(setupOptions: SetupVxeTable) {
 
   const localMap = {
     'zh-CN': zhCN,
-    'en-US': enUS,
+    'en-US': enUS
   };
 
   watch(
@@ -121,8 +121,8 @@ export function setupVbenVxeTable(setupOptions: SetupVxeTable) {
       VxeUI.setLanguage(localeValue);
     },
     {
-      immediate: true,
-    },
+      immediate: true
+    }
   );
 
   extendsDefaultFormatter(VxeUI);

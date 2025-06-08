@@ -6,7 +6,7 @@ export default {
     '**/*.tsx',
     '**/*.ts',
     '**/*.json',
-    '**/*.md',
+    '**/*.md'
   ],
   overrides: [
     {
@@ -16,31 +16,31 @@ export default {
         'selector-pseudo-class-no-unknown': [
           true,
           {
-            ignorePseudoClasses: ['global', 'deep'],
-          },
+            ignorePseudoClasses: ['global', 'deep']
+          }
         ],
         'selector-pseudo-element-no-unknown': [
           true,
           {
-            ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted'],
-          },
-        ],
-      },
+            ignorePseudoElements: ['v-deep', 'v-global', 'v-slotted']
+          }
+        ]
+      }
     },
     {
       customSyntax: 'postcss-scss',
       extends: [
         'stylelint-config-recommended-scss',
-        'stylelint-config-recommended-vue/scss',
+        'stylelint-config-recommended-vue/scss'
       ],
-      files: ['*.scss', '**/*.scss'],
-    },
+      files: ['*.scss', '**/*.scss']
+    }
   ],
   plugins: [
     'stylelint-order',
     '@stylistic/stylelint-plugin',
     'stylelint-prettier',
-    'stylelint-scss',
+    'stylelint-scss'
   ],
   rules: {
     'at-rule-no-deprecated': null,
@@ -66,9 +66,9 @@ export default {
           'each',
           'use',
           'forward',
-          'return',
-        ],
-      },
+          'return'
+        ]
+      }
     ],
     'font-family-no-missing-generic-family-keyword': null,
     'function-no-unknown': null,
@@ -85,26 +85,26 @@ export default {
         'declarations',
         {
           name: 'supports',
-          type: 'at-rule',
+          type: 'at-rule'
         },
         {
           name: 'media',
-          type: 'at-rule',
+          type: 'at-rule'
         },
         {
           name: 'include',
-          type: 'at-rule',
+          type: 'at-rule'
         },
-        'rules',
+        'rules'
       ],
-      { severity: 'error' },
+      { severity: 'error' }
     ],
     'prettier/prettier': true,
     'rule-empty-line-before': [
       'always',
       {
-        ignore: ['after-comment', 'first-nested'],
-      },
+        ignore: ['after-comment', 'first-nested']
+      }
     ],
     'scss/at-rule-no-unknown': [
       true,
@@ -128,14 +128,14 @@ export default {
           'each',
           'use',
           'forward',
-          'return',
-        ],
-      },
+          'return'
+        ]
+      }
     ],
     'scss/operator-no-newline-after': null,
     'selector-class-pattern':
       '^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:[.+])?$',
 
-    'selector-not-notation': null,
-  },
+    'selector-not-notation': null
+  }
 };

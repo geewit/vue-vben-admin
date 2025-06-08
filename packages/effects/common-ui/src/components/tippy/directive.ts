@@ -77,7 +77,7 @@ export default function useTippyDirective(isDark: ComputedRef<boolean>) {
           ? { content: binding.value, theme: isDark.value ? '' : 'light' }
           : Object.assign(
               { theme: isDark.value ? '' : 'light' },
-              binding.value,
+              binding.value
             );
 
       if (el.getAttribute('title') && !opts.content) {
@@ -94,7 +94,7 @@ export default function useTippyDirective(isDark: ComputedRef<boolean>) {
       } else if (el._tippy) {
         el._tippy.setProps(opts || {});
       }
-    },
+    }
   };
   return directive;
 }

@@ -8,7 +8,7 @@ import { CircleHelp } from '@vben/icons';
 import { Input, VbenTooltip } from '@vben-core/shadcn-ui';
 
 defineOptions({
-  name: 'PreferenceSelectItem',
+  name: 'PreferenceSelectItem'
 });
 
 withDefaults(
@@ -20,8 +20,8 @@ withDefaults(
   {
     disabled: false,
     placeholder: '',
-    items: () => [],
-  },
+    items: () => []
+  }
 );
 
 const inputValue = defineModel<string>();
@@ -33,7 +33,7 @@ const slots = useSlots();
   <div
     :class="{
       'hover:bg-accent': !slots.tip,
-      'pointer-events-none opacity-50': disabled,
+      'pointer-events-none opacity-50': disabled
     }"
     class="my-1 flex w-full items-center justify-between rounded-md px-2 py-1"
   >

@@ -6,7 +6,7 @@ interface Props {
 }
 
 defineOptions({
-  name: 'AnalysisChartCard',
+  name: 'AnalysisChartCard'
 });
 
 withDefaults(defineProps<Props>(), {});

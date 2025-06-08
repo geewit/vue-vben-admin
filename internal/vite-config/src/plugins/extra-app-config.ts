@@ -3,7 +3,7 @@ import type { PluginOption } from 'vite';
 import {
   colors,
   generatorContentHash,
-  readPackageJSON,
+  readPackageJSON
 } from '@vben/node-utils';
 
 import { loadEnv } from '../utils/env';
@@ -23,7 +23,7 @@ const VBEN_ADMIN_PRO_APP_CONF = '_VBEN_ADMIN_PRO_APP_CONF_';
 
 async function viteExtraAppConfigPlugin({
   isBuild,
-  root,
+  root
 }: PluginOptions): Promise<PluginOption | undefined> {
   let publicPath: string;
   let source: string;
@@ -44,15 +44,15 @@ async function viteExtraAppConfigPlugin({
         this.emitFile({
           fileName: GLOBAL_CONFIG_FILE_NAME,
           source,
-          type: 'asset',
+          type: 'asset'
         });
 
         console.log(colors.cyan(`✨configuration file is build successfully!`));
       } catch (error) {
         console.log(
           colors.red(
-            `configuration file configuration file failed to package:\n${error}`,
-          ),
+            `configuration file configuration file failed to package:\n${error}`
+          )
         );
       }
     },
@@ -64,9 +64,9 @@ async function viteExtraAppConfigPlugin({
 
       return {
         html,
-        tags: [{ attrs: { src: appConfigSrc }, tag: 'script' }],
+        tags: [{ attrs: { src: appConfigSrc }, tag: 'script' }]
       };
-    },
+    }
   };
 }
 

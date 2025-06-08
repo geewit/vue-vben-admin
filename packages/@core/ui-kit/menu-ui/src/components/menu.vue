@@ -7,7 +7,7 @@ import type {
   MenuItemClicked,
   MenuItemRegistered,
   MenuProps,
-  MenuProvider,
+  MenuProvider
 } from '../types';
 
 import {
@@ -18,7 +18,7 @@ import {
   toRef,
   useSlots,
   watch,
-  watchEffect,
+  watchEffect
 } from 'vue';
 
 import { useNamespace } from '@vben-core/composables';
@@ -29,7 +29,7 @@ import { useResizeObserver } from '@vueuse/core';
 import {
   createMenuContext,
   createSubMenuContext,
-  useMenuStyle,
+  useMenuStyle
 } from '../hooks';
 import { useMenuScroll } from '../hooks/use-menu-scroll';
 import { flattedChildren } from '../utils';
@@ -45,7 +45,7 @@ const props = withDefaults(defineProps<Props>(), {
   mode: 'vertical',
   rounded: true,
   theme: 'dark',
-  scrollToActive: false,
+  scrollToActive: false
 });
 
 const emit = defineEmits<{
@@ -60,7 +60,7 @@ const slots: SetupContext['slots'] = useSlots();
 const menu = ref<HTMLUListElement>();
 const sliceIndex = ref(-1);
 const openedMenus = ref<MenuProvider['openedMenus']>(
-  props.defaultOpeneds && !props.collapse ? [...props.defaultOpeneds] : [],
+  props.defaultOpeneds && !props.collapse ? [...props.defaultOpeneds] : []
 );
 const activePath = ref<MenuProvider['activePath']>(props.defaultActive);
 const items = ref<MenuProvider['items']>({});
@@ -93,7 +93,7 @@ watch(
   () => props.collapse,
   (value) => {
     if (value) openedMenus.value = [];
-  },
+  }
 );
 
 watch(items.value, initMenu);
@@ -105,7 +105,7 @@ watch(
       activePath.value = '';
     }
     updateActiveName(currentActive);
-  },
+  }
 );
 
 let resizeStopper: UseResizeObserverReturn['stop'];
@@ -134,15 +134,15 @@ createMenuContext(
     removeSubMenu,
     subMenus,
     theme: toRef(props, 'theme'),
-    items,
-  }),
+    items
+  })
 );
 
 createSubMenuContext({
   addSubMenu,
   level: 1,
   mouseInChild,
-  removeSubMenu,
+  removeSubMenu
 });
 
 function calcMenuItemWidth(menuItem: HTMLElement) {
@@ -160,7 +160,7 @@ function calcSliceIndex() {
     (item) =>
       // remove comment type node #12634
       item.nodeName !== '#comment' &&
-      (item.nodeName !== '#text' || item.nodeValue),
+      (item.nodeName !== '#text' || item.nodeValue)
   ) as HTMLElement[];
 
   const moreItemWidth = 46;
@@ -209,12 +209,12 @@ function handleResize() {
 }
 
 const enableScroll = computed(
-  () => props.scrollToActive && props.mode === 'vertical' && !props.collapse,
+  () => props.scrollToActive && props.mode === 'vertical' && !props.collapse
 );
 
 const { scrollToActiveItem } = useMenuScroll(activePath, {
   enable: enableScroll,
-  delay: 320,
+  delay: 320
 });
 
 // 监听 activePath 变化，自动滚动到激活项
@@ -302,7 +302,7 @@ function openMenu(path: string, parentPaths: string[]) {
       parentPaths = activeParentPaths;
     }
     openedMenus.value = openedMenus.value.filter((path: string) =>
-      parentPaths.includes(path),
+      parentPaths.includes(path)
     );
   }
   openedMenus.value.push(path);
@@ -345,7 +345,7 @@ function getActivePaths() {
       is(theme, true),
       is('rounded', rounded),
       is('collapse', collapse),
-      is('menu-align', mode === 'horizontal'),
+      is('menu-align', mode === 'horizontal')
     ]"
     :style="menuStyle"
     role="menu"

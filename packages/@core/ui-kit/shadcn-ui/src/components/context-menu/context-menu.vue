@@ -2,7 +2,7 @@
 import type {
   ContextMenuContentProps,
   ContextMenuRootEmits,
-  ContextMenuRootProps,
+  ContextMenuRootProps
 } from 'radix-vue';
 
 import type { ClassType } from '@vben-core/typings';
@@ -19,7 +19,7 @@ import {
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuShortcut,
-  ContextMenuTrigger,
+  ContextMenuTrigger
 } from '../../ui/context-menu';
 
 const props = defineProps<

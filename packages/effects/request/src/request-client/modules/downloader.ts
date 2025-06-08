@@ -24,12 +24,12 @@ class FileDownloader {
    */
   public async download<T = Blob>(
     url: string,
-    config?: DownloadRequestConfig,
+    config?: DownloadRequestConfig
   ): Promise<T> {
     const finalConfig: DownloadRequestConfig = {
       responseReturn: 'body',
       ...config,
-      responseType: 'blob',
+      responseType: 'blob'
     };
 
     return await this.client.get<T>(url, finalConfig);

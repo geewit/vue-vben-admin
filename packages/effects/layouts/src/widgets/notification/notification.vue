@@ -8,7 +8,7 @@ import {
   VbenButton,
   VbenIconButton,
   VbenPopover,
-  VbenScrollbar,
+  VbenScrollbar
 } from '@vben-core/shadcn-ui';
 
 import { useToggle } from '@vueuse/core';
@@ -28,7 +28,7 @@ defineOptions({ name: 'NotificationPopup' });
 
 withDefaults(defineProps<Props>(), {
   dot: false,
-  notifications: () => [],
+  notifications: () => []
 });
 
 const emit = defineEmits<{

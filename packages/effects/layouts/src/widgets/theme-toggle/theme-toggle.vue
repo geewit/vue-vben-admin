@@ -6,28 +6,28 @@ import { $t } from '@vben/locales';
 import {
   preferences,
   updatePreferences,
-  usePreferences,
+  usePreferences
 } from '@vben/preferences';
 
 import {
   ToggleGroup,
   ToggleGroupItem,
-  VbenTooltip,
+  VbenTooltip
 } from '@vben-core/shadcn-ui';
 
 import ThemeButton from './theme-button.vue';
 
 defineOptions({
-  name: 'ThemeToggle',
+  name: 'ThemeToggle'
 });
 
 withDefaults(defineProps<{ shouldOnHover?: boolean }>(), {
-  shouldOnHover: false,
+  shouldOnHover: false
 });
 
 function handleChange(isDark: boolean | undefined) {
   updatePreferences({
-    theme: { mode: isDark ? 'dark' : 'light' },
+    theme: { mode: isDark ? 'dark' : 'light' }
   });
 }
 
@@ -37,18 +37,18 @@ const PRESETS = [
   {
     icon: Sun,
     name: 'light',
-    title: $t('preferences.theme.light'),
+    title: $t('preferences.theme.light')
   },
   {
     icon: MoonStar,
     name: 'dark',
-    title: $t('preferences.theme.dark'),
+    title: $t('preferences.theme.dark')
   },
   {
     icon: SunMoon,
     name: 'auto',
-    title: $t('preferences.followSystem'),
-  },
+    title: $t('preferences.followSystem')
+  }
 ];
 </script>
 <template>

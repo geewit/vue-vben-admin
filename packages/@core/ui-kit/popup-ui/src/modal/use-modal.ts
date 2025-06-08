@@ -9,7 +9,7 @@ import {
   onDeactivated,
   provide,
   reactive,
-  ref,
+  ref
 } from 'vue';
 
 import { useStore } from '@vben-core/shared/store';
@@ -26,7 +26,7 @@ export function setDefaultModalProps(props: Partial<ModalProps>) {
 }
 
 export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
-  options: ModalApiOptions = {},
+  options: ModalApiOptions = {}
 ) {
   const { connectedComponent } = options;
   if (connectedComponent) {
@@ -44,7 +44,7 @@ export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
             isModalReady.value = false;
             await nextTick();
             isModalReady.value = true;
-          },
+          }
         });
 
         // ✅ 使用 onBeforeMount 生命周期来执行异步检查
@@ -52,7 +52,7 @@ export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
           await checkProps(extendedApi as ExtendedModalApi, {
             ...props,
             ...attrs,
-            ...slots,
+            ...slots
           });
         });
 
@@ -61,16 +61,16 @@ export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
             isModalReady.value ? connectedComponent : 'div',
             {
               ...props,
-              ...attrs,
+              ...attrs
             },
-            slots,
+            slots
           );
       },
       // eslint-disable-next-line vue/one-component-per-file
       {
         name: 'VbenParentModal',
-        inheritAttrs: false,
-      },
+        inheritAttrs: false
+      }
     );
 
     /**
@@ -88,7 +88,7 @@ export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
   const mergedOptions = {
     ...DEFAULT_MODAL_PROPS,
     ...injectData.options,
-    ...options,
+    ...options
   } as ModalApiOptions;
 
   mergedOptions.onOpenChange = (isOpen: boolean) => {
@@ -120,16 +120,16 @@ export function useVbenModal<TParentModalProps extends ModalProps = ModalProps>(
           {
             ...props,
             ...attrs,
-            modalApi: extendedApi,
+            modalApi: extendedApi
           },
-          slots,
+          slots
         );
     },
     // eslint-disable-next-line vue/one-component-per-file
     {
       name: 'VbenModal',
-      inheritAttrs: false,
-    },
+      inheritAttrs: false
+    }
   );
 
   injectData.extendApi?.(extendedApi);
@@ -157,7 +157,7 @@ async function checkProps(api: ExtendedModalApi, attrs: Record<string, any>) {
     if (stateKeys.has(attr) && !['class'].includes(attr)) {
       // connectedComponent存在时，不要传入Modal的props，会造成复杂度提升，如果你需要修改Modal的props，请使用 useModal 或者api
       console.warn(
-        `[Vben Modal]: When 'connectedComponent' exists, do not set props or slots '${attr}', which will increase complexity. If you need to modify the props of Modal, please use useVbenModal or api.`,
+        `[Vben Modal]: When 'connectedComponent' exists, do not set props or slots '${attr}', which will increase complexity. If you need to modify the props of Modal, please use useVbenModal or api.`
       );
     }
   }

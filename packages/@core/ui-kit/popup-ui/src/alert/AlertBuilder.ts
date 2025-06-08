@@ -19,23 +19,23 @@ const { $t } = useSimpleLocale();
 export function vbenAlert(options: AlertProps): Promise<void>;
 export function vbenAlert(
   message: string,
-  options?: Partial<AlertProps>,
+  options?: Partial<AlertProps>
 ): Promise<void>;
 export function vbenAlert(
   message: string,
   title?: string,
-  options?: Partial<AlertProps>,
+  options?: Partial<AlertProps>
 ): Promise<void>;
 
 export function vbenAlert(
   arg0: AlertProps | string,
   arg1?: Partial<AlertProps> | string,
-  arg2?: Partial<AlertProps>,
+  arg2?: Partial<AlertProps>
 ): Promise<void> {
   return new Promise((resolve, reject) => {
     const options: AlertProps = isString(arg0)
       ? {
-          content: arg0,
+          content: arg0
         }
       : { ...arg0 };
     if (arg1) {
@@ -78,7 +78,7 @@ export function vbenAlert(
       },
       ...options,
       open: true,
-      title: options.title ?? $t.value('prompt'),
+      title: options.title ?? $t.value('prompt')
     };
 
     // 创建Alert组件的VNode
@@ -98,21 +98,21 @@ export function vbenAlert(
 export function vbenConfirm(options: AlertProps): Promise<void>;
 export function vbenConfirm(
   message: string,
-  options?: Partial<AlertProps>,
+  options?: Partial<AlertProps>
 ): Promise<void>;
 export function vbenConfirm(
   message: string,
   title?: string,
-  options?: Partial<AlertProps>,
+  options?: Partial<AlertProps>
 ): Promise<void>;
 
 export function vbenConfirm(
   arg0: AlertProps | string,
   arg1?: Partial<AlertProps> | string,
-  arg2?: Partial<AlertProps>,
+  arg2?: Partial<AlertProps>
 ): Promise<void> {
   const defaultProps: Partial<AlertProps> = {
-    showCancel: true,
+    showCancel: true
   };
   if (!arg1) {
     return isString(arg0)
@@ -125,12 +125,12 @@ export function vbenConfirm(
   }
   return vbenAlert(arg0 as string, arg1 as string, {
     ...defaultProps,
-    ...arg2,
+    ...arg2
   });
 }
 
 export async function vbenPrompt<T = any>(
-  options: PromptProps<T>,
+  options: PromptProps<T>
 ): Promise<T | undefined> {
   const {
     component: _component,
@@ -167,14 +167,14 @@ export async function vbenPrompt<T = any>(
     inputComponentRef.value = h(
       _component || Input,
       currentProps,
-      componentSlots,
+      componentSlots
     );
 
     // 返回包含静态内容和输入组件的数组
     return h(
       'div',
       { class: 'flex flex-col gap-2' },
-      { default: () => [...staticContents, inputComponentRef.value] },
+      { default: () => [...staticContents, inputComponentRef.value] }
     );
   };
 
@@ -184,7 +184,7 @@ export async function vbenPrompt<T = any>(
       if (delegated.beforeClose) {
         return delegated.beforeClose({
           ...scope,
-          value: modelValue.value,
+          value: modelValue.value
         });
       }
     },
@@ -205,13 +205,13 @@ export async function vbenPrompt<T = any>(
             if (
               isFunction(componentRef.el.focus) &&
               ['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA'].includes(
-                componentRef.el.tagName,
+                componentRef.el.tagName
               )
             ) {
               componentRef.el.focus();
             } else if (isFunction(componentRef.el.querySelector)) {
               const focusableElement = componentRef.el.querySelector(
-                'input, select, textarea, button',
+                'input, select, textarea, button'
               );
               if (focusableElement && isFunction(focusableElement.focus)) {
                 focusableElement.focus();
@@ -225,7 +225,7 @@ export async function vbenPrompt<T = any>(
           }
         }
       }
-    },
+    }
   };
 
   await vbenConfirm(props);

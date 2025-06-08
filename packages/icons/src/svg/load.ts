@@ -29,7 +29,7 @@ function parseSvg(svgData: string): IconifyIconStructure {
     height,
     left,
     top,
-    width,
+    width
   };
 }
 
@@ -41,7 +41,7 @@ function parseSvg(svgData: string): IconifyIconStructure {
 async function loadSvgIcons() {
   const svgEagers = import.meta.glob('./icons/**', {
     eager: true,
-    query: '?raw',
+    query: '?raw'
   });
 
   await Promise.all(
@@ -54,8 +54,8 @@ async function loadSvgIcons() {
       const iconName = key.slice(start, end);
 
       return addIcon(`svg:${iconName}`, {
-        ...parseSvg(typeof body === 'object' ? body.default : body),
+        ...parseSvg(typeof body === 'object' ? body.default : body)
       });
-    }),
+    })
   );
 }

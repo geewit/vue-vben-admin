@@ -36,7 +36,7 @@ export function initTippy(app: App<Element>, options?: DefaultProps) {
     allowHTML: true,
     delay: [500, 200],
     theme: isDark.value ? '' : 'light',
-    ...options,
+    ...options
   });
   if (!options || !Reflect.has(options, 'theme') || options.theme === 'auto') {
     watchEffect(() => {
@@ -60,8 +60,8 @@ export const Tippy = (props: any, { attrs, slots }: SetupContext) => {
     {
       ...props,
       ...attrs,
-      theme,
+      theme
     },
-    slots,
+    slots
   );
 };

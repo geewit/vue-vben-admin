@@ -25,7 +25,7 @@ const formData = ref<SystemRoleApi.SystemRole>();
 
 const [Form, formApi] = useVbenForm({
   schema: useFormSchema(),
-  showDefaultActions: false,
+  showDefaultActions: false
 });
 
 const permissions = ref<DataNode[]>([]);
@@ -63,7 +63,7 @@ const [Drawer, drawerApi] = await useVbenDrawer({
         loadPermissions();
       }
     }
-  },
+  }
 });
 
 async function loadPermissions() {

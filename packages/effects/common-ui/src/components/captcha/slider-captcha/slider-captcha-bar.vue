@@ -16,7 +16,7 @@ const style = computed(() => {
   const { barStyle } = props;
   return {
     ...barStyle,
-    width: width.value,
+    width: width.value
   };
 });
 
@@ -26,7 +26,7 @@ defineExpose({
   },
   setWidth: (val: string) => {
     width.value = val;
-  },
+  }
 });
 </script>
 

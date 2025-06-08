@@ -4,13 +4,13 @@ import { interopDefault } from '../util';
 
 export async function jsdoc(): Promise<Linter.Config[]> {
   const [pluginJsdoc] = await Promise.all([
-    interopDefault(import('eslint-plugin-jsdoc')),
+    interopDefault(import('eslint-plugin-jsdoc'))
   ] as const);
 
   return [
     {
       plugins: {
-        jsdoc: pluginJsdoc,
+        jsdoc: pluginJsdoc
       },
       rules: {
         'jsdoc/check-access': 'warn',
@@ -27,8 +27,8 @@ export async function jsdoc(): Promise<Linter.Config[]> {
         'jsdoc/require-property-name': 'warn',
         'jsdoc/require-returns-check': 'warn',
         'jsdoc/require-returns-description': 'warn',
-        'jsdoc/require-yields-check': 'warn',
-      },
-    },
+        'jsdoc/require-yields-check': 'warn'
+      }
+    }
   ];
 }

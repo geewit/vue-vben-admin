@@ -12,17 +12,17 @@ const getDefaultPwaOptions = (name: string): Partial<PwaPluginOptions> => ({
       {
         sizes: '192x192',
         src: 'https://unpkg.com/@vbenjs/static-source@0.1.7/source/pwa-icon-192.png',
-        type: 'image/png',
+        type: 'image/png'
       },
       {
         sizes: '512x512',
         src: 'https://unpkg.com/@vbenjs/static-source@0.1.7/source/pwa-icon-512.png',
-        type: 'image/png',
-      },
+        type: 'image/png'
+      }
     ],
     name: `${name}${isDevelopment ? ' dev' : ''}`,
-    short_name: `${name}${isDevelopment ? ' dev' : ''}`,
-  },
+    short_name: `${name}${isDevelopment ? ' dev' : ''}`
+  }
 });
 
 /**
@@ -38,8 +38,8 @@ const defaultImportmapOptions: ImportmapPluginOptions = {
     { name: 'vue-router' },
     // { name: 'vue-i18n' },
     { name: 'dayjs' },
-    { name: 'vue-demi' },
-  ],
+    { name: 'vue-demi' }
+  ]
 };
 
 export { defaultImportmapOptions, getDefaultPwaOptions };

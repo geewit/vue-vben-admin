@@ -2,7 +2,7 @@
 import type {
   AvatarFallbackProps,
   AvatarImageProps,
-  AvatarRootProps,
+  AvatarRootProps
 } from 'radix-vue';
 
 import type { CSSProperties } from 'vue';
@@ -23,7 +23,7 @@ interface Props extends AvatarFallbackProps, AvatarImageProps, AvatarRootProps {
 }
 
 defineOptions({
-  inheritAttrs: false,
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<Props>(), {
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
   as: 'button',
   dot: false,
   dotClass: 'bg-green-500',
-  fit: 'cover',
+  fit: 'cover'
 });
 
 const imageStyle = computed<CSSProperties>(() => {
@@ -50,7 +50,7 @@ const rootStyle = computed(() => {
   return props.size !== undefined && props.size > 0
     ? {
         height: `${props.size}px`,
-        width: `${props.size}px`,
+        width: `${props.size}px`
       }
     : {};
 });

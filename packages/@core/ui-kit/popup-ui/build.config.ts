@@ -8,14 +8,14 @@ export default defineBuildConfig({
       builder: 'mkdist',
       input: './src',
       loaders: ['vue'],
-      pattern: ['**/*.vue'],
+      pattern: ['**/*.vue']
     },
     {
       builder: 'mkdist',
       format: 'esm',
       input: './src',
       loaders: ['js'],
-      pattern: ['**/*.ts'],
-    },
-  ],
+      pattern: ['**/*.ts']
+    }
+  ]
 });

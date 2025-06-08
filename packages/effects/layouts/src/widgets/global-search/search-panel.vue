@@ -14,22 +14,22 @@ import { isHttpUrl } from '@vben-core/shared/utils';
 import { onKeyStroke, useLocalStorage, useThrottleFn } from '@vueuse/core';
 
 defineOptions({
-  name: 'SearchPanel',
+  name: 'SearchPanel'
 });
 
 const props = withDefaults(
   defineProps<{ keyword?: string; menus?: MenuRecordRaw[] }>(),
   {
     keyword: '',
-    menus: () => [],
-  },
+    menus: () => []
+  }
 );
 const emit = defineEmits<{ close: [] }>();
 
 const router = useRouter();
 const searchHistory = useLocalStorage<MenuRecordRaw[]>(
   `__search-history-${location.hostname}__`,
-  [],
+  []
 );
 const activeIndex = ref(-1);
 const searchItems = shallowRef<MenuRecordRaw[]>([]);
@@ -78,7 +78,7 @@ function search(searchKey: string) {
 // the scroll bar needs to scroll automatically
 function scrollIntoView() {
   const element = document.querySelector(
-    `[data-search-item="${activeIndex.value}"]`,
+    `[data-search-item="${activeIndex.value}"]`
   );
 
   if (element) {
@@ -170,7 +170,7 @@ const code = new Set([
   '^',
   '{',
   '|',
-  '}',
+  '}'
 ]);
 
 // 转换函数，用于转义特殊字符
@@ -198,14 +198,14 @@ watch(
     } else {
       searchResults.value = [...searchHistory.value];
     }
-  },
+  }
 );
 
 onMounted(() => {
   searchItems.value = mapTree(props.menus, (item) => {
     return {
       ...item,
-      name: $t(item?.name),
+      name: $t(item?.name)
     };
   });
   if (searchHistory.value.length > 0) {

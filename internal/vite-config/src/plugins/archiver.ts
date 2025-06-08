@@ -9,7 +9,7 @@ import { join } from 'node:path';
 import archiver from 'archiver';
 
 export const viteArchiverPlugin = (
-  options: ArchiverPluginOptions = {},
+  options: ArchiverPluginOptions = {}
 ): PluginOption => {
   return {
     apply: 'build',
@@ -36,26 +36,26 @@ export const viteArchiverPlugin = (
           }
         }, 0);
       },
-      order: 'post',
+      order: 'post'
     },
     enforce: 'post',
-    name: 'vite:archiver',
+    name: 'vite:archiver'
   };
 };
 
 async function zipFolder(
   folderPath: string,
-  outputPath: string,
+  outputPath: string
 ): Promise<void> {
   return new Promise((resolve, reject) => {
     const output = fs.createWriteStream(outputPath);
     const archive = archiver('zip', {
-      zlib: { level: 9 }, // 设置压缩级别为 9 以实现最高压缩率
+      zlib: { level: 9 } // 设置压缩级别为 9 以实现最高压缩率
     });
 
     output.on('close', () => {
       console.log(
-        `ZIP file created: ${outputPath} (${archive.pointer()} total bytes)`,
+        `ZIP file created: ${outputPath} (${archive.pointer()} total bytes)`
       );
       resolve();
     });

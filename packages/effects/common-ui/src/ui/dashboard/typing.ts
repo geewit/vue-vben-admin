@@ -44,5 +44,5 @@ export type {
   WorkbenchProjectItem,
   WorkbenchQuickNavItem,
   WorkbenchTodoItem,
-  WorkbenchTrendItem,
+  WorkbenchTrendItem
 };

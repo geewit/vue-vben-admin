@@ -6,20 +6,20 @@ import { computed, ref, useSlots } from 'vue';
 import {
   ResizableHandle,
   ResizablePanel,
-  ResizablePanelGroup,
+  ResizablePanelGroup
 } from '@vben-core/shadcn-ui';
 
 import Page from '../page/page.vue';
 
 defineOptions({
   name: 'ColPage',
-  inheritAttrs: false,
+  inheritAttrs: false
 });
 
 const props = withDefaults(defineProps<ColPageProps>(), {
   leftWidth: 30,
   rightWidth: 70,
-  resizable: true,
+  resizable: true
 });
 
 const delegatedProps = computed(() => {
@@ -52,7 +52,7 @@ function collapseLeft() {
 
 defineExpose({
   expandLeft,
-  collapseLeft,
+  collapseLeft
 });
 </script>
 <template>
@@ -81,7 +81,7 @@ defineExpose({
             v-bind="{
               ...slotProps,
               expand: expandLeft,
-              collapse: collapseLeft,
+              collapse: collapseLeft
             }"
           ></slot>
         </template>

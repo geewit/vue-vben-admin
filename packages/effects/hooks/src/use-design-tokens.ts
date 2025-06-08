@@ -25,7 +25,7 @@ export function useAntdDesignTokens() {
     colorSuccess: '',
     colorTextBase: '',
     colorWarning: '',
-    zIndexPopupBase: 2000, // 调整基础弹层层级，避免下拉等组件被弹窗或者最大化状态下的表格遮挡
+    zIndexPopupBase: 2000 // 调整基础弹层层级，避免下拉等组件被弹窗或者最大化状态下的表格遮挡
   });
 
   const getCssVariableValue = (variable: string, isColor: boolean = true) => {
@@ -66,11 +66,11 @@ export function useAntdDesignTokens() {
       tokens.colorBgLayout = getCssVariableValue('--background-deep');
       tokens.colorBgMask = getCssVariableValue('--overlay');
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   return {
-    tokens,
+    tokens
   };
 }
 
@@ -104,7 +104,7 @@ export function useNaiveDesignTokens() {
     warningColor: '',
     warningColorHover: '',
     warningColorPressed: '',
-    warningColorSuppl: '',
+    warningColorSuppl: ''
   });
 
   const getCssVariableValue = (variable: string, isColor: boolean = true) => {
@@ -153,10 +153,10 @@ export function useNaiveDesignTokens() {
 
       commonTokens.borderRadius = getCssVariableValue('--radius', false);
     },
-    { immediate: true },
+    { immediate: true }
   );
   return {
-    commonTokens,
+    commonTokens
   };
 }
 
@@ -311,11 +311,11 @@ export function useElementPlusDesignTokens() {
 
         '--el-text-color-primary': getCssVariableValue('--foreground'),
 
-        '--el-text-color-regular': getCssVariableValue('--foreground'),
+        '--el-text-color-regular': getCssVariableValue('--foreground')
       };
 
       updateCSSVariables(variables, `__vben_design_styles__`);
     },
-    { immediate: true },
+    { immediate: true }
   );
 }

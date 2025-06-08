@@ -6,7 +6,7 @@ import { computed, provide, ref, unref, useId, watch } from 'vue';
 import {
   useIsMobile,
   usePriorityValues,
-  useSimpleLocale,
+  useSimpleLocale
 } from '@vben-core/composables';
 import { X } from '@vben-core/icons';
 import {
@@ -22,7 +22,7 @@ import {
   VbenHelpTooltip,
   VbenIconButton,
   VbenLoading,
-  VisuallyHidden,
+  VisuallyHidden
 } from '@vben-core/shadcn-ui';
 import { ELEMENT_ID_MAIN_CONTENT } from '@vben-core/shared/constants';
 import { globalShareState } from '@vben-core/shared/global-state';
@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<Props>(), {
   destroyOnClose: false,
   drawerApi: undefined,
   submitting: false,
-  zIndex: 1000,
+  zIndex: 1000
 });
 
 const components = globalShareState.getComponents();
@@ -79,7 +79,7 @@ const {
   submitting,
   title,
   titleTooltip,
-  zIndex,
+  zIndex
 } = usePriorityValues(props, state);
 
 // watch(
@@ -147,7 +147,7 @@ watch(
     if (value && !unref(hasOpened)) {
       hasOpened.value = true;
     }
-  },
+  }
 );
 function handleClosed() {
   isClosed.value = true;
@@ -169,7 +169,7 @@ const getForceMount = computed(() => {
         cn('flex w-[520px] flex-col', drawerClass, {
           '!w-full': isMobile || placement === 'bottom' || placement === 'top',
           'max-h-[100vh]': placement === 'bottom' || placement === 'top',
-          hidden: isClosed,
+          hidden: isClosed
         })
       "
       :modal="modal"
@@ -195,8 +195,8 @@ const getForceMount = computed(() => {
             headerClass,
             {
               'px-4 py-3': closable,
-              'pl-2': closable && closeIconPlacement === 'left',
-            },
+              'pl-2': closable && closeIconPlacement === 'left'
+            }
           )
         "
       >
@@ -266,7 +266,7 @@ const getForceMount = computed(() => {
         ref="wrapperRef"
         :class="
           cn('relative flex-1 overflow-y-auto p-3', contentClass, {
-            'pointer-events-none': showLoading || submitting,
+            'pointer-events-none': showLoading || submitting
           })
         "
       >
@@ -278,7 +278,7 @@ const getForceMount = computed(() => {
         :class="
           cn(
             'w-full flex-row items-center justify-end border-t p-2 px-3',
-            footerClass,
+            footerClass
           )
         "
       >

@@ -4,5 +4,5 @@ export {
   MotionComponent as Motion,
   MotionDirective,
   MotionGroupComponent as MotionGroup,
-  MotionPlugin,
+  MotionPlugin
 } from '@vueuse/motion';

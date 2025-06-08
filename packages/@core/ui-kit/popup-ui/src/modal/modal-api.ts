@@ -6,7 +6,7 @@ import { bindMethods, isFunction } from '@vben-core/shared/utils';
 export class ModalApi {
   // 共享数据
   public sharedData: Record<'payload', any> = {
-    payload: {},
+    payload: {}
   };
   public store: Store<ModalState>;
 
@@ -58,13 +58,13 @@ export class ModalApi {
       openAutoFocus: false,
       showCancelButton: true,
       showConfirmButton: true,
-      title: '',
+      title: ''
     };
 
     this.store = new Store<ModalState>(
       {
         ...defaultState,
-        ...storeState,
+        ...storeState
       },
       {
         onUpdate: () => {
@@ -77,8 +77,8 @@ export class ModalApi {
             this.state = state;
             this.api.onOpenChange?.(!!state?.isOpen);
           }
-        },
-      },
+        }
+      }
     );
 
     this.state = this.store.state;
@@ -89,7 +89,7 @@ export class ModalApi {
       onClosed,
       onConfirm,
       onOpenChange,
-      onOpened,
+      onOpened
     };
     bindMethods(this);
   }
@@ -106,7 +106,7 @@ export class ModalApi {
       this.store.setState((prev) => ({
         ...prev,
         isOpen: false,
-        submitting: false,
+        submitting: false
       }));
     }
   }
@@ -170,9 +170,7 @@ export class ModalApi {
   }
 
   setState(
-    stateOrFn:
-      | ((prev: ModalState) => Partial<ModalState>)
-      | Partial<ModalState>,
+    stateOrFn: ((prev: ModalState) => Partial<ModalState>) | Partial<ModalState>
   ) {
     if (isFunction(stateOrFn)) {
       this.store.setState(stateOrFn);

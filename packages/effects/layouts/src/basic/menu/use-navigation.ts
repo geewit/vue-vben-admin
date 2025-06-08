@@ -44,7 +44,7 @@ function useNavigation() {
       } else {
         await router.push({
           path,
-          query,
+          query
         });
       }
     } catch (error) {

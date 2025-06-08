@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
   shadowBottom: true,
   shadowLeft: false,
   shadowRight: false,
-  shadowTop: true,
+  shadowTop: true
 });
 
 const emit = defineEmits<{
@@ -60,7 +60,7 @@ const computedShadowClasses = computed(() => {
       showShadowLeft.value &&
       showShadowRight.value,
     'left-shadow': !isAtLeft.value && showShadowLeft.value,
-    'right-shadow': !isAtRight.value && showShadowRight.value,
+    'right-shadow': !isAtRight.value && showShadowRight.value
   };
 });
 
@@ -85,7 +85,7 @@ function handleScroll(event: Event) {
     bottom: isAtBottom.value,
     left: isAtLeft.value,
     right: isAtRight.value,
-    top: isAtTop.value,
+    top: isAtTop.value
   });
 }
 </script>
@@ -100,7 +100,7 @@ function handleScroll(event: Event) {
       v-if="showShadowTop"
       :class="{
         'opacity-100': !isAtTop,
-        'border-border border-t': shadowBorder && !isAtTop,
+        'border-border border-t': shadowBorder && !isAtTop
       }"
       class="scrollbar-top-shadow pointer-events-none absolute top-0 z-10 h-12 w-full opacity-0 transition-opacity duration-300 ease-in-out will-change-[opacity]"
     ></div>
@@ -109,7 +109,7 @@ function handleScroll(event: Event) {
       v-if="showShadowBottom"
       :class="{
         'opacity-100': !isAtTop && !isAtBottom,
-        'border-border border-b': shadowBorder && !isAtTop && !isAtBottom,
+        'border-border border-b': shadowBorder && !isAtTop && !isAtBottom
       }"
       class="scrollbar-bottom-shadow pointer-events-none absolute bottom-0 z-10 h-12 w-full opacity-0 transition-opacity duration-300 ease-in-out will-change-[opacity]"
     ></div>

@@ -1,6 +1,6 @@
 import type {
   ApplicationConfig,
-  VbenAdminProAppConfigRaw,
+  VbenAdminProAppConfigRaw
 } from '@vben/types/global';
 
 /**
@@ -8,7 +8,7 @@ import type {
  */
 export function useAppConfig(
   env: Record<string, any>,
-  isProduction: boolean,
+  isProduction: boolean
 ): ApplicationConfig {
   // 生产环境下，直接使用 window._VBEN_ADMIN_PRO_APP_CONF_ 全局变量
   const config = isProduction
@@ -18,6 +18,6 @@ export function useAppConfig(
   const { VITE_GLOB_API_URL } = config;
 
   return {
-    apiURL: VITE_GLOB_API_URL,
+    apiURL: VITE_GLOB_API_URL
   };
 }

@@ -26,7 +26,7 @@ onBeforeMount(() => {
   const menu = findMenuByPath(props.menus || [], route.path);
   if (menu) {
     const rootMenu = (props.menus || []).find(
-      (item) => item.path === menu.parents?.[0],
+      (item) => item.path === menu.parents?.[0]
     );
     emit('defaultSelect', menu, rootMenu);
   }

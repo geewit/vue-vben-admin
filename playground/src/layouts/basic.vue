@@ -9,7 +9,7 @@ import {
   BasicLayout,
   LockScreen,
   Notification,
-  UserDropdown,
+  UserDropdown
 } from '@vben/layouts';
 import { preferences } from '@vben/preferences';
 import { useAccessStore, useTabbarStore, useUserStore } from '@vben/stores';
@@ -27,7 +27,7 @@ setMenuList([
   'close-left',
   'close-right',
   'close-other',
-  'close-all',
+  'close-all'
 ]);
 
 const notifications = ref<NotificationItem[]>([
@@ -36,29 +36,29 @@ const notifications = ref<NotificationItem[]>([
     date: '3小时前',
     isRead: true,
     message: '描述信息描述信息描述信息',
-    title: '收到了 14 份新周报',
+    title: '收到了 14 份新周报'
   },
   {
     avatar: 'https://avatar.vercel.sh/1',
     date: '刚刚',
     isRead: false,
     message: '描述信息描述信息描述信息',
-    title: '朱偏右 回复了你',
+    title: '朱偏右 回复了你'
   },
   {
     avatar: 'https://avatar.vercel.sh/1',
     date: '2024-01-01',
     isRead: false,
     message: '描述信息描述信息描述信息',
-    title: '曲丽丽 评论了你',
+    title: '曲丽丽 评论了你'
   },
   {
     avatar: 'https://avatar.vercel.sh/satori',
     date: '1天前',
     isRead: false,
     message: '描述信息描述信息描述信息',
-    title: '代办提醒',
-  },
+    title: '代办提醒'
+  }
 ]);
 
 const userStore = useUserStore();
@@ -66,7 +66,7 @@ const authStore = useAuthStore();
 const accessStore = useAccessStore();
 const { destroyWatermark, updateWatermark } = useWatermark();
 const showDot = computed(() =>
-  notifications.value.some((item) => !item.isRead),
+  notifications.value.some((item) => !item.isRead)
 );
 
 const avatar = computed(() => {
@@ -92,15 +92,15 @@ watch(
   async (enable) => {
     if (enable) {
       await updateWatermark({
-        content: `${userStore.userInfo?.username} - ${userStore.userInfo?.realName}`,
+        content: `${userStore.userInfo?.username} - ${userStore.userInfo?.realName}`
       });
     } else {
       destroyWatermark();
     }
   },
   {
-    immediate: true,
-  },
+    immediate: true
+  }
 );
 
 onBeforeMount(() => {

@@ -148,7 +148,7 @@ export interface ModalState extends ModalProps {
 
 export type ExtendedModalApi = ModalApi & {
   useStore: <T = NoInfer<ModalState>>(
-    selector?: (state: NoInfer<ModalState>) => T,
+    selector?: (state: NoInfer<ModalState>) => T
   ) => Readonly<Ref<T>>;
 };
 

@@ -21,7 +21,7 @@ const style = computed(() => {
   const { actionStyle } = props;
   return {
     ...actionStyle,
-    left: left.value,
+    left: left.value
   };
 });
 
@@ -40,7 +40,7 @@ defineExpose({
   },
   setLeft: (val: string) => {
     left.value = val;
-  },
+  }
 });
 </script>
 
@@ -49,7 +49,7 @@ defineExpose({
     ref="actionRef"
     :class="{
       'transition-width !left-0 duration-300': toLeft,
-      'rounded-md': isDragging,
+      'rounded-md': isDragging
     }"
     :style="style"
     class="bg-background dark:bg-accent absolute left-0 top-0 flex h-full cursor-move items-center justify-center px-3.5 shadow-md"
