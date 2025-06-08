@@ -594,8 +594,7 @@ $namespace: vben;
       justify-content: center;
       height: var(--menu-item-height);
       padding-right: calc(var(--menu-item-padding-x) + 6px);
-      margin: 0;
-      margin-right: 2px;
+      margin: 0 2px 0 0;
       // border-bottom: 2px solid transparent;
       border-radius: var(--menu-item-radius);
     }

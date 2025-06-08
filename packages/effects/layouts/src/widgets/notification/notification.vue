@@ -108,7 +108,7 @@ function handleClick(item: NotificationItem) {
                   :src="item.avatar"
                   class="aspect-square h-full w-full object-cover"
                   role="img"
-                />
+                 alt=""/>
               </span>
               <div class="flex flex-col gap-1 leading-none">
                 <p class="font-semibold">{{ item.title }}</p>

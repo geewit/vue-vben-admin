@@ -1,13 +1,8 @@
 <template>
   <svg
-    enable-background="new 0 0 800 800"
-    version="1.1"
-    viewBox="0 0 800 800"
-    x="0px"
-    xml:space="preserve"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    y="0px"
+    viewBox="0 0 800 600"
+    class="slogan-icon"
   >
     <filter
       id="filter-95"
@@ -631,7 +626,6 @@
         <polygon
           id="矩形"
           clip-rule="evenodd"
-          enable-background="new    "
           fill="url(#矩形_1_)"
           fill-rule="evenodd"
           opacity="0.1977"

@@ -87,14 +87,14 @@ const props = defineProps({
     type: [String, Number],
     default: 200,
     validator(val: number) {
-      return typeof val === 'string' ? val === 'auto' : val >= 0;
+      return val >= 0;
     }
   },
   h: {
     type: [String, Number],
     default: 200,
     validator(val: number) {
-      return typeof val === 'string' ? val === 'auto' : val >= 0;
+      return val >= 0;
     }
   },
   minw: {
@@ -115,21 +115,21 @@ const props = defineProps({
     type: Number,
     default: 0,
     validator(val: number) {
-      return typeof val === 'number';
+      return val >= 0;
     }
   },
   y: {
     type: Number,
     default: 0,
     validator(val: number) {
-      return typeof val === 'number';
+      return val >= 0;
     }
   },
   z: {
     type: [String, Number],
     default: 'auto',
     validator(val: number) {
-      return typeof val === 'string' ? val === 'auto' : val >= 0;
+      return val >= 0;
     }
   },
   dragHandle: {

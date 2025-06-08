@@ -58,6 +58,7 @@ function getTransitionName(_route: RouteLocationNormalizedLoaded) {
 /**
  * 转换组件，自动添加 name
  * @param component
+ * @param route
  */
 function transformComponent(
   component: VNode,

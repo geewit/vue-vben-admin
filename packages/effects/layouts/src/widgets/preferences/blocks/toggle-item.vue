@@ -21,7 +21,6 @@ const modelValue = defineModel<string>();
       'pointer-events-none opacity-50': disabled
     }"
     class="hover:bg-accent flex w-full items-center justify-between rounded-md px-2 py-2"
-    disabled
   >
     <span class="text-sm">
       <slot></slot>

@@ -50,11 +50,10 @@ const currentValue = useTransition(lastValue, {
 });
 
 const numMain = computed(() => {
-  const result = currentValue.value
+  return currentValue.value
     .toFixed(props.decimals)
     .split('.')[0]
     ?.replaceAll(/\B(?=(\d{3})+(?!\d))/g, props.separator);
-  return result;
 });
 
 const numDec = computed(() => {

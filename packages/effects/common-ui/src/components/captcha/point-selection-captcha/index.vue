@@ -43,16 +43,15 @@ function getElementPosition(element: HTMLElement) {
 function handleClick(e: MouseEvent) {
   try {
     const dom = e.currentTarget as HTMLElement;
-    if (!dom) throw new Error('Element not found');
+    if (!dom) {
+      console.warn('Event target element not found');
+      return;
+    }
 
     const { x: domX, y: domY } = getElementPosition(dom);
 
     const mouseX = e.clientX + window.scrollX;
     const mouseY = e.clientY + window.scrollY;
-
-    if (typeof mouseX !== 'number' || typeof mouseY !== 'number') {
-      throw new TypeError('Mouse coordinates not found');
-    }
 
     const xPos = mouseX - domX;
     const yPos = mouseY - domY;

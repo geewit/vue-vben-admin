@@ -129,7 +129,7 @@ function refresh() {
 
 <template>
   <div class="flex size-full flex-col items-center justify-center duration-300">
-    <img v-if="image" :src="image" class="md:1/3 w-1/2 lg:w-1/4" />
+    <img v-if="image" :src="image" class="md:1/3 w-1/2 lg:w-1/4" alt="" />
     <component
       :is="fallbackIcon"
       v-else-if="fallbackIcon"
