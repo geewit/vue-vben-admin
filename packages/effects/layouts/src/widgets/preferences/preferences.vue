@@ -11,7 +11,7 @@ import { VbenButton } from '@vben-core/shadcn-ui';
 
 import PreferencesDrawer from './preferences-drawer.vue';
 
-const [Drawer, drawerApi] = useVbenDrawer({
+const [Drawer, drawerApi] = await useVbenDrawer({
   connectedComponent: PreferencesDrawer
 });
 
