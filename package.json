@@ -1,6 +1,6 @@
 {
   "name": "vben-admin-monorepo",
-  "version": "5.5.7",
+  "version": "1.0.0",
   "private": true,
   "keywords": [
     "monorepo",
@@ -13,9 +13,9 @@
     "vue vben admin pro",
     "vue3"
   ],
-  "homepage": "https://github.com/vbenjs/vue-vben-admin",
-  "bugs": "https://github.com/vbenjs/vue-vben-admin/issues",
-  "repository": "vbenjs/vue-vben-admin.git",
+  "homepage": "https://github.com/geewit/vue-vben-admin",
+  "bugs": "https://github.com/geewit/vue-vben-admin/issues",
+  "repository": "geewit/vue-vben-admin.git",
   "license": "MIT",
   "author": {
     "name": "vben",
@@ -27,8 +27,7 @@
     "build": "pnpm -r run build",
     "build:analyze": "pnpm -r run build:analyze",
     "build:play": "pnpm run build --filter=@vben/playground",
-    "changeset": "pnpm exec changeset",
-    "check:cspell": "cspell lint **/*.ts **/README.md .changeset/*.md --no-progress",
+    "check:cspell": "cspell lint **/*.ts **/README.md --no-progress",
     "check:type": "pnpm -r run typecheck",
     "clean": "node ./scripts/clean.mjs",
     "dev": "pnpm -F @vben/playground run dev",
@@ -38,12 +37,9 @@
     "preview": "pnpm -F @vben/playground run preview",
     "reinstall": "pnpm clean --del-lock && pnpm install",
     "update:deps": "npx taze -r -w",
-    "version": "pnpm exec changeset version && pnpm install --no-frozen-lockfile",
     "catalog": "pnpx codemod pnpm/catalog"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "catalog:",
-    "@changesets/cli": "catalog:",
     "@types/node": "catalog:",
     "@vben/eslint-config": "workspace:*",
     "@vben/prettier-config": "workspace:*",
