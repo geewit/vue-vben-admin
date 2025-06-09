@@ -42,12 +42,6 @@ Test Account: vben/123456
   <img alt="VbenAdmin Logo" width="100%" src="https://anncwb.github.io/anncwb/images/preview3.png">
 </div>
 
-### Use Gitpod
-
-Open the project in Gitpod (free online dev environment for GitHub) and start coding immediately.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vbenjs/vue-vben-admin)
-
 ## Install and Use
 
 1. Get the project code
