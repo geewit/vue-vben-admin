@@ -1,12 +1,12 @@
 {
   "name": "@vben/vite-config",
-  "version": "5.5.6",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "https://github.com/vbenjs/vue-vben-admin",
-  "bugs": "https://github.com/vbenjs/vue-vben-admin/issues",
+  "homepage": "https://github.com/geewit/vue-vben-admin",
+  "bugs": "https://github.com/geewit/vue-vben-admin/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vbenjs/vue-vben-admin.git",
+    "url": "git+https://github.com/geewit/vue-vben-admin.git",
     "directory": "internal/vite-config"
   },
   "license": "MIT",
